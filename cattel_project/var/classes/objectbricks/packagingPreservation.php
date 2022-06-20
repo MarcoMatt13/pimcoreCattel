@@ -5,7 +5,20 @@
  * - packagingWeight [input]
  * - packagingType [select]
  * - packagingPrimaryMaterial [select]
+ * - packagingPrimaryNominalWeight [quantityValue]
+ * - packagingPrimaryGrossWeight [quantityValue]
+ * - packagingPrimaryNetWeight [quantityValue]
+ * - packagingPrimaryDrainedWeight [quantityValue]
+ * - packagingPrimaryMeasurements [input]
+ * - packagingSecondaryMaterial [select]
+ * - packagingSecondaryPcsPerCardboard [slider]
+ * - packagingSecondaryMeasurements [input]
+ * - secondaryPackagingTotalWeight [quantityValue]
  * - packagingEANPcs [slider]
+ * - packagingEANBox [slider]
+ * - packagingCardboardPerLayer [slider]
+ * - packagingLayerPerPallet [slider]
+ * - packagingCardboardPerPallet [slider]
  */
 
 return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
@@ -130,7 +143,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
           2 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
              'name' => 'packagingPrimaryMaterial',
-             'title' => 'Packaging Primary Material',
+             'title' => 'Primary Packaging Material',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -169,9 +182,412 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'defaultValueGenerator' => '',
           )),
           3 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'name' => 'packagingPrimaryNominalWeight',
+             'title' => 'Primary Packaging Nominal Weight',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'quantityValue',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'width' => '',
+             'unitWidth' => '',
+             'defaultValue' => NULL,
+             'defaultUnit' => NULL,
+             'validUnits' => 
+            array (
+              0 => 'g',
+            ),
+             'decimalPrecision' => NULL,
+             'autoConvert' => false,
+             'defaultValueGenerator' => '',
+          )),
+          4 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'name' => 'packagingPrimaryGrossWeight',
+             'title' => 'Primary Packaging Gross Weight',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'quantityValue',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'width' => '',
+             'unitWidth' => '',
+             'defaultValue' => NULL,
+             'defaultUnit' => NULL,
+             'validUnits' => 
+            array (
+              0 => 'g',
+            ),
+             'decimalPrecision' => NULL,
+             'autoConvert' => false,
+             'defaultValueGenerator' => '',
+          )),
+          5 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'name' => 'packagingPrimaryNetWeight',
+             'title' => 'Primary Packaging Net Weight',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'quantityValue',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'width' => '',
+             'unitWidth' => '',
+             'defaultValue' => NULL,
+             'defaultUnit' => NULL,
+             'validUnits' => 
+            array (
+              0 => 'g',
+            ),
+             'decimalPrecision' => NULL,
+             'autoConvert' => false,
+             'defaultValueGenerator' => '',
+          )),
+          6 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'name' => 'packagingPrimaryDrainedWeight',
+             'title' => 'Primary Packaging Drained Weight',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'quantityValue',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'width' => '',
+             'unitWidth' => '',
+             'defaultValue' => NULL,
+             'defaultUnit' => NULL,
+             'validUnits' => 
+            array (
+              0 => 'g',
+            ),
+             'decimalPrecision' => NULL,
+             'autoConvert' => false,
+             'defaultValueGenerator' => '',
+          )),
+          7 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'name' => 'packagingPrimaryMeasurements',
+             'title' => 'Primary Packaging Measurements',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'input',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'width' => '',
+             'defaultValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
+             'unique' => false,
+             'showCharCount' => false,
+             'defaultValueGenerator' => '',
+          )),
+          8 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+             'name' => 'packagingSecondaryMaterial',
+             'title' => 'Secondary Packaging Material',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'select',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'options' => 
+            array (
+              0 => 
+              array (
+                'key' => 'Cartone',
+                'value' => 'Cartone',
+              ),
+              1 => 
+              array (
+                'key' => 'Sottovuoto',
+                'value' => 'Sottovuoto',
+              ),
+            ),
+             'width' => '',
+             'defaultValue' => '',
+             'optionsProviderClass' => '',
+             'optionsProviderData' => '',
+             'columnLength' => 190,
+             'dynamicOptions' => false,
+             'defaultValueGenerator' => '',
+          )),
+          9 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
+             'name' => 'packagingSecondaryPcsPerCardboard',
+             'title' => 'Secondary Packaging Pieces for Cardboard',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'slider',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'width' => '',
+             'height' => '',
+             'minValue' => '',
+             'maxValue' => '',
+             'vertical' => false,
+             'increment' => '',
+             'decimalPrecision' => '',
+          )),
+          10 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'name' => 'packagingSecondaryMeasurements',
+             'title' => 'Secondary Packaging Measurements',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'input',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'width' => '',
+             'defaultValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
+             'unique' => false,
+             'showCharCount' => false,
+             'defaultValueGenerator' => '',
+          )),
+          11 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'name' => 'secondaryPackagingTotalWeight',
+             'title' => 'Packaging Secondary Total Weight',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'quantityValue',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'width' => '',
+             'unitWidth' => '',
+             'defaultValue' => NULL,
+             'defaultUnit' => NULL,
+             'validUnits' => 
+            array (
+              0 => 'g',
+            ),
+             'decimalPrecision' => NULL,
+             'autoConvert' => false,
+             'defaultValueGenerator' => '',
+          )),
+          12 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
              'name' => 'packagingEANPcs',
              'title' => 'Packaging EAN Pieces',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'slider',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'width' => '',
+             'height' => '',
+             'minValue' => '',
+             'maxValue' => '',
+             'vertical' => false,
+             'increment' => '',
+             'decimalPrecision' => '',
+          )),
+          13 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
+             'name' => 'packagingEANBox',
+             'title' => 'Packaging EAN Boxes',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'slider',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'width' => '',
+             'height' => '',
+             'minValue' => '',
+             'maxValue' => '',
+             'vertical' => false,
+             'increment' => '',
+             'decimalPrecision' => '',
+          )),
+          14 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
+             'name' => 'packagingCardboardPerLayer',
+             'title' => 'Packaging Cardboards per Layer',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'slider',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'width' => '',
+             'height' => '',
+             'minValue' => '',
+             'maxValue' => '',
+             'vertical' => false,
+             'increment' => '',
+             'decimalPrecision' => '',
+          )),
+          15 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
+             'name' => 'packagingLayerPerPallet',
+             'title' => 'Packaging Layers per Pallet',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'slider',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'width' => '',
+             'height' => '',
+             'minValue' => '',
+             'maxValue' => '',
+             'vertical' => false,
+             'increment' => '',
+             'decimalPrecision' => '',
+          )),
+          16 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
+             'name' => 'packagingCardboardPerPallet',
+             'title' => 'Packaging Cardboards per Pallet',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
