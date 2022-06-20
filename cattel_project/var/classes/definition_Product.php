@@ -19,8 +19,9 @@
  * - chemicalPhysicalChar [objectbricks]
  * - allergens [objectbricks]
  * - microbioChar [objectbricks]
- * - specificProduct [objectbricks]
  * - packaging [objectbricks]
+ * - labeling [objectbricks]
+ * - specificProduct [objectbricks]
  * - prova [classificationstore]
  */
 
@@ -30,7 +31,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Product',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1655718051,
+   'modificationDate' => 1655721243,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -596,6 +597,60 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
           )),
           6 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
+             'name' => 'packaging',
+             'title' => 'Packaging and Preservation',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'objectbricks',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'allowedTypes' => 
+            array (
+              0 => 'packagingPreservation',
+            ),
+             'maxItems' => 1,
+             'border' => false,
+          )),
+          7 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
+             'name' => 'labeling',
+             'title' => 'Labeling',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'objectbricks',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'allowedTypes' => 
+            array (
+              0 => 'labeling',
+            ),
+             'maxItems' => 1,
+             'border' => false,
+          )),
+          8 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
              'name' => 'specificProduct',
              'title' => 'Specific Category',
              'tooltip' => '',
@@ -622,34 +677,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'maxItems' => 1,
              'border' => false,
           )),
-          7 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
-             'name' => 'packaging',
-             'title' => 'Packaging and Preservation',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
-             'fieldtype' => 'objectbricks',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
-             'allowedTypes' => 
-            array (
-              0 => 'packagingPreservation',
-            ),
-             'maxItems' => 1,
-             'border' => false,
-          )),
-          8 => 
+          9 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Classificationstore::__set_state(array(
              'name' => 'prova',
              'title' => 'Prova',
