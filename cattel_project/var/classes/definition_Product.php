@@ -21,6 +21,9 @@
  * - microbioChar [objectbricks]
  * - packaging [objectbricks]
  * - labeling [objectbricks]
+ * - organicChar [objectbricks]
+ * - consumptionMode [objectbricks]
+ * - supplierInfo [objectbricks]
  * - specificProduct [objectbricks]
  * - prova [classificationstore]
  */
@@ -31,7 +34,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Product',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1655721243,
+   'modificationDate' => 1655727686,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -651,6 +654,87 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
           )),
           8 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
+             'name' => 'organicChar',
+             'title' => 'Organoleptic and visual characteristics',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'objectbricks',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'allowedTypes' => 
+            array (
+              0 => 'organicVisibleChar',
+            ),
+             'maxItems' => 1,
+             'border' => false,
+          )),
+          9 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
+             'name' => 'consumptionMode',
+             'title' => 'Consumption Mode',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'objectbricks',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'allowedTypes' => 
+            array (
+              0 => 'consumptionMode',
+            ),
+             'maxItems' => 1,
+             'border' => false,
+          )),
+          10 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
+             'name' => 'supplierInfo',
+             'title' => 'Supplier Info',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'objectbricks',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'allowedTypes' => 
+            array (
+              0 => 'supplierInfo',
+            ),
+             'maxItems' => 1,
+             'border' => false,
+          )),
+          11 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
              'name' => 'specificProduct',
              'title' => 'Specific Category',
              'tooltip' => '',
@@ -677,7 +761,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'maxItems' => 1,
              'border' => false,
           )),
-          9 => 
+          12 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Classificationstore::__set_state(array(
              'name' => 'prova',
              'title' => 'Prova',
