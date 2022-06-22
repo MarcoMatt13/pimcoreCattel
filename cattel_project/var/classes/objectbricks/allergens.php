@@ -12,6 +12,10 @@
  * - allergensNuts [select]
  * - allergensCelery [select]
  * - allergensMustard [select]
+ * - allergensSesame [select]
+ * - allergensSulphur [select]
+ * - allergensLupins [select]
+ * - allergensMolluscs [select]
  */
 
 return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
@@ -151,7 +155,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -197,7 +201,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -243,7 +247,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -289,7 +293,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -335,7 +339,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -381,7 +385,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -427,7 +431,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
@@ -469,6 +473,190 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
           Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
              'name' => 'allergensMustard',
              'title' => 'Mustard',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'select',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'options' => 
+            array (
+              0 => 
+              array (
+                'key' => 'Yes',
+                'value' => 'Yes',
+              ),
+              1 => 
+              array (
+                'key' => 'No',
+                'value' => 'No',
+              ),
+              2 => 
+              array (
+                'key' => 'Partially',
+                'value' => 'Partially',
+              ),
+            ),
+             'width' => '',
+             'defaultValue' => '',
+             'optionsProviderClass' => '',
+             'optionsProviderData' => '',
+             'columnLength' => 190,
+             'dynamicOptions' => false,
+             'defaultValueGenerator' => '',
+          )),
+          10 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+             'name' => 'allergensSesame',
+             'title' => 'Sesame',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'select',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'options' => 
+            array (
+              0 => 
+              array (
+                'key' => 'Yes',
+                'value' => 'Yes',
+              ),
+              1 => 
+              array (
+                'key' => 'No',
+                'value' => 'No',
+              ),
+              2 => 
+              array (
+                'key' => 'Partially',
+                'value' => 'Partially',
+              ),
+            ),
+             'width' => '',
+             'defaultValue' => '',
+             'optionsProviderClass' => '',
+             'optionsProviderData' => '',
+             'columnLength' => 190,
+             'dynamicOptions' => false,
+             'defaultValueGenerator' => '',
+          )),
+          11 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+             'name' => 'allergensSulphur',
+             'title' => 'Sulphur',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'select',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'options' => 
+            array (
+              0 => 
+              array (
+                'key' => 'Yes',
+                'value' => 'Yes',
+              ),
+              1 => 
+              array (
+                'key' => 'No',
+                'value' => 'No',
+              ),
+              2 => 
+              array (
+                'key' => 'Partially',
+                'value' => 'Partially',
+              ),
+            ),
+             'width' => '',
+             'defaultValue' => '',
+             'optionsProviderClass' => '',
+             'optionsProviderData' => '',
+             'columnLength' => 190,
+             'dynamicOptions' => false,
+             'defaultValueGenerator' => '',
+          )),
+          12 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+             'name' => 'allergensLupins',
+             'title' => 'Lupins',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'select',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'options' => 
+            array (
+              0 => 
+              array (
+                'key' => 'Yes',
+                'value' => 'Yes',
+              ),
+              1 => 
+              array (
+                'key' => 'No',
+                'value' => 'No',
+              ),
+              2 => 
+              array (
+                'key' => 'Partially',
+                'value' => 'Partially',
+              ),
+            ),
+             'width' => '',
+             'defaultValue' => '',
+             'optionsProviderClass' => '',
+             'optionsProviderData' => '',
+             'columnLength' => 190,
+             'dynamicOptions' => false,
+             'defaultValueGenerator' => '',
+          )),
+          13 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+             'name' => 'allergensMolluscs',
+             'title' => 'Molluscs',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,

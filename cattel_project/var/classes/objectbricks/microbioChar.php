@@ -4,6 +4,8 @@
  * Fields Summary:
  * - stafilococchiCoagulasi [quantityValue]
  * - listeriaMonocytogenes [quantityValue]
+ * - salmonella [quantityValue]
+ * - escherichiaColi [quantityValue]
  */
 
 return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
@@ -84,6 +86,70 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'noteditable' => false,
              'index' => false,
              'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'quantityValue',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'width' => '',
+             'unitWidth' => '',
+             'defaultValue' => NULL,
+             'defaultUnit' => '25g',
+             'validUnits' => 
+            array (
+              0 => '25g',
+            ),
+             'decimalPrecision' => NULL,
+             'autoConvert' => false,
+             'defaultValueGenerator' => '',
+          )),
+          2 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'name' => 'salmonella',
+             'title' => 'Salmonella',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'fieldtype' => 'quantityValue',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'width' => '',
+             'unitWidth' => '',
+             'defaultValue' => NULL,
+             'defaultUnit' => '25g',
+             'validUnits' => 
+            array (
+              0 => '25g',
+            ),
+             'decimalPrecision' => NULL,
+             'autoConvert' => false,
+             'defaultValueGenerator' => '',
+          )),
+          3 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'name' => 'escherichiaColi',
+             'title' => 'Escherichia Coli',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
