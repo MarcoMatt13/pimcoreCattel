@@ -52,7 +52,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Product',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1655824692,
+   'modificationDate' => 1656060124,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -604,7 +604,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'mandatory' => false,
                      'noteditable' => false,
                      'index' => false,
-                     'locked' => NULL,
+                     'locked' => false,
                      'style' => '',
                      'permissions' => NULL,
                      'datatype' => 'data',
@@ -1500,6 +1500,59 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'enableGridLocking' => false,
    'deletedDataComponents' => 
   array (
+    0 => 
+    Pimcore\Model\DataObject\ClassDefinition\Data\Gender::__set_state(array(
+       'name' => 'gender',
+       'title' => 'Gender',
+       'tooltip' => '',
+       'mandatory' => false,
+       'noteditable' => false,
+       'index' => false,
+       'locked' => false,
+       'style' => '',
+       'permissions' => NULL,
+       'datatype' => 'data',
+       'fieldtype' => 'gender',
+       'relationType' => false,
+       'invisible' => false,
+       'visibleGridView' => false,
+       'visibleSearch' => false,
+       'blockedVarsForExport' => 
+      array (
+      ),
+       'options' => 
+      array (
+        0 => 
+        array (
+          'key' => 'male',
+          'value' => 'male',
+        ),
+        1 => 
+        array (
+          'key' => 'female',
+          'value' => 'female',
+        ),
+        2 => 
+        array (
+          'key' => 'other',
+          'value' => 'other',
+        ),
+        3 => 
+        array (
+          'key' => '',
+          'value' => 'unknown',
+        ),
+      ),
+       'width' => 0,
+       'defaultValue' => NULL,
+       'optionsProviderClass' => NULL,
+       'optionsProviderData' => NULL,
+       'queryColumnType' => 'varchar',
+       'columnType' => 'varchar',
+       'columnLength' => 190,
+       'dynamicOptions' => false,
+       'defaultValueGenerator' => '',
+    )),
   ),
    'blockedVarsForExport' => 
   array (
