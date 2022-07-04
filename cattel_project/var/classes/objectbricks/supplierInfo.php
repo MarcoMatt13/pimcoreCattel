@@ -2,34 +2,42 @@
 
 /**
  * Fields Summary:
- * - usualSupplier [input]
- * - nameSupplier [input]
- * - plannerWarehouse [numeric]
- * - riordinator [numeric]
- * - buyer [numeric]
- * - combinedName [input]
- * - VATSellingCode [numeric]
- * - VATBuyingCode [numeric]
- * - articleState [select]
- * - availabilityTime [quantityValue]
- * - weeksCoverage [numeric]
- * - productAvailabilty [booleanSelect]
- * - productSellable [booleanSelect]
- * - productionFactoryName [input]
- * - productionFactoryCode [input]
- * - art62page [numeric]
- * - insertionType [numeric]
- * - certification [input]
- * - modificationIndex [input]
- * - modificationDates [input]
- * - fiscalGroup [numeric]
- * - pianificationLevel [numeric]
- * - alternativeArticle [input]
- * - service [input]
- * - alternativeCoefficientCode1 [input]
+ * - supplyChainUsualSupplier [input]
+ * - supplyChainNameSupplier [input]
+ * - supplyChainPlannerWarehouse [numeric]
+ * - supplyChainRiordinator [numeric]
+ * - supplyChainBuyer [numeric]
+ * - supplyChainCombinedName [input]
+ * - supplyChainVATSellingCode [numeric]
+ * - supplyChainVATBuyingCode [numeric]
+ * - supplyChainArticleState [select]
+ * - supplyChainAvailabilityTime [quantityValue]
+ * - supplyChainWeeksCoverage [numeric]
+ * - supplyChainProductAvailabilty [booleanSelect]
+ * - supplyChainProductSellable [booleanSelect]
+ * - supplyChainProductionFactoryName [input]
+ * - supplyChainProductionFactoryCode [input]
+ * - supplyChainArt62page [numeric]
+ * - supplyChainInsertionType [numeric]
+ * - supplyChainCertification [input]
+ * - supplyChainModificationIndex [input]
+ * - supplyChainModificationDates [input]
+ * - supplyChainFiscalGroup [numeric]
+ * - supplyChainPianificationLevel [numeric]
+ * - supplyChainAlternativeArticle [input]
+ * - supplyChainService [input]
+ * - supplyChainAlternativeCoefficientCode [input]
  */
 
 return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
+   'classDefinitions' => 
+  array (
+    0 => 
+    array (
+      'classname' => 'Product',
+      'fieldname' => 'supplierInfo',
+    ),
+  ),
    'dao' => NULL,
    'key' => 'supplierInfo',
    'parentClass' => '',
@@ -38,6 +46,9 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
    'group' => '',
    'layoutDefinitions' => 
   Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+     'fieldtype' => 'panel',
+     'layout' => NULL,
+     'border' => false,
      'name' => NULL,
      'type' => NULL,
      'region' => NULL,
@@ -53,6 +64,9 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
     array (
       0 => 
       Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+         'fieldtype' => 'panel',
+         'layout' => NULL,
+         'border' => false,
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -68,7 +82,17 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
         array (
           0 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'usualSupplier',
+             'fieldtype' => 'input',
+             'width' => '',
+             'defaultValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
+             'unique' => false,
+             'showCharCount' => false,
+             'name' => 'supplyChainUsualSupplier',
              'title' => 'Usual Supplier',
              'tooltip' => '',
              'mandatory' => false,
@@ -78,7 +102,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'input',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -86,6 +109,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          1 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
              'width' => '',
              'defaultValue' => NULL,
              'columnLength' => 190,
@@ -95,11 +123,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
-             'defaultValueGenerator' => '',
-          )),
-          1 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'nameSupplier',
+             'name' => 'supplyChainNameSupplier',
              'title' => 'Supplier Name',
              'tooltip' => '',
              'mandatory' => false,
@@ -109,7 +133,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'input',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -117,20 +140,21 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => '',
-             'defaultValue' => NULL,
-             'columnLength' => 190,
-             'regex' => '',
-             'regexFlags' => 
-            array (
-            ),
-             'unique' => false,
-             'showCharCount' => false,
              'defaultValueGenerator' => '',
           )),
           2 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-             'name' => 'plannerWarehouse',
+             'fieldtype' => 'numeric',
+             'width' => '',
+             'defaultValue' => NULL,
+             'integer' => false,
+             'unsigned' => false,
+             'minValue' => NULL,
+             'maxValue' => NULL,
+             'unique' => false,
+             'decimalSize' => NULL,
+             'decimalPrecision' => NULL,
+             'name' => 'supplyChainPlannerWarehouse',
              'title' => 'Planner Warehouse',
              'tooltip' => '',
              'mandatory' => false,
@@ -140,7 +164,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'numeric',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -148,6 +171,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          3 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+             'fieldtype' => 'numeric',
              'width' => '',
              'defaultValue' => NULL,
              'integer' => false,
@@ -157,11 +185,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'unique' => false,
              'decimalSize' => NULL,
              'decimalPrecision' => NULL,
-             'defaultValueGenerator' => '',
-          )),
-          3 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-             'name' => 'riordinator',
+             'name' => 'supplyChainRiordinator',
              'title' => 'Riordinator',
              'tooltip' => '',
              'mandatory' => false,
@@ -171,7 +195,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'numeric',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -179,6 +202,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          4 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+             'fieldtype' => 'numeric',
              'width' => '',
              'defaultValue' => NULL,
              'integer' => false,
@@ -188,11 +216,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'unique' => false,
              'decimalSize' => NULL,
              'decimalPrecision' => NULL,
-             'defaultValueGenerator' => '',
-          )),
-          4 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-             'name' => 'buyer',
+             'name' => 'supplyChainBuyer',
              'title' => 'Buyer',
              'tooltip' => '',
              'mandatory' => false,
@@ -202,7 +226,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'numeric',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -210,37 +233,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => '',
-             'defaultValue' => NULL,
-             'integer' => false,
-             'unsigned' => false,
-             'minValue' => NULL,
-             'maxValue' => NULL,
-             'unique' => false,
-             'decimalSize' => NULL,
-             'decimalPrecision' => NULL,
              'defaultValueGenerator' => '',
           )),
           5 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'combinedName',
-             'title' => 'Combined Name',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
              'fieldtype' => 'input',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
              'width' => '',
              'defaultValue' => NULL,
              'columnLength' => 190,
@@ -250,11 +247,38 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
+             'name' => 'supplyChainCombinedName',
+             'title' => 'Combined Name',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
              'defaultValueGenerator' => '',
           )),
           6 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-             'name' => 'VATSellingCode',
+             'fieldtype' => 'numeric',
+             'width' => '',
+             'defaultValue' => NULL,
+             'integer' => false,
+             'unsigned' => false,
+             'minValue' => NULL,
+             'maxValue' => NULL,
+             'unique' => false,
+             'decimalSize' => NULL,
+             'decimalPrecision' => NULL,
+             'name' => 'supplyChainVATSellingCode',
              'title' => 'VAT Selling Code',
              'tooltip' => '',
              'mandatory' => false,
@@ -264,7 +288,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'numeric',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -272,6 +295,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          7 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+             'fieldtype' => 'numeric',
              'width' => '',
              'defaultValue' => NULL,
              'integer' => false,
@@ -281,11 +309,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'unique' => false,
              'decimalSize' => NULL,
              'decimalPrecision' => NULL,
-             'defaultValueGenerator' => '',
-          )),
-          7 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-             'name' => 'VATBuyingCode',
+             'name' => 'supplyChainVATBuyingCode',
              'title' => 'VAT Buying Code',
              'tooltip' => '',
              'mandatory' => false,
@@ -295,7 +319,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'numeric',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -303,37 +326,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => '',
-             'defaultValue' => NULL,
-             'integer' => false,
-             'unsigned' => false,
-             'minValue' => NULL,
-             'maxValue' => NULL,
-             'unique' => false,
-             'decimalSize' => NULL,
-             'decimalPrecision' => NULL,
              'defaultValueGenerator' => '',
           )),
           8 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
-             'name' => 'articleState',
-             'title' => 'Article State',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
              'fieldtype' => 'select',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
              'options' => 
             array (
               0 => 
@@ -358,12 +355,8 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'optionsProviderData' => '',
              'columnLength' => 190,
              'dynamicOptions' => false,
-             'defaultValueGenerator' => '',
-          )),
-          9 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'availabilityTime',
-             'title' => 'Availability Time',
+             'name' => 'supplyChainArticleState',
+             'title' => 'Article State',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -372,7 +365,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'quantityValue',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -380,6 +372,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          9 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'fieldtype' => 'quantityValue',
              'width' => '',
              'unitWidth' => '',
              'defaultValue' => NULL,
@@ -390,12 +387,8 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'decimalPrecision' => NULL,
              'autoConvert' => false,
-             'defaultValueGenerator' => '',
-          )),
-          10 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-             'name' => 'weeksCoverage',
-             'title' => 'Weeks of coverage',
+             'name' => 'supplyChainAvailabilityTime',
+             'title' => 'Availability Time',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -404,7 +397,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'numeric',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -412,6 +404,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          10 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+             'fieldtype' => 'numeric',
              'width' => '',
              'defaultValue' => NULL,
              'integer' => false,
@@ -421,11 +418,51 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'unique' => false,
              'decimalSize' => NULL,
              'decimalPrecision' => NULL,
+             'name' => 'supplyChainWeeksCoverage',
+             'title' => 'Weeks of coverage',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
              'defaultValueGenerator' => '',
           )),
           11 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\BooleanSelect::__set_state(array(
-             'name' => 'productAvailabilty',
+             'fieldtype' => 'booleanSelect',
+             'yesLabel' => 'yes',
+             'noLabel' => 'no',
+             'emptyLabel' => 'empty',
+             'options' => 
+            array (
+              0 => 
+              array (
+                'key' => 'empty',
+                'value' => 0,
+              ),
+              1 => 
+              array (
+                'key' => 'yes',
+                'value' => 1,
+              ),
+              2 => 
+              array (
+                'key' => 'no',
+                'value' => -1,
+              ),
+            ),
+             'width' => '',
+             'name' => 'supplyChainProductAvailabilty',
              'title' => 'Product Availabilty',
              'tooltip' => '',
              'mandatory' => false,
@@ -435,7 +472,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'booleanSelect',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -443,6 +479,10 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+          )),
+          12 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\BooleanSelect::__set_state(array(
+             'fieldtype' => 'booleanSelect',
              'yesLabel' => 'yes',
              'noLabel' => 'no',
              'emptyLabel' => 'empty',
@@ -465,10 +505,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
               ),
             ),
              'width' => '',
-          )),
-          12 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\BooleanSelect::__set_state(array(
-             'name' => 'productSellable',
+             'name' => 'supplyChainProductSellable',
              'title' => 'Product Sellable',
              'tooltip' => '',
              'mandatory' => false,
@@ -478,7 +515,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'booleanSelect',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -486,32 +522,20 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'yesLabel' => 'yes',
-             'noLabel' => 'no',
-             'emptyLabel' => 'empty',
-             'options' => 
-            array (
-              0 => 
-              array (
-                'key' => 'empty',
-                'value' => 0,
-              ),
-              1 => 
-              array (
-                'key' => 'yes',
-                'value' => 1,
-              ),
-              2 => 
-              array (
-                'key' => 'no',
-                'value' => -1,
-              ),
-            ),
-             'width' => '',
           )),
           13 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'productionFactoryName',
+             'fieldtype' => 'input',
+             'width' => '',
+             'defaultValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
+             'unique' => false,
+             'showCharCount' => false,
+             'name' => 'supplyChainProductionFactoryName',
              'title' => 'Production Factory Name',
              'tooltip' => '',
              'mandatory' => false,
@@ -521,7 +545,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'input',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -529,6 +552,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          14 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
              'width' => '',
              'defaultValue' => NULL,
              'columnLength' => 190,
@@ -538,11 +566,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
-             'defaultValueGenerator' => '',
-          )),
-          14 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'productionFactoryCode',
+             'name' => 'supplyChainProductionFactoryCode',
              'title' => 'Production Factory Code',
              'tooltip' => '',
              'mandatory' => false,
@@ -552,7 +576,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'input',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -560,19 +583,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => '',
-             'defaultValue' => NULL,
-             'columnLength' => 190,
-             'regex' => '',
-             'regexFlags' => 
-            array (
-            ),
-             'unique' => false,
-             'showCharCount' => false,
              'defaultValueGenerator' => '',
           )),
           15 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+             'fieldtype' => 'fieldset',
              'name' => 'daChiarire',
              'type' => NULL,
              'region' => NULL,
@@ -588,7 +603,17 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             array (
               0 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-                 'name' => 'art62page',
+                 'fieldtype' => 'numeric',
+                 'width' => '',
+                 'defaultValue' => NULL,
+                 'integer' => false,
+                 'unsigned' => false,
+                 'minValue' => NULL,
+                 'maxValue' => NULL,
+                 'unique' => false,
+                 'decimalSize' => NULL,
+                 'decimalPrecision' => NULL,
+                 'name' => 'supplyChainArt62page',
                  'title' => 'Art. 62 Page',
                  'tooltip' => '',
                  'mandatory' => false,
@@ -598,7 +623,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'numeric',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -606,6 +630,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+                 'fieldtype' => 'numeric',
                  'width' => '',
                  'defaultValue' => NULL,
                  'integer' => false,
@@ -615,11 +644,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'unique' => false,
                  'decimalSize' => NULL,
                  'decimalPrecision' => NULL,
-                 'defaultValueGenerator' => '',
-              )),
-              1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-                 'name' => 'insertionType',
+                 'name' => 'supplyChainInsertionType',
                  'title' => 'InsertionType',
                  'tooltip' => '',
                  'mandatory' => false,
@@ -629,7 +654,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'numeric',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -637,20 +661,21 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
-                 'width' => '',
-                 'defaultValue' => NULL,
-                 'integer' => false,
-                 'unsigned' => false,
-                 'minValue' => NULL,
-                 'maxValue' => NULL,
-                 'unique' => false,
-                 'decimalSize' => NULL,
-                 'decimalPrecision' => NULL,
                  'defaultValueGenerator' => '',
               )),
               2 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'certification',
+                 'fieldtype' => 'input',
+                 'width' => '',
+                 'defaultValue' => NULL,
+                 'columnLength' => 190,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
+                 'showCharCount' => false,
+                 'name' => 'supplyChainCertification',
                  'title' => 'Certification',
                  'tooltip' => '',
                  'mandatory' => false,
@@ -660,7 +685,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -668,6 +692,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              3 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
                  'width' => '',
                  'defaultValue' => NULL,
                  'columnLength' => 190,
@@ -677,11 +706,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'unique' => false,
                  'showCharCount' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              3 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'modificationIndex',
+                 'name' => 'supplyChainModificationIndex',
                  'title' => 'Modification Index',
                  'tooltip' => '',
                  'mandatory' => false,
@@ -691,7 +716,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -699,6 +723,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              4 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
                  'width' => '',
                  'defaultValue' => NULL,
                  'columnLength' => 190,
@@ -708,11 +737,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'unique' => false,
                  'showCharCount' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              4 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'modificationDates',
+                 'name' => 'supplyChainModificationDates',
                  'title' => 'Modification Dates',
                  'tooltip' => '',
                  'mandatory' => false,
@@ -722,7 +747,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -730,20 +754,21 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
-                 'width' => '',
-                 'defaultValue' => NULL,
-                 'columnLength' => 190,
-                 'regex' => '',
-                 'regexFlags' => 
-                array (
-                ),
-                 'unique' => false,
-                 'showCharCount' => false,
                  'defaultValueGenerator' => '',
               )),
               5 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-                 'name' => 'fiscalGroup',
+                 'fieldtype' => 'numeric',
+                 'width' => '',
+                 'defaultValue' => NULL,
+                 'integer' => false,
+                 'unsigned' => false,
+                 'minValue' => NULL,
+                 'maxValue' => NULL,
+                 'unique' => false,
+                 'decimalSize' => NULL,
+                 'decimalPrecision' => NULL,
+                 'name' => 'supplyChainFiscalGroup',
                  'title' => 'Fiscal Group',
                  'tooltip' => '',
                  'mandatory' => false,
@@ -753,7 +778,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'numeric',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -761,6 +785,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              6 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+                 'fieldtype' => 'numeric',
                  'width' => '',
                  'defaultValue' => NULL,
                  'integer' => false,
@@ -770,11 +799,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'unique' => false,
                  'decimalSize' => NULL,
                  'decimalPrecision' => NULL,
-                 'defaultValueGenerator' => '',
-              )),
-              6 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
-                 'name' => 'pianificationLevel',
+                 'name' => 'supplyChainPianificationLevel',
                  'title' => 'Pianification Level',
                  'tooltip' => '',
                  'mandatory' => false,
@@ -784,7 +809,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'numeric',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -792,30 +816,30 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
-                 'width' => '',
-                 'defaultValue' => NULL,
-                 'integer' => false,
-                 'unsigned' => false,
-                 'minValue' => NULL,
-                 'maxValue' => NULL,
-                 'unique' => false,
-                 'decimalSize' => NULL,
-                 'decimalPrecision' => NULL,
                  'defaultValueGenerator' => '',
               )),
               7 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'alternativeArticle',
+                 'fieldtype' => 'input',
+                 'width' => '',
+                 'defaultValue' => NULL,
+                 'columnLength' => 190,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
+                 'showCharCount' => false,
+                 'name' => 'supplyChainAlternativeArticle',
                  'title' => 'Alternative Article',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => NULL,
+                 'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -823,6 +847,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              8 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
                  'width' => '',
                  'defaultValue' => NULL,
                  'columnLength' => 190,
@@ -832,21 +861,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'unique' => false,
                  'showCharCount' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              8 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'service',
+                 'name' => 'supplyChainService',
                  'title' => 'Service',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => NULL,
+                 'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -854,6 +878,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              9 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
                  'width' => '',
                  'defaultValue' => NULL,
                  'columnLength' => 190,
@@ -863,21 +892,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'unique' => false,
                  'showCharCount' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              9 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'alternativeCoefficientCode1',
+                 'name' => 'supplyChainAlternativeCoefficientCode',
                  'title' => 'Alternative Coefficient Code',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => NULL,
+                 'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -885,15 +909,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
-                 'width' => '',
-                 'defaultValue' => NULL,
-                 'columnLength' => 190,
-                 'regex' => '',
-                 'regexFlags' => 
-                array (
-                ),
-                 'unique' => false,
-                 'showCharCount' => false,
                  'defaultValueGenerator' => '',
               )),
             ),
@@ -901,7 +916,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'fieldtype' => 'fieldset',
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
@@ -910,9 +924,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
          'blockedVarsForExport' => 
         array (
         ),
-         'fieldtype' => 'panel',
-         'layout' => NULL,
-         'border' => false,
          'icon' => '',
          'labelWidth' => 0,
          'labelAlign' => 'left',
@@ -922,9 +933,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
      'blockedVarsForExport' => 
     array (
     ),
-     'fieldtype' => 'panel',
-     'layout' => NULL,
-     'border' => false,
      'icon' => NULL,
      'labelWidth' => 100,
      'labelAlign' => 'left',
@@ -932,13 +940,5 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
    'generateTypeDeclarations' => true,
    'blockedVarsForExport' => 
   array (
-  ),
-   'classDefinitions' => 
-  array (
-    0 => 
-    array (
-      'classname' => 'Product',
-      'fieldname' => 'supplierInfo',
-    ),
   ),
 ));

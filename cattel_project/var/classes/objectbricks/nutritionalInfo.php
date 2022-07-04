@@ -2,21 +2,29 @@
 
 /**
  * Fields Summary:
- * - energyKJ [quantityValue]
- * - energyKcal [quantityValue]
- * - fats [quantityValue]
- * - saturatedFats [quantityValue]
- * - carbs [quantityValue]
- * - sugars [quantityValue]
- * - proteins [quantityValue]
- * - salt [quantityValue]
- * - fibers [quantityValue]
- * - calcium [quantityValue]
- * - phoshorus [quantityValue]
+ * - nutritionalEnergeticValue [quantityValue]
+ * - nutritionalOtherEnergeticValue [quantityValue]
+ * - nutritionalFats [quantityValue]
+ * - nutritionalSaturatedFats [quantityValue]
+ * - nutritionalCarbs [quantityValue]
+ * - nutritionalSugars [quantityValue]
+ * - nutritionalProteins [quantityValue]
+ * - nutritionalSalt [quantityValue]
+ * - nutritionalFibers [quantityValue]
+ * - nutritionalCalcium [quantityValue]
+ * - nutritionalPhoshorus [quantityValue]
  * - nutritionalOtherInfo [textarea]
  */
 
 return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
+   'classDefinitions' => 
+  array (
+    0 => 
+    array (
+      'classname' => 'Product',
+      'fieldname' => 'nutritionalInfo',
+    ),
+  ),
    'dao' => NULL,
    'key' => 'nutritionalInfo',
    'parentClass' => '',
@@ -25,6 +33,9 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
    'group' => '',
    'layoutDefinitions' => 
   Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+     'fieldtype' => 'panel',
+     'layout' => NULL,
+     'border' => false,
      'name' => NULL,
      'type' => NULL,
      'region' => NULL,
@@ -40,6 +51,9 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
     array (
       0 => 
       Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+         'fieldtype' => 'panel',
+         'layout' => NULL,
+         'border' => false,
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -55,24 +69,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
         array (
           0 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'energyKJ',
-             'title' => 'Energy KJ',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
              'fieldtype' => 'quantityValue',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
              'width' => '',
              'unitWidth' => '',
              'defaultValue' => NULL,
@@ -83,12 +80,8 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'decimalPrecision' => NULL,
              'autoConvert' => false,
-             'defaultValueGenerator' => '',
-          )),
-          1 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'energyKcal',
-             'title' => 'Energy Kcal',
+             'name' => 'nutritionalEnergeticValue',
+             'title' => 'Energy KJ',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -97,7 +90,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'quantityValue',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -105,6 +97,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          1 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'fieldtype' => 'quantityValue',
              'width' => '',
              'unitWidth' => '',
              'defaultValue' => NULL,
@@ -115,11 +112,39 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'decimalPrecision' => NULL,
              'autoConvert' => false,
+             'name' => 'nutritionalOtherEnergeticValue',
+             'title' => 'Energy Kcal',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
              'defaultValueGenerator' => '',
           )),
           2 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'fats',
+             'fieldtype' => 'quantityValue',
+             'width' => '',
+             'unitWidth' => '',
+             'defaultValue' => NULL,
+             'defaultUnit' => 'g100g',
+             'validUnits' => 
+            array (
+              0 => 'g100g',
+            ),
+             'decimalPrecision' => NULL,
+             'autoConvert' => false,
+             'name' => 'nutritionalFats',
              'title' => 'Fats',
              'tooltip' => '',
              'mandatory' => false,
@@ -129,7 +154,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'quantityValue',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -137,6 +161,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          3 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'fieldtype' => 'quantityValue',
              'width' => '',
              'unitWidth' => '',
              'defaultValue' => NULL,
@@ -147,21 +176,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'decimalPrecision' => NULL,
              'autoConvert' => false,
-             'defaultValueGenerator' => '',
-          )),
-          3 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'saturatedFats',
+             'name' => 'nutritionalSaturatedFats',
              'title' => 'Saturated Fats',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'quantityValue',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -169,6 +193,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          4 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'fieldtype' => 'quantityValue',
              'width' => '',
              'unitWidth' => '',
              'defaultValue' => NULL,
@@ -179,21 +208,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'decimalPrecision' => NULL,
              'autoConvert' => false,
-             'defaultValueGenerator' => '',
-          )),
-          4 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'carbs',
+             'name' => 'nutritionalCarbs',
              'title' => 'Carbs',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'quantityValue',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -201,6 +225,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          5 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'fieldtype' => 'quantityValue',
              'width' => '',
              'unitWidth' => '',
              'defaultValue' => NULL,
@@ -211,21 +240,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'decimalPrecision' => NULL,
              'autoConvert' => false,
-             'defaultValueGenerator' => '',
-          )),
-          5 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'sugars',
+             'name' => 'nutritionalSugars',
              'title' => 'Sugars',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'quantityValue',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -233,6 +257,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          6 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'fieldtype' => 'quantityValue',
              'width' => '',
              'unitWidth' => '',
              'defaultValue' => NULL,
@@ -243,21 +272,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'decimalPrecision' => NULL,
              'autoConvert' => false,
-             'defaultValueGenerator' => '',
-          )),
-          6 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'proteins',
+             'name' => 'nutritionalProteins',
              'title' => 'Proteins',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'quantityValue',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -265,6 +289,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          7 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'fieldtype' => 'quantityValue',
              'width' => '',
              'unitWidth' => '',
              'defaultValue' => NULL,
@@ -275,21 +304,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'decimalPrecision' => NULL,
              'autoConvert' => false,
-             'defaultValueGenerator' => '',
-          )),
-          7 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'salt',
+             'name' => 'nutritionalSalt',
              'title' => 'Salt',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'quantityValue',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -297,6 +321,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          8 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'fieldtype' => 'quantityValue',
              'width' => '',
              'unitWidth' => '',
              'defaultValue' => NULL,
@@ -307,21 +336,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'decimalPrecision' => NULL,
              'autoConvert' => false,
-             'defaultValueGenerator' => '',
-          )),
-          8 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'fibers',
+             'name' => 'nutritionalFibers',
              'title' => 'Fibers',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'quantityValue',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -329,6 +353,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          9 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'fieldtype' => 'quantityValue',
              'width' => '',
              'unitWidth' => '',
              'defaultValue' => NULL,
@@ -339,21 +368,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'decimalPrecision' => NULL,
              'autoConvert' => false,
-             'defaultValueGenerator' => '',
-          )),
-          9 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'calcium',
+             'name' => 'nutritionalCalcium',
              'title' => 'Calcium',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'quantityValue',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -361,6 +385,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          10 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'fieldtype' => 'quantityValue',
              'width' => '',
              'unitWidth' => '',
              'defaultValue' => NULL,
@@ -371,21 +400,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'decimalPrecision' => NULL,
              'autoConvert' => false,
-             'defaultValueGenerator' => '',
-          )),
-          10 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'phoshorus',
+             'name' => 'nutritionalPhoshorus',
              'title' => 'Phoshorus',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'quantityValue',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -393,31 +417,26 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => '',
-             'unitWidth' => '',
-             'defaultValue' => NULL,
-             'defaultUnit' => 'g100g',
-             'validUnits' => 
-            array (
-              0 => 'g100g',
-            ),
-             'decimalPrecision' => NULL,
-             'autoConvert' => false,
              'defaultValueGenerator' => '',
           )),
           11 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+             'fieldtype' => 'textarea',
+             'width' => '',
+             'height' => '',
+             'maxLength' => NULL,
+             'showCharCount' => false,
+             'excludeFromSearchIndex' => false,
              'name' => 'nutritionalOtherInfo',
              'title' => 'Other Info',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'textarea',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -425,20 +444,12 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => '',
-             'height' => '',
-             'maxLength' => NULL,
-             'showCharCount' => false,
-             'excludeFromSearchIndex' => false,
           )),
         ),
          'locked' => false,
          'blockedVarsForExport' => 
         array (
         ),
-         'fieldtype' => 'panel',
-         'layout' => NULL,
-         'border' => false,
          'icon' => '',
          'labelWidth' => 0,
          'labelAlign' => 'left',
@@ -448,9 +459,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
      'blockedVarsForExport' => 
     array (
     ),
-     'fieldtype' => 'panel',
-     'layout' => NULL,
-     'border' => false,
      'icon' => NULL,
      'labelWidth' => 100,
      'labelAlign' => 'left',
@@ -458,13 +466,5 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
    'generateTypeDeclarations' => true,
    'blockedVarsForExport' => 
   array (
-  ),
-   'classDefinitions' => 
-  array (
-    0 => 
-    array (
-      'classname' => 'Product',
-      'fieldname' => 'nutritionalInfo',
-    ),
   ),
 ));

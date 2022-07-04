@@ -2,13 +2,21 @@
 
 /**
  * Fields Summary:
- * - stafilococchiCoagulasi [quantityValue]
- * - listeriaMonocytogenes [quantityValue]
- * - salmonella [quantityValue]
- * - escherichiaColi [quantityValue]
+ * - microbioCharStafilococchiCoagulasi [quantityValue]
+ * - microbioCharListeriaMonocytogenes [quantityValue]
+ * - microbioCharSalmonella [quantityValue]
+ * - microbioCharEscherichiaColi [quantityValue]
  */
 
 return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
+   'classDefinitions' => 
+  array (
+    0 => 
+    array (
+      'classname' => 'Product',
+      'fieldname' => 'microbioChar',
+    ),
+  ),
    'dao' => NULL,
    'key' => 'microbioChar',
    'parentClass' => '',
@@ -17,6 +25,9 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
    'group' => '',
    'layoutDefinitions' => 
   Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+     'fieldtype' => 'panel',
+     'layout' => NULL,
+     'border' => false,
      'name' => NULL,
      'type' => NULL,
      'region' => NULL,
@@ -32,6 +43,9 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
     array (
       0 => 
       Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+         'fieldtype' => 'panel',
+         'layout' => NULL,
+         'border' => false,
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -47,24 +61,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
         array (
           0 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'stafilococchiCoagulasi',
-             'title' => 'Stafilococchi Coagulasi',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
              'fieldtype' => 'quantityValue',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
              'width' => '',
              'unitWidth' => '',
              'defaultValue' => NULL,
@@ -75,11 +72,39 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'decimalPrecision' => NULL,
              'autoConvert' => false,
+             'name' => 'microbioCharStafilococchiCoagulasi',
+             'title' => 'Stafilococchi Coagulasi',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
              'defaultValueGenerator' => '',
           )),
           1 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'listeriaMonocytogenes',
+             'fieldtype' => 'quantityValue',
+             'width' => '',
+             'unitWidth' => '',
+             'defaultValue' => NULL,
+             'defaultUnit' => '25g',
+             'validUnits' => 
+            array (
+              0 => '25g',
+            ),
+             'decimalPrecision' => NULL,
+             'autoConvert' => false,
+             'name' => 'microbioCharListeriaMonocytogenes',
              'title' => 'Listeria monocytogenes',
              'tooltip' => '',
              'mandatory' => false,
@@ -89,7 +114,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'quantityValue',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -97,6 +121,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          2 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'fieldtype' => 'quantityValue',
              'width' => '',
              'unitWidth' => '',
              'defaultValue' => NULL,
@@ -107,21 +136,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'decimalPrecision' => NULL,
              'autoConvert' => false,
-             'defaultValueGenerator' => '',
-          )),
-          2 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'salmonella',
+             'name' => 'microbioCharSalmonella',
              'title' => 'Salmonella',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'quantityValue',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -129,6 +153,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          3 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+             'fieldtype' => 'quantityValue',
              'width' => '',
              'unitWidth' => '',
              'defaultValue' => NULL,
@@ -139,21 +168,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'decimalPrecision' => NULL,
              'autoConvert' => false,
-             'defaultValueGenerator' => '',
-          )),
-          3 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-             'name' => 'escherichiaColi',
+             'name' => 'microbioCharEscherichiaColi',
              'title' => 'Escherichia Coli',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'quantityValue',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -161,16 +185,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => '',
-             'unitWidth' => '',
-             'defaultValue' => NULL,
-             'defaultUnit' => '25g',
-             'validUnits' => 
-            array (
-              0 => '25g',
-            ),
-             'decimalPrecision' => NULL,
-             'autoConvert' => false,
              'defaultValueGenerator' => '',
           )),
         ),
@@ -178,9 +192,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
          'blockedVarsForExport' => 
         array (
         ),
-         'fieldtype' => 'panel',
-         'layout' => NULL,
-         'border' => false,
          'icon' => '',
          'labelWidth' => 0,
          'labelAlign' => 'left',
@@ -190,9 +201,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
      'blockedVarsForExport' => 
     array (
     ),
-     'fieldtype' => 'panel',
-     'layout' => NULL,
-     'border' => false,
      'icon' => NULL,
      'labelWidth' => 100,
      'labelAlign' => 'left',
@@ -200,13 +208,5 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
    'generateTypeDeclarations' => true,
    'blockedVarsForExport' => 
   array (
-  ),
-   'classDefinitions' => 
-  array (
-    0 => 
-    array (
-      'classname' => 'Product',
-      'fieldname' => 'microbioChar',
-    ),
   ),
 ));

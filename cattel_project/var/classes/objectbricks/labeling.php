@@ -2,25 +2,33 @@
 
 /**
  * Fields Summary:
- * - packagingLot [input]
- * - packagingLotNotes [input]
- * - trackingSystems [input]
- * - ogm [booleanSelect]
- * - ioniziongRadiations [booleanSelect]
- * - rind [booleanSelect]
- * - edibleRind [select]
- * - ingredients [textarea]
- * - convervationMode [input]
- * - conservationOpenedMode [input]
- * - transportMode [input]
- * - useMode [input]
+ * - labelLot [input]
+ * - labelLotNotes [input]
+ * - labelTrackingSystems [input]
+ * - labelOgm [booleanSelect]
+ * - labelIoniziongRadiations [booleanSelect]
+ * - labelRind [booleanSelect]
+ * - labelEdibleRind [select]
+ * - labelIngredients [textarea]
+ * - labelConvervationMode [input]
+ * - labelConservationOpenedMode [input]
+ * - labelTransportMode [input]
+ * - labelUseMode [input]
  * - labelInstruction [input]
- * - productionType [input]
- * - packagingTMC [input]
- * - packagingResidualLife [input]
+ * - labelProductionType [input]
+ * - labelPackagingTMC [input]
+ * - labelPackagingResidualLife [input]
  */
 
 return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
+   'classDefinitions' => 
+  array (
+    0 => 
+    array (
+      'classname' => 'Product',
+      'fieldname' => 'labeling',
+    ),
+  ),
    'dao' => NULL,
    'key' => 'labeling',
    'parentClass' => '',
@@ -29,6 +37,9 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
    'group' => '',
    'layoutDefinitions' => 
   Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+     'fieldtype' => 'panel',
+     'layout' => NULL,
+     'border' => false,
      'name' => NULL,
      'type' => NULL,
      'region' => NULL,
@@ -44,6 +55,9 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
     array (
       0 => 
       Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+         'fieldtype' => 'panel',
+         'layout' => NULL,
+         'border' => false,
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -59,7 +73,17 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
         array (
           0 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'packagingLot',
+             'fieldtype' => 'input',
+             'width' => '',
+             'defaultValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
+             'unique' => false,
+             'showCharCount' => false,
+             'name' => 'labelLot',
              'title' => 'Lot',
              'tooltip' => '',
              'mandatory' => false,
@@ -69,7 +93,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'input',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -77,6 +100,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          1 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
              'width' => '',
              'defaultValue' => NULL,
              'columnLength' => 190,
@@ -86,11 +114,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
-             'defaultValueGenerator' => '',
-          )),
-          1 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'packagingLotNotes',
+             'name' => 'labelLotNotes',
              'title' => 'Labeling Notes',
              'tooltip' => '',
              'mandatory' => false,
@@ -100,7 +124,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'input',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -108,6 +131,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          2 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
              'width' => '',
              'defaultValue' => NULL,
              'columnLength' => 190,
@@ -117,11 +145,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
-             'defaultValueGenerator' => '',
-          )),
-          2 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'trackingSystems',
+             'name' => 'labelTrackingSystems',
              'title' => 'Tracking Systems',
              'tooltip' => '',
              'mandatory' => false,
@@ -131,7 +155,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'input',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -139,20 +162,34 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => '',
-             'defaultValue' => NULL,
-             'columnLength' => 190,
-             'regex' => '',
-             'regexFlags' => 
-            array (
-            ),
-             'unique' => false,
-             'showCharCount' => false,
              'defaultValueGenerator' => '',
           )),
           3 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\BooleanSelect::__set_state(array(
-             'name' => 'ogm',
+             'fieldtype' => 'booleanSelect',
+             'yesLabel' => 'yes',
+             'noLabel' => 'no',
+             'emptyLabel' => 'empty',
+             'options' => 
+            array (
+              0 => 
+              array (
+                'key' => 'empty',
+                'value' => 0,
+              ),
+              1 => 
+              array (
+                'key' => 'yes',
+                'value' => 1,
+              ),
+              2 => 
+              array (
+                'key' => 'no',
+                'value' => -1,
+              ),
+            ),
+             'width' => '',
+             'name' => 'labelOgm',
              'title' => 'OGM presence',
              'tooltip' => '',
              'mandatory' => false,
@@ -162,7 +199,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'booleanSelect',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -170,6 +206,10 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+          )),
+          4 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\BooleanSelect::__set_state(array(
+             'fieldtype' => 'booleanSelect',
              'yesLabel' => 'yes',
              'noLabel' => 'no',
              'emptyLabel' => 'empty',
@@ -192,10 +232,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
               ),
             ),
              'width' => '',
-          )),
-          4 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\BooleanSelect::__set_state(array(
-             'name' => 'ioniziongRadiations',
+             'name' => 'labelIoniziongRadiations',
              'title' => 'Ionizing Radiations presence',
              'tooltip' => '',
              'mandatory' => false,
@@ -205,7 +242,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'booleanSelect',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -213,6 +249,10 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+          )),
+          5 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\BooleanSelect::__set_state(array(
+             'fieldtype' => 'booleanSelect',
              'yesLabel' => 'yes',
              'noLabel' => 'no',
              'emptyLabel' => 'empty',
@@ -235,10 +275,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
               ),
             ),
              'width' => '',
-          )),
-          5 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\BooleanSelect::__set_state(array(
-             'name' => 'rind',
+             'name' => 'labelRind',
              'title' => 'Rind presence',
              'tooltip' => '',
              'mandatory' => false,
@@ -248,7 +285,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'booleanSelect',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -256,49 +292,10 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'yesLabel' => 'yes',
-             'noLabel' => 'no',
-             'emptyLabel' => 'empty',
-             'options' => 
-            array (
-              0 => 
-              array (
-                'key' => 'empty',
-                'value' => 0,
-              ),
-              1 => 
-              array (
-                'key' => 'yes',
-                'value' => 1,
-              ),
-              2 => 
-              array (
-                'key' => 'no',
-                'value' => -1,
-              ),
-            ),
-             'width' => '',
           )),
           6 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
-             'name' => 'edibleRind',
-             'title' => 'Edible Rind',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => false,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
              'fieldtype' => 'select',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
              'options' => 
             array (
               0 => 
@@ -323,21 +320,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'optionsProviderData' => '',
              'columnLength' => 190,
              'dynamicOptions' => false,
-             'defaultValueGenerator' => '',
-          )),
-          7 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
-             'name' => 'ingredients',
-             'title' => 'Ingredients',
+             'name' => 'labelEdibleRind',
+             'title' => 'Edible Rind',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'textarea',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -345,25 +337,56 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          7 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+             'fieldtype' => 'textarea',
              'width' => '',
              'height' => '',
              'maxLength' => NULL,
              'showCharCount' => false,
              'excludeFromSearchIndex' => false,
+             'name' => 'labelIngredients',
+             'title' => 'Ingredients',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
           )),
           8 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'convervationMode',
+             'fieldtype' => 'input',
+             'width' => '',
+             'defaultValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
+             'unique' => false,
+             'showCharCount' => false,
+             'name' => 'labelConvervationMode',
              'title' => 'Convervation Mode',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'input',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -371,6 +394,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          9 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
              'width' => '',
              'defaultValue' => NULL,
              'columnLength' => 190,
@@ -380,21 +408,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
-             'defaultValueGenerator' => '',
-          )),
-          9 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'conservationOpenedMode',
+             'name' => 'labelConservationOpenedMode',
              'title' => 'Convervation Opened Mode',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'input',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -402,6 +425,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          10 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
              'width' => '',
              'defaultValue' => NULL,
              'columnLength' => 190,
@@ -411,21 +439,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
-             'defaultValueGenerator' => '',
-          )),
-          10 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'transportMode',
+             'name' => 'labelTransportMode',
              'title' => 'Transport Mode',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'input',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -433,6 +456,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          11 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
              'width' => '',
              'defaultValue' => NULL,
              'columnLength' => 190,
@@ -442,21 +470,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
-             'defaultValueGenerator' => '',
-          )),
-          11 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'useMode',
+             'name' => 'labelUseMode',
              'title' => 'Use Mode',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'input',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -464,6 +487,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          12 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
              'width' => '',
              'defaultValue' => NULL,
              'columnLength' => 190,
@@ -473,21 +501,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
-             'defaultValueGenerator' => '',
-          )),
-          12 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
              'name' => 'labelInstruction',
              'title' => 'Label Instruction',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'input',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -495,6 +518,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          13 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
              'width' => '',
              'defaultValue' => NULL,
              'columnLength' => 190,
@@ -504,21 +532,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
-             'defaultValueGenerator' => '',
-          )),
-          13 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'productionType',
+             'name' => 'labelProductionType',
              'title' => 'productionType',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'input',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -526,6 +549,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          14 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
              'width' => '',
              'defaultValue' => NULL,
              'columnLength' => 190,
@@ -535,21 +563,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
-             'defaultValueGenerator' => '',
-          )),
-          14 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'packagingTMC',
+             'name' => 'labelPackagingTMC',
              'title' => 'Packaging TMC',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'input',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -557,6 +580,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          15 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
              'width' => '',
              'defaultValue' => NULL,
              'columnLength' => 190,
@@ -566,21 +594,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
-             'defaultValueGenerator' => '',
-          )),
-          15 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'packagingResidualLife',
+             'name' => 'labelPackagingResidualLife',
              'title' => 'Packaging Residual Life',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'input',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -588,15 +611,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => '',
-             'defaultValue' => NULL,
-             'columnLength' => 190,
-             'regex' => '',
-             'regexFlags' => 
-            array (
-            ),
-             'unique' => false,
-             'showCharCount' => false,
              'defaultValueGenerator' => '',
           )),
         ),
@@ -604,9 +618,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
          'blockedVarsForExport' => 
         array (
         ),
-         'fieldtype' => 'panel',
-         'layout' => NULL,
-         'border' => false,
          'icon' => '',
          'labelWidth' => 0,
          'labelAlign' => 'left',
@@ -616,9 +627,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
      'blockedVarsForExport' => 
     array (
     ),
-     'fieldtype' => 'panel',
-     'layout' => NULL,
-     'border' => false,
      'icon' => NULL,
      'labelWidth' => 100,
      'labelAlign' => 'left',
@@ -626,13 +634,5 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
    'generateTypeDeclarations' => true,
    'blockedVarsForExport' => 
   array (
-  ),
-   'classDefinitions' => 
-  array (
-    0 => 
-    array (
-      'classname' => 'Product',
-      'fieldname' => 'labeling',
-    ),
   ),
 ));

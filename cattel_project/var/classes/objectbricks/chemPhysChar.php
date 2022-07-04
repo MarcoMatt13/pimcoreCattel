@@ -2,27 +2,35 @@
 
 /**
  * Fields Summary:
- * - humidity [quantityValue]
- * - humidityTolerance [input]
- * - dryResidue [quantityValue]
- * - dryResidueTolerance [input]
- * - proteins [quantityValue]
- * - proteinsTolerance [input]
- * - dryFatsTq [quantityValue]
- * - dryFatsTqTolerance [input]
- * - dryFatsSs [quantityValue]
- * - dryFatsSsTolerance [input]
- * - ashes [quantityValue]
- * - ashesTolerance [input]
- * - salt [quantityValue]
- * - saltTolerance [input]
- * - ph [quantityValue]
- * - pHTolerance [input]
- * - aw [quantityValue]
- * - awTolerance [input]
+ * - physCharHumidity [quantityValue]
+ * - physCharHumidityTolerance [input]
+ * - physCharDryResidue [quantityValue]
+ * - physCharDryResidueTolerance [input]
+ * - physCharProteins [quantityValue]
+ * - physCharProteinsTolerance [input]
+ * - physCharDryFatsTq [quantityValue]
+ * - physCharDryFatsTqTolerance [input]
+ * - physCharDryFatsSs [quantityValue]
+ * - physCharDryFatsSsTolerance [input]
+ * - physCharAshes [quantityValue]
+ * - physCharAshesTolerance [input]
+ * - physCharSalt [quantityValue]
+ * - physCharSaltTolerance [input]
+ * - physCharPh [quantityValue]
+ * - physCharPhTolerance [input]
+ * - physCharAw [quantityValue]
+ * - physCharAwTolerance [input]
  */
 
 return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
+   'classDefinitions' => 
+  array (
+    0 => 
+    array (
+      'classname' => 'Product',
+      'fieldname' => 'chemicalPhysicalChar',
+    ),
+  ),
    'dao' => NULL,
    'key' => 'chemPhysChar',
    'parentClass' => '',
@@ -31,6 +39,9 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
    'group' => '',
    'layoutDefinitions' => 
   Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+     'fieldtype' => 'panel',
+     'layout' => NULL,
+     'border' => false,
      'name' => NULL,
      'type' => NULL,
      'region' => NULL,
@@ -46,6 +57,9 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
     array (
       0 => 
       Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+         'fieldtype' => 'panel',
+         'layout' => NULL,
+         'border' => false,
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -61,6 +75,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
         array (
           0 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+             'fieldtype' => 'fieldset',
              'name' => 'humidity',
              'type' => NULL,
              'region' => NULL,
@@ -76,24 +91,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             array (
               0 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-                 'name' => 'humidity',
-                 'title' => 'Humidity',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
                  'fieldtype' => 'quantityValue',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
                  'width' => '',
                  'unitWidth' => '',
                  'defaultValue' => NULL,
@@ -104,12 +102,8 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'decimalPrecision' => NULL,
                  'autoConvert' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'humidityTolerance',
-                 'title' => 'Humidity Tolerance',
+                 'name' => 'physCharHumidity',
+                 'title' => 'Humidity',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -118,7 +112,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -126,6 +119,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
                  'width' => '',
                  'defaultValue' => NULL,
                  'columnLength' => 190,
@@ -135,6 +133,23 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'unique' => false,
                  'showCharCount' => false,
+                 'name' => 'physCharHumidityTolerance',
+                 'title' => 'Humidity Tolerance',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
                  'defaultValueGenerator' => '',
               )),
             ),
@@ -142,12 +157,12 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'fieldtype' => 'fieldset',
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
           1 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+             'fieldtype' => 'fieldset',
              'name' => 'dryResidue',
              'type' => NULL,
              'region' => NULL,
@@ -163,24 +178,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             array (
               0 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-                 'name' => 'dryResidue',
-                 'title' => 'Dry Residue',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
                  'fieldtype' => 'quantityValue',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
                  'width' => '',
                  'unitWidth' => '',
                  'defaultValue' => NULL,
@@ -191,12 +189,8 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'decimalPrecision' => NULL,
                  'autoConvert' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'dryResidueTolerance',
-                 'title' => 'Dry Residue Tolerance',
+                 'name' => 'physCharDryResidue',
+                 'title' => 'Dry Residue',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -205,7 +199,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -213,6 +206,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
                  'width' => '',
                  'defaultValue' => NULL,
                  'columnLength' => 190,
@@ -222,6 +220,23 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'unique' => false,
                  'showCharCount' => false,
+                 'name' => 'physCharDryResidueTolerance',
+                 'title' => 'Dry Residue Tolerance',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
                  'defaultValueGenerator' => '',
               )),
             ),
@@ -229,12 +244,12 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'fieldtype' => 'fieldset',
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
           2 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+             'fieldtype' => 'fieldset',
              'name' => 'proteins',
              'type' => NULL,
              'region' => NULL,
@@ -250,24 +265,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             array (
               0 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-                 'name' => 'proteins',
-                 'title' => 'Proteins',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
                  'fieldtype' => 'quantityValue',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
                  'width' => '',
                  'unitWidth' => '',
                  'defaultValue' => NULL,
@@ -278,12 +276,8 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'decimalPrecision' => NULL,
                  'autoConvert' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'proteinsTolerance',
-                 'title' => 'Proteins Tolerance',
+                 'name' => 'physCharProteins',
+                 'title' => 'Proteins',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -292,7 +286,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -300,6 +293,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
                  'width' => '',
                  'defaultValue' => NULL,
                  'columnLength' => 190,
@@ -309,6 +307,23 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'unique' => false,
                  'showCharCount' => false,
+                 'name' => 'physCharProteinsTolerance',
+                 'title' => 'Proteins Tolerance',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
                  'defaultValueGenerator' => '',
               )),
             ),
@@ -316,12 +331,12 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'fieldtype' => 'fieldset',
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
           3 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+             'fieldtype' => 'fieldset',
              'name' => 'dryFatsTq',
              'type' => NULL,
              'region' => NULL,
@@ -337,24 +352,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             array (
               0 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-                 'name' => 'dryFatsTq',
-                 'title' => 'Dry Fats Tq',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
                  'fieldtype' => 'quantityValue',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
                  'width' => '',
                  'unitWidth' => '',
                  'defaultValue' => NULL,
@@ -365,12 +363,8 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'decimalPrecision' => NULL,
                  'autoConvert' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'dryFatsTqTolerance',
-                 'title' => 'Dry Fats Tq Tolerance',
+                 'name' => 'physCharDryFatsTq',
+                 'title' => 'Dry Fats Tq',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -379,7 +373,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -387,6 +380,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
                  'width' => '',
                  'defaultValue' => NULL,
                  'columnLength' => 190,
@@ -396,6 +394,23 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'unique' => false,
                  'showCharCount' => false,
+                 'name' => 'physCharDryFatsTqTolerance',
+                 'title' => 'Dry Fats Tq Tolerance',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
                  'defaultValueGenerator' => '',
               )),
             ),
@@ -403,12 +418,12 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'fieldtype' => 'fieldset',
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
           4 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+             'fieldtype' => 'fieldset',
              'name' => 'dryFatsSs',
              'type' => NULL,
              'region' => NULL,
@@ -424,24 +439,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             array (
               0 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-                 'name' => 'dryFatsSs',
-                 'title' => 'Dry Fats Ss',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
                  'fieldtype' => 'quantityValue',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
                  'width' => '',
                  'unitWidth' => '',
                  'defaultValue' => NULL,
@@ -452,12 +450,8 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'decimalPrecision' => NULL,
                  'autoConvert' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'dryFatsSsTolerance',
-                 'title' => 'Dry Fats Ss Tolerance',
+                 'name' => 'physCharDryFatsSs',
+                 'title' => 'Dry Fats Ss',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -466,7 +460,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -474,6 +467,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
                  'width' => '',
                  'defaultValue' => NULL,
                  'columnLength' => 190,
@@ -483,6 +481,23 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'unique' => false,
                  'showCharCount' => false,
+                 'name' => 'physCharDryFatsSsTolerance',
+                 'title' => 'Dry Fats Ss Tolerance',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
                  'defaultValueGenerator' => '',
               )),
             ),
@@ -490,12 +505,12 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'fieldtype' => 'fieldset',
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
           5 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+             'fieldtype' => 'fieldset',
              'name' => 'ashes',
              'type' => NULL,
              'region' => NULL,
@@ -511,24 +526,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             array (
               0 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-                 'name' => 'ashes',
-                 'title' => 'Ashes',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
                  'fieldtype' => 'quantityValue',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
                  'width' => '',
                  'unitWidth' => '',
                  'defaultValue' => NULL,
@@ -539,12 +537,8 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'decimalPrecision' => NULL,
                  'autoConvert' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'ashesTolerance',
-                 'title' => 'Ashes Tolerance',
+                 'name' => 'physCharAshes',
+                 'title' => 'Ashes',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -553,7 +547,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -561,6 +554,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
                  'width' => '',
                  'defaultValue' => NULL,
                  'columnLength' => 190,
@@ -570,6 +568,23 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'unique' => false,
                  'showCharCount' => false,
+                 'name' => 'physCharAshesTolerance',
+                 'title' => 'Ashes Tolerance',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
                  'defaultValueGenerator' => '',
               )),
             ),
@@ -577,12 +592,12 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'fieldtype' => 'fieldset',
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
           6 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+             'fieldtype' => 'fieldset',
              'name' => 'Salt',
              'type' => NULL,
              'region' => NULL,
@@ -598,24 +613,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             array (
               0 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-                 'name' => 'salt',
-                 'title' => 'Salt',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
                  'fieldtype' => 'quantityValue',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
                  'width' => '',
                  'unitWidth' => '',
                  'defaultValue' => NULL,
@@ -626,12 +624,8 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'decimalPrecision' => NULL,
                  'autoConvert' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'saltTolerance',
-                 'title' => 'Salt Tolerance',
+                 'name' => 'physCharSalt',
+                 'title' => 'Salt',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -640,7 +634,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -648,6 +641,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
                  'width' => '',
                  'defaultValue' => NULL,
                  'columnLength' => 190,
@@ -657,6 +655,23 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'unique' => false,
                  'showCharCount' => false,
+                 'name' => 'physCharSaltTolerance',
+                 'title' => 'Salt Tolerance',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
                  'defaultValueGenerator' => '',
               )),
             ),
@@ -664,12 +679,12 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'fieldtype' => 'fieldset',
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
           7 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+             'fieldtype' => 'fieldset',
              'name' => 'pH',
              'type' => NULL,
              'region' => NULL,
@@ -685,24 +700,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             array (
               0 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-                 'name' => 'ph',
-                 'title' => 'Ph',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
                  'fieldtype' => 'quantityValue',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
                  'width' => '',
                  'unitWidth' => '',
                  'defaultValue' => NULL,
@@ -713,12 +711,8 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'decimalPrecision' => NULL,
                  'autoConvert' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'pHTolerance',
-                 'title' => 'Ph Tolerance',
+                 'name' => 'physCharPh',
+                 'title' => 'Ph',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -727,7 +721,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -735,6 +728,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
                  'width' => '',
                  'defaultValue' => NULL,
                  'columnLength' => 190,
@@ -744,6 +742,23 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'unique' => false,
                  'showCharCount' => false,
+                 'name' => 'physCharPhTolerance',
+                 'title' => 'Ph Tolerance',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
                  'defaultValueGenerator' => '',
               )),
             ),
@@ -751,12 +766,12 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'fieldtype' => 'fieldset',
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
           8 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+             'fieldtype' => 'fieldset',
              'name' => 'aw',
              'type' => NULL,
              'region' => NULL,
@@ -772,24 +787,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             array (
               0 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-                 'name' => 'aw',
-                 'title' => 'Aw',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
                  'fieldtype' => 'quantityValue',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
                  'width' => '',
                  'unitWidth' => '',
                  'defaultValue' => NULL,
@@ -800,12 +798,8 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'decimalPrecision' => NULL,
                  'autoConvert' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'awTolerance',
-                 'title' => 'Aw Tolerance',
+                 'name' => 'physCharAw',
+                 'title' => 'Aw',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -814,7 +808,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -822,6 +815,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
                  'width' => '',
                  'defaultValue' => NULL,
                  'columnLength' => 190,
@@ -831,6 +829,23 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'unique' => false,
                  'showCharCount' => false,
+                 'name' => 'physCharAwTolerance',
+                 'title' => 'Aw Tolerance',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
                  'defaultValueGenerator' => '',
               )),
             ),
@@ -838,7 +853,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'fieldtype' => 'fieldset',
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
@@ -847,9 +861,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
          'blockedVarsForExport' => 
         array (
         ),
-         'fieldtype' => 'panel',
-         'layout' => NULL,
-         'border' => false,
          'icon' => '',
          'labelWidth' => 0,
          'labelAlign' => 'left',
@@ -859,9 +870,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
      'blockedVarsForExport' => 
     array (
     ),
-     'fieldtype' => 'panel',
-     'layout' => NULL,
-     'border' => false,
      'icon' => NULL,
      'labelWidth' => 100,
      'labelAlign' => 'left',
@@ -869,13 +877,5 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
    'generateTypeDeclarations' => true,
    'blockedVarsForExport' => 
   array (
-  ),
-   'classDefinitions' => 
-  array (
-    0 => 
-    array (
-      'classname' => 'Product',
-      'fieldname' => 'chemicalPhysicalChar',
-    ),
   ),
 ));
