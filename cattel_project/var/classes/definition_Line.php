@@ -5,18 +5,16 @@
  * Variants: no
  *
  * Fields Summary:
- * - localizedfields [localizedfields]
- * -- name [input]
+ * - name [input]
  * - inverseRelation [reverseObjectRelation]
  */
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
-   'dao' => NULL,
    'id' => 'LNE',
    'name' => 'Line',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1655824559,
+   'modificationDate' => 1657198012,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -36,6 +34,9 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
   ),
    'layoutDefinitions' => 
   Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+     'fieldtype' => 'panel',
+     'layout' => NULL,
+     'border' => false,
      'name' => 'pimcore_root',
      'type' => NULL,
      'region' => NULL,
@@ -51,6 +52,9 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
     array (
       0 => 
       Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+         'fieldtype' => 'panel',
+         'layout' => NULL,
+         'border' => false,
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -65,79 +69,58 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
          'children' => 
         array (
           0 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Localizedfields::__set_state(array(
-             'name' => 'localizedfields',
-             'title' => '',
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
+             'width' => '',
+             'defaultValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
+             'unique' => false,
+             'showCharCount' => false,
+             'name' => 'name',
+             'title' => 'Name',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
-             'index' => NULL,
+             'index' => false,
              'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'localizedfields',
              'relationType' => false,
              'invisible' => false,
-             'visibleGridView' => true,
-             'visibleSearch' => true,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
              'blockedVarsForExport' => 
             array (
             ),
-             'children' => 
-            array (
-              0 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'name',
-                 'title' => 'Name',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => false,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
-                 'fieldtype' => 'input',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
-                 'width' => '',
-                 'defaultValue' => NULL,
-                 'columnLength' => 190,
-                 'regex' => '',
-                 'regexFlags' => 
-                array (
-                ),
-                 'unique' => false,
-                 'showCharCount' => false,
-                 'defaultValueGenerator' => '',
-              )),
-            ),
-             'region' => NULL,
-             'layout' => NULL,
-             'width' => '',
-             'height' => '',
-             'maxTabs' => NULL,
-             'border' => false,
-             'provideSplitView' => false,
-             'tabPosition' => NULL,
-             'hideLabelsWhenTabsReached' => NULL,
-             'referencedFields' => 
-            array (
-            ),
-             'fieldDefinitionsCache' => NULL,
-             'permissionView' => NULL,
-             'permissionEdit' => NULL,
-             'labelWidth' => 0,
-             'labelAlign' => 'left',
+             'defaultValueGenerator' => '',
           )),
           1 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\ReverseObjectRelation::__set_state(array(
+             'fieldtype' => 'reverseObjectRelation',
+             'ownerClassName' => 'Product',
+             'ownerClassId' => NULL,
+             'ownerFieldName' => 'line',
+             'lazyLoading' => true,
+             'width' => '',
+             'height' => '',
+             'maxItems' => '',
+             'relationType' => true,
+             'visibleFields' => NULL,
+             'allowToCreateNewObject' => true,
+             'optimizedAdminLoading' => false,
+             'enableTextSelection' => false,
+             'visibleFieldDefinitions' => 
+            array (
+            ),
+             'classes' => 
+            array (
+            ),
+             'pathFormatterClass' => '',
              'name' => 'inverseRelation',
              'title' => 'Inverse Relation',
              'tooltip' => '',
@@ -148,41 +131,18 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'reverseObjectRelation',
-             'relationType' => true,
              'invisible' => false,
              'visibleGridView' => false,
              'visibleSearch' => false,
              'blockedVarsForExport' => 
             array (
             ),
-             'classes' => 
-            array (
-            ),
-             'pathFormatterClass' => '',
-             'width' => '',
-             'height' => '',
-             'maxItems' => '',
-             'visibleFields' => NULL,
-             'allowToCreateNewObject' => true,
-             'optimizedAdminLoading' => false,
-             'enableTextSelection' => false,
-             'visibleFieldDefinitions' => 
-            array (
-            ),
-             'ownerClassName' => 'Product',
-             'ownerClassId' => NULL,
-             'ownerFieldName' => 'line',
-             'lazyLoading' => true,
           )),
         ),
          'locked' => false,
          'blockedVarsForExport' => 
         array (
         ),
-         'fieldtype' => 'panel',
-         'layout' => NULL,
-         'border' => false,
          'icon' => '',
          'labelWidth' => 0,
          'labelAlign' => 'left',
@@ -192,9 +152,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
      'blockedVarsForExport' => 
     array (
     ),
-     'fieldtype' => 'panel',
-     'layout' => NULL,
-     'border' => false,
      'icon' => NULL,
      'labelWidth' => 100,
      'labelAlign' => 'left',
@@ -234,7 +191,118 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'enableGridLocking' => false,
    'deletedDataComponents' => 
   array (
+    0 => 
+    Pimcore\Model\DataObject\ClassDefinition\Data\Localizedfields::__set_state(array(
+       'fieldtype' => 'localizedfields',
+       'children' => 
+      array (
+        0 => 
+        Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+           'fieldtype' => 'input',
+           'width' => '',
+           'defaultValue' => NULL,
+           'queryColumnType' => 'varchar',
+           'columnType' => 'varchar',
+           'columnLength' => 190,
+           'regex' => '',
+           'regexFlags' => 
+          array (
+          ),
+           'unique' => false,
+           'showCharCount' => false,
+           'name' => 'name',
+           'title' => 'Name',
+           'tooltip' => '',
+           'mandatory' => false,
+           'noteditable' => false,
+           'index' => false,
+           'locked' => false,
+           'style' => '',
+           'permissions' => NULL,
+           'datatype' => 'data',
+           'relationType' => false,
+           'invisible' => false,
+           'visibleGridView' => false,
+           'visibleSearch' => false,
+           'blockedVarsForExport' => 
+          array (
+          ),
+           'defaultValueGenerator' => '',
+        )),
+      ),
+       'name' => 'localizedfields',
+       'region' => NULL,
+       'layout' => NULL,
+       'title' => '',
+       'width' => '',
+       'height' => '',
+       'maxTabs' => NULL,
+       'border' => false,
+       'provideSplitView' => false,
+       'tabPosition' => NULL,
+       'hideLabelsWhenTabsReached' => NULL,
+       'referencedFields' => 
+      array (
+      ),
+       'fieldDefinitionsCache' => NULL,
+       'permissionView' => NULL,
+       'permissionEdit' => NULL,
+       'tooltip' => '',
+       'mandatory' => false,
+       'noteditable' => false,
+       'index' => NULL,
+       'locked' => false,
+       'style' => '',
+       'permissions' => NULL,
+       'datatype' => 'data',
+       'relationType' => false,
+       'invisible' => false,
+       'visibleGridView' => true,
+       'visibleSearch' => true,
+       'blockedVarsForExport' => 
+      array (
+      ),
+       'labelWidth' => 0,
+       'labelAlign' => 'left',
+       'childs' => 
+      array (
+        0 => 
+        Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+           'fieldtype' => 'input',
+           'width' => '',
+           'defaultValue' => NULL,
+           'queryColumnType' => 'varchar',
+           'columnType' => 'varchar',
+           'columnLength' => 190,
+           'regex' => '',
+           'regexFlags' => 
+          array (
+          ),
+           'unique' => false,
+           'showCharCount' => false,
+           'name' => 'name',
+           'title' => 'Name',
+           'tooltip' => '',
+           'mandatory' => false,
+           'noteditable' => false,
+           'index' => false,
+           'locked' => false,
+           'style' => '',
+           'permissions' => NULL,
+           'datatype' => 'data',
+           'relationType' => false,
+           'invisible' => false,
+           'visibleGridView' => false,
+           'visibleSearch' => false,
+           'blockedVarsForExport' => 
+          array (
+          ),
+           'defaultValueGenerator' => '',
+        )),
+      ),
+    )),
   ),
+   'dao' => NULL,
    'blockedVarsForExport' => 
   array (
   ),
