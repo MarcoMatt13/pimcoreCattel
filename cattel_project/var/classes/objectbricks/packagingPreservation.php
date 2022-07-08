@@ -22,6 +22,14 @@
  */
 
 return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
+   'classDefinitions' => 
+  array (
+    0 => 
+    array (
+      'classname' => 'Product',
+      'fieldname' => 'packaging',
+    ),
+  ),
    'dao' => NULL,
    'key' => 'packagingPreservation',
    'parentClass' => '',
@@ -30,6 +38,9 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
    'group' => '',
    'layoutDefinitions' => 
   Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+     'fieldtype' => 'panel',
+     'layout' => NULL,
+     'border' => false,
      'name' => NULL,
      'type' => NULL,
      'region' => NULL,
@@ -45,6 +56,9 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
     array (
       0 => 
       Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+         'fieldtype' => 'panel',
+         'layout' => NULL,
+         'border' => false,
          'name' => 'Layout',
          'type' => NULL,
          'region' => NULL,
@@ -60,24 +74,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
         array (
           0 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'name' => 'packagingWeight',
-             'title' => 'Packaging Weight',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => NULL,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
              'fieldtype' => 'input',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
              'width' => '',
              'defaultValue' => NULL,
              'columnLength' => 190,
@@ -87,21 +84,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
-             'defaultValueGenerator' => '',
-          )),
-          1 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
-             'name' => 'packagingType',
-             'title' => 'Packaging Type',
+             'name' => 'packagingWeight',
+             'title' => 'Packaging Weight',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'select',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -109,6 +101,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+             'defaultValueGenerator' => '',
+          )),
+          1 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+             'fieldtype' => 'select',
              'options' => 
             array (
               0 => 
@@ -138,10 +135,28 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'optionsProviderData' => '',
              'columnLength' => 190,
              'dynamicOptions' => false,
+             'name' => 'packagingType',
+             'title' => 'Packaging Type',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
              'defaultValueGenerator' => '',
           )),
           2 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+             'fieldtype' => 'fieldset',
              'name' => 'primaryPackaging',
              'type' => NULL,
              'region' => NULL,
@@ -157,24 +172,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             array (
               0 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
-                 'name' => 'packagingPrimaryMaterial',
-                 'title' => 'Primary Packaging Material',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => NULL,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
                  'fieldtype' => 'select',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
                  'options' => 
                 array (
                   0 => 
@@ -194,21 +192,48 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'optionsProviderData' => '',
                  'columnLength' => 190,
                  'dynamicOptions' => false,
+                 'name' => 'packagingPrimaryMaterial',
+                 'title' => 'Primary Packaging Material',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
                  'defaultValueGenerator' => '',
               )),
               1 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
+                 'width' => '',
+                 'unitWidth' => '',
+                 'defaultValue' => NULL,
+                 'defaultUnit' => NULL,
+                 'validUnits' => 
+                array (
+                  0 => 'g',
+                ),
+                 'decimalPrecision' => NULL,
+                 'autoConvert' => false,
                  'name' => 'packagingPrimaryNominalWeight',
                  'title' => 'Primary Packaging Nominal Weight',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => NULL,
+                 'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'quantityValue',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -216,6 +241,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              2 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
                  'width' => '',
                  'unitWidth' => '',
                  'defaultValue' => NULL,
@@ -226,21 +256,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'decimalPrecision' => NULL,
                  'autoConvert' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              2 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
                  'name' => 'packagingPrimaryGrossWeight',
                  'title' => 'Primary Packaging Gross Weight',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => NULL,
+                 'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'quantityValue',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -248,6 +273,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              3 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
                  'width' => '',
                  'unitWidth' => '',
                  'defaultValue' => NULL,
@@ -258,21 +288,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'decimalPrecision' => NULL,
                  'autoConvert' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              3 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
                  'name' => 'packagingPrimaryNetWeight',
                  'title' => 'Primary Packaging Net Weight',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => NULL,
+                 'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'quantityValue',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -280,6 +305,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              4 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
                  'width' => '',
                  'unitWidth' => '',
                  'defaultValue' => NULL,
@@ -290,21 +320,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'decimalPrecision' => NULL,
                  'autoConvert' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              4 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
                  'name' => 'packagingPrimaryDrainedWeight',
                  'title' => 'Primary Packaging Drained Weight',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => NULL,
+                 'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'quantityValue',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -312,38 +337,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
-                 'width' => '',
-                 'unitWidth' => '',
-                 'defaultValue' => NULL,
-                 'defaultUnit' => NULL,
-                 'validUnits' => 
-                array (
-                  0 => 'g',
-                ),
-                 'decimalPrecision' => NULL,
-                 'autoConvert' => false,
                  'defaultValueGenerator' => '',
               )),
               5 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'packagingPrimaryMeasurements',
-                 'title' => 'Primary Packaging Measurements',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => NULL,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
                  'fieldtype' => 'input',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
                  'width' => '',
                  'defaultValue' => NULL,
                  'columnLength' => 190,
@@ -353,6 +351,23 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'unique' => false,
                  'showCharCount' => false,
+                 'name' => 'packagingPrimaryMeasurements',
+                 'title' => 'Primary Packaging Measurements',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
                  'defaultValueGenerator' => '',
               )),
             ),
@@ -360,12 +375,12 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'fieldtype' => 'fieldset',
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
           3 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+             'fieldtype' => 'fieldset',
              'name' => 'secondaryPackaging',
              'type' => NULL,
              'region' => NULL,
@@ -381,24 +396,7 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
             array (
               0 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
-                 'name' => 'packagingSecondaryMaterial',
-                 'title' => 'Secondary Packaging Material',
-                 'tooltip' => '',
-                 'mandatory' => false,
-                 'noteditable' => false,
-                 'index' => false,
-                 'locked' => NULL,
-                 'style' => '',
-                 'permissions' => NULL,
-                 'datatype' => 'data',
                  'fieldtype' => 'select',
-                 'relationType' => false,
-                 'invisible' => false,
-                 'visibleGridView' => false,
-                 'visibleSearch' => false,
-                 'blockedVarsForExport' => 
-                array (
-                ),
                  'options' => 
                 array (
                   0 => 
@@ -418,21 +416,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'optionsProviderData' => '',
                  'columnLength' => 190,
                  'dynamicOptions' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              1 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
-                 'name' => 'packagingSecondaryPcsPerCardboard',
-                 'title' => 'Secondary Packaging Pieces for Cardboard',
+                 'name' => 'packagingSecondaryMaterial',
+                 'title' => 'Secondary Packaging Material',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => NULL,
+                 'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'slider',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -440,6 +433,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
+                 'fieldtype' => 'slider',
                  'width' => '',
                  'height' => '',
                  'minValue' => '',
@@ -447,20 +445,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'vertical' => false,
                  'increment' => '',
                  'decimalPrecision' => '',
-              )),
-              2 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-                 'name' => 'packagingSecondaryMeasurements',
-                 'title' => 'Secondary Packaging Measurements',
+                 'name' => 'packagingSecondaryPcsPerCardboard',
+                 'title' => 'Secondary Packaging Pieces for Cardboard',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => NULL,
+                 'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'input',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -468,6 +462,10 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+              )),
+              2 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'fieldtype' => 'input',
                  'width' => '',
                  'defaultValue' => NULL,
                  'columnLength' => 190,
@@ -477,21 +475,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'unique' => false,
                  'showCharCount' => false,
-                 'defaultValueGenerator' => '',
-              )),
-              3 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
-                 'name' => 'secondaryPackagingTotalWeight',
-                 'title' => 'Packaging Secondary Total Weight',
+                 'name' => 'packagingSecondaryMeasurements',
+                 'title' => 'Secondary Packaging Measurements',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
                  'index' => false,
-                 'locked' => NULL,
+                 'locked' => false,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'quantityValue',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -499,6 +492,11 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              3 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
                  'width' => '',
                  'unitWidth' => '',
                  'defaultValue' => NULL,
@@ -509,6 +507,23 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
                 ),
                  'decimalPrecision' => NULL,
                  'autoConvert' => false,
+                 'name' => 'secondaryPackagingTotalWeight',
+                 'title' => 'Packaging Secondary Total Weight',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
                  'defaultValueGenerator' => '',
               )),
             ),
@@ -516,23 +531,29 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'fieldtype' => 'fieldset',
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
           4 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
+             'fieldtype' => 'slider',
+             'width' => '',
+             'height' => '',
+             'minValue' => '',
+             'maxValue' => '',
+             'vertical' => false,
+             'increment' => '',
+             'decimalPrecision' => '',
              'name' => 'packagingEANPcs',
              'title' => 'Packaging EAN Pieces',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'slider',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -540,6 +561,10 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+          )),
+          5 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
+             'fieldtype' => 'slider',
              'width' => '',
              'height' => '',
              'minValue' => '',
@@ -547,20 +572,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'vertical' => false,
              'increment' => '',
              'decimalPrecision' => '',
-          )),
-          5 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
              'name' => 'packagingEANBox',
              'title' => 'Packaging EAN Boxes',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'slider',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -568,6 +589,10 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+          )),
+          6 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
+             'fieldtype' => 'slider',
              'width' => '',
              'height' => '',
              'minValue' => '',
@@ -575,20 +600,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'vertical' => false,
              'increment' => '',
              'decimalPrecision' => '',
-          )),
-          6 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
              'name' => 'packagingCardboardPerLayer',
              'title' => 'Packaging Cardboards per Layer',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'slider',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -596,6 +617,10 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+          )),
+          7 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
+             'fieldtype' => 'slider',
              'width' => '',
              'height' => '',
              'minValue' => '',
@@ -603,20 +628,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'vertical' => false,
              'increment' => '',
              'decimalPrecision' => '',
-          )),
-          7 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
              'name' => 'packagingLayerPerPallet',
              'title' => 'Packaging Layers per Pallet',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'slider',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -624,6 +645,10 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
+          )),
+          8 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
+             'fieldtype' => 'slider',
              'width' => '',
              'height' => '',
              'minValue' => '',
@@ -631,20 +656,16 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'vertical' => false,
              'increment' => '',
              'decimalPrecision' => '',
-          )),
-          8 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Slider::__set_state(array(
              'name' => 'packagingCardboardPerPallet',
              'title' => 'Packaging Cardboards per Pallet',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
              'index' => false,
-             'locked' => NULL,
+             'locked' => false,
              'style' => '',
              'permissions' => NULL,
              'datatype' => 'data',
-             'fieldtype' => 'slider',
              'relationType' => false,
              'invisible' => false,
              'visibleGridView' => false,
@@ -652,22 +673,12 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
              'blockedVarsForExport' => 
             array (
             ),
-             'width' => '',
-             'height' => '',
-             'minValue' => '',
-             'maxValue' => '',
-             'vertical' => false,
-             'increment' => '',
-             'decimalPrecision' => '',
           )),
         ),
          'locked' => false,
          'blockedVarsForExport' => 
         array (
         ),
-         'fieldtype' => 'panel',
-         'layout' => NULL,
-         'border' => false,
          'icon' => '',
          'labelWidth' => 0,
          'labelAlign' => 'left',
@@ -677,9 +688,6 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
      'blockedVarsForExport' => 
     array (
     ),
-     'fieldtype' => 'panel',
-     'layout' => NULL,
-     'border' => false,
      'icon' => NULL,
      'labelWidth' => 100,
      'labelAlign' => 'left',
@@ -687,13 +695,5 @@ return Pimcore\Model\DataObject\Objectbrick\Definition::__set_state(array(
    'generateTypeDeclarations' => true,
    'blockedVarsForExport' => 
   array (
-  ),
-   'classDefinitions' => 
-  array (
-    0 => 
-    array (
-      'classname' => 'Product',
-      'fieldname' => 'packaging',
-    ),
   ),
 ));
