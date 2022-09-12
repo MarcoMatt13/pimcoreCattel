@@ -31,6 +31,18 @@
  * - edibleCrust [select]
  * - alcoholContent [numeric]
  * - labelIngredients [textarea]
+ * - labelUseMode [input]
+ * - preservationMode [select]
+ * - itemsInPackage [numeric]
+ * - packageType [select]
+ * - unitWeight [numeric]
+ * - drainedWeight [numeric]
+ * - packageWeighr [numeric]
+ * - productSizesJGalileo [textarea]
+ * - productSizes [textarea]
+ * - productDiameter [quantityValue]
+ * - productCaliber [quantityValue]
+ * - productThickness [quantityValue]
  * - allergens [objectbricks]
  * - nutritionalInfo [objectbricks]
  */
@@ -41,7 +53,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Product',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1662970846,
+   'modificationDate' => 1662972171,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -267,7 +279,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                   5 => 
                   Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
                      'name' => 'webDescription',
-                     'title' => 'Denominazione per il web',
+                     'title' => 'Descrizione per il web',
                      'tooltip' => '',
                      'mandatory' => false,
                      'noteditable' => false,
@@ -1102,6 +1114,409 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'maxLength' => NULL,
                  'showCharCount' => false,
                  'excludeFromSearchIndex' => false,
+              )),
+              1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                 'name' => 'labelUseMode',
+                 'title' => 'Modalità d\'uso',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => NULL,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'fieldtype' => 'input',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'width' => '',
+                 'defaultValue' => NULL,
+                 'columnLength' => 190,
+                 'regex' => '',
+                 'regexFlags' => 
+                array (
+                ),
+                 'unique' => false,
+                 'showCharCount' => false,
+                 'defaultValueGenerator' => '',
+              )),
+              2 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'name' => 'preservationMode',
+                 'title' => 'Modalità di conservazione',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => NULL,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'fieldtype' => 'select',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'Fresco',
+                    'value' => 'Fresco',
+                    'id' => 'extModel13530-1',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'Gelo',
+                    'value' => 'Gelo',
+                    'id' => 'extModel13530-2',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Ambiente',
+                    'value' => 'Ambiente',
+                    'id' => 'extModel13530-3',
+                  ),
+                ),
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'defaultValueGenerator' => '',
+              )),
+              3 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+                 'name' => 'itemsInPackage',
+                 'title' => 'Composizione Cartone',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => NULL,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'fieldtype' => 'numeric',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'width' => '',
+                 'defaultValue' => NULL,
+                 'integer' => false,
+                 'unsigned' => false,
+                 'minValue' => NULL,
+                 'maxValue' => NULL,
+                 'unique' => false,
+                 'decimalSize' => NULL,
+                 'decimalPrecision' => NULL,
+                 'defaultValueGenerator' => '',
+              )),
+              4 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'name' => 'packageType',
+                 'title' => 'Tipo di confezione',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => NULL,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'fieldtype' => 'select',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'Sottovuoto',
+                    'value' => 'Sottovuoto',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'Atm',
+                    'value' => 'Atm',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Bag in box',
+                    'value' => 'Bag in box',
+                  ),
+                  3 => 
+                  array (
+                    'key' => 'Busta',
+                    'value' => 'Busta',
+                  ),
+                ),
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'defaultValueGenerator' => '',
+              )),
+              5 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+                 'name' => 'unitWeight',
+                 'title' => 'Peso netto',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => NULL,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'fieldtype' => 'numeric',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'width' => '',
+                 'defaultValue' => NULL,
+                 'integer' => false,
+                 'unsigned' => false,
+                 'minValue' => NULL,
+                 'maxValue' => NULL,
+                 'unique' => false,
+                 'decimalSize' => NULL,
+                 'decimalPrecision' => NULL,
+                 'defaultValueGenerator' => '',
+              )),
+              6 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+                 'name' => 'drainedWeight',
+                 'title' => 'Peso sgocciolato',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => NULL,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'fieldtype' => 'numeric',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'width' => '',
+                 'defaultValue' => NULL,
+                 'integer' => false,
+                 'unsigned' => false,
+                 'minValue' => NULL,
+                 'maxValue' => NULL,
+                 'unique' => false,
+                 'decimalSize' => NULL,
+                 'decimalPrecision' => NULL,
+                 'defaultValueGenerator' => '',
+              )),
+              7 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+                 'name' => 'packageWeighr',
+                 'title' => 'Peso lordo cartone',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => NULL,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'fieldtype' => 'numeric',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'width' => '',
+                 'defaultValue' => NULL,
+                 'integer' => false,
+                 'unsigned' => false,
+                 'minValue' => NULL,
+                 'maxValue' => NULL,
+                 'unique' => false,
+                 'decimalSize' => NULL,
+                 'decimalPrecision' => NULL,
+                 'defaultValueGenerator' => '',
+              )),
+              8 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+                 'name' => 'productSizesJGalileo',
+                 'title' => 'Dimensioni (JGalileo)',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => NULL,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'fieldtype' => 'textarea',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'width' => '',
+                 'height' => '',
+                 'maxLength' => NULL,
+                 'showCharCount' => false,
+                 'excludeFromSearchIndex' => false,
+              )),
+              9 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+                 'name' => 'productSizes',
+                 'title' => 'Dimensioni / calibro',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => NULL,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'fieldtype' => 'textarea',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'width' => '',
+                 'height' => '',
+                 'maxLength' => NULL,
+                 'showCharCount' => false,
+                 'excludeFromSearchIndex' => false,
+              )),
+              10 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'name' => 'productDiameter',
+                 'title' => 'Product Diameter',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => NULL,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'fieldtype' => 'quantityValue',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'width' => '',
+                 'unitWidth' => '',
+                 'defaultValue' => NULL,
+                 'defaultUnit' => NULL,
+                 'validUnits' => 
+                array (
+                  0 => 'cm',
+                ),
+                 'decimalPrecision' => NULL,
+                 'autoConvert' => false,
+                 'defaultValueGenerator' => '',
+              )),
+              11 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'name' => 'productCaliber',
+                 'title' => 'Product Caliber',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => NULL,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'fieldtype' => 'quantityValue',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'width' => '',
+                 'unitWidth' => '',
+                 'defaultValue' => NULL,
+                 'defaultUnit' => NULL,
+                 'validUnits' => 
+                array (
+                  0 => 'cm',
+                ),
+                 'decimalPrecision' => NULL,
+                 'autoConvert' => false,
+                 'defaultValueGenerator' => '',
+              )),
+              12 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'name' => 'productThickness',
+                 'title' => 'Product Thickness',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => NULL,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'fieldtype' => 'quantityValue',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'width' => '',
+                 'unitWidth' => '',
+                 'defaultValue' => NULL,
+                 'defaultUnit' => NULL,
+                 'validUnits' => 
+                array (
+                  0 => 'cm',
+                ),
+                 'decimalPrecision' => NULL,
+                 'autoConvert' => false,
+                 'defaultValueGenerator' => '',
               )),
             ),
              'locked' => false,
