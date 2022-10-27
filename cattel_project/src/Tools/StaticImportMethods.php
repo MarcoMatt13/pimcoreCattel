@@ -2,7 +2,7 @@
 
 namespace App\Tools;
 
-use App\Command\importProducts;
+use App\Command\importData;
 use Exception;
 use League\Csv\Reader;
 use League\Csv\Statement;
@@ -18,7 +18,6 @@ class StaticImportMethods
     public static function createOrGetObjectByCode(string $code, string $objectClass)
     {
         $stringClass = "Pimcore\Model\DataObject\\" . $objectClass;
-
         empty($stringClass::getBySku($code)->count()) ?
             $o = new $stringClass() :
             $o = $stringClass::getBySku($code)->getData()[0];
@@ -82,7 +81,7 @@ class StaticImportMethods
         }
         return $o;
     }
-    
+
     private static function writeCSVerrorAndSuccessFilesFullMethod($archiveLocalPath, $pimcoreFolder, $now, $dataObjectClassName,
                                                                    $divisionName, $inputLocalPath, $output): void
     {
@@ -100,11 +99,11 @@ class StaticImportMethods
         }
 
         // define useful variables
-        $stringDivision = "App\Command\\import$divisionName";
+        $stringDivision = "App\Command\\importData";
         $stringSelectDivisionSwitchMethod = "selectMethodBy" . $divisionName . "ClassName";
 
         // create the objectFolder folder in Pimcore if it does not exist
-        $folderPath = "/{$divisionName}s/{$dataObjectClassName}s";
+        $folderPath = "/$divisionName/{$dataObjectClassName}s";
         $parentFolder = StaticImportMethods::createOrGetFolderByPath($folderPath, $pimcoreFolder->getId());
 
         // start the processing of the files found in the local folder
@@ -168,7 +167,7 @@ class StaticImportMethods
                     continue;
                 }
 
-                // create folder Yarn if it does not exist
+                // create folder Data if it does not exist
                 $filesystem = new Filesystem();
                 if (!is_file("$archivePath")) {
                     $filesystem->mkdir("$archivePath");

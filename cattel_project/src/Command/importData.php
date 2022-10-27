@@ -16,12 +16,12 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 
-class importProducts extends AbstractCommand
+class importData extends AbstractCommand
 {
 
-    protected static $defaultName = 'app:importProducts';
+    protected static $defaultName = 'app:importData';
 
-    const CLASSNAME = "Products";
+    const CLASSNAME = "Data";
     const LOCAL_INPUT_PATH = "input";
     const LOCAL_ARCHIVE_PATH = "archive";
 
@@ -53,6 +53,7 @@ class importProducts extends AbstractCommand
             throw new Exception("Mandatory field sku not present!");
         }
 
+
         // upsert or delete the objects
         $o = StaticImportMethods::createOrGetObjectByCode($trimmedCode, $objectClass);
         if (!empty($item["isDelete"]) && $item["isDelete"] == 'true') {
@@ -60,6 +61,7 @@ class importProducts extends AbstractCommand
             return true;
         }
 
+        $o->setSku($trimmedCode);
         $o->setParentId($parentFolder->getId());
         $o->setKey($trimmedCode);
 
@@ -71,7 +73,7 @@ class importProducts extends AbstractCommand
             foreach ($sector->load() as $singleSector) {
                 $o->setSector($singleSector);
             }
-        }  else {
+        } else {
             $o->setSector(null);
         }
 
@@ -81,7 +83,7 @@ class importProducts extends AbstractCommand
             foreach ($family->load() as $singleFamily) {
                 $o->setFamily($singleFamily);
             }
-        }  else {
+        } else {
             $o->setFamily(null);
         }
 
@@ -91,15 +93,12 @@ class importProducts extends AbstractCommand
             foreach ($subfamily->load() as $singleSubFamily) {
                 $o->setSubFamily($singleSubFamily);
             }
-        }  else {
+        } else {
             $o->setSubFamily(null);
         }
 
-
-
         $o->setBrand($item["brand"]);
         $o->setBrandCattel($item["brandCattel"]);
-
 
         $o->setPublished(true);
         if ($o->save()) {
@@ -109,12 +108,26 @@ class importProducts extends AbstractCommand
         return false;
     }
 
-    protected function importSector($item, $objectClass, $parentFolder): bool
+    protected function importClassifications($item, $objectClass, $parentFolder): bool
     {
-        $trimmedCode = trim($item["sku"]);
+        $trimmedCode = trim($item["code"]);
 
-        dd($trimmedCode);
+        if (empty($trimmedCode)) {
+            throw new Exception("Mandatory field sku not present!");
+        }
 
+        // upsert or delete the objects
+        $o = StaticImportMethods::createOrGetObjectByCode($trimmedCode, $objectClass);
+        if (!empty($item["isDelete"]) && $item["isDelete"] == 'true') {
+            $o->delete();
+            return true;
+        }
+
+        $o->setKey($trimmedCode);
+        $o->setCode($trimmedCode);
+        $o->setDescription($item["description"]);
+
+        $o->setParentId($parentFolder->getId());
         return false;
     }
 
@@ -123,27 +136,17 @@ class importProducts extends AbstractCommand
      * @throws Exception
      */
     public
-    function selectMethodByProductsClassName($item, $objectClass, $parentFolder): bool
+    function selectMethodByDataClassName($item, $objectClass, $parentFolder): bool
     {
         switch ($objectClass) {
             case "Product":
                 return $this->importProducts($item, $objectClass, $parentFolder);
                 break;
 
-            case "Sector":
-                return $this->importSector($item, $objectClass, $parentFolder);
-                break;
             default:
-                return $this->importProducts($item, $objectClass, $parentFolder);
+                return $this->importClassifications($item, $objectClass, $parentFolder);
                 break;
-            /*
-                case "Family":
-                return $this->importProducts($item, $objectClass, $parentFolder);
-                break;
-            case "Subfamily":
-                return $this->importProducts($item, $objectClass, $parentFolder);
-                break;
-*/
+
         }
     }
 
@@ -158,13 +161,13 @@ class importProducts extends AbstractCommand
         $inputPath = self::LOCAL_INPUT_PATH;
 
         // create folder Fabric if it does not exist
-        $fabricPimcoreFolder = StaticImportMethods::createOrGetFolderByPath("/{$divisionName}", 1);
+        $pimcoreFolder = StaticImportMethods::createOrGetFolderByPath("/$divisionName", 1);
         $fabricClassesArray = array("Product",
             "Sector",
             "Family",
             "Subfamily");
 
-        StaticImportMethods::consoleInputValuesManagement($input, $fabricClassesArray, $inputPath, $archivePath, $fabricPimcoreFolder, $output, $divisionName);
+        StaticImportMethods::consoleInputValuesManagement($input, $fabricClassesArray, $inputPath, $archivePath, $pimcoreFolder, $output, $divisionName);
 
         return Command::SUCCESS;
     }
