@@ -6,6 +6,7 @@
  *
  * Fields Summary:
  * - name [input]
+ * - description [input]
  * - inverseRelation [reverseObjectRelation]
  * - image [image]
  */
@@ -15,7 +16,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Family',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1657198041,
+   'modificationDate' => 1666872503,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -101,6 +102,37 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'defaultValueGenerator' => '',
           )),
           1 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
+             'width' => '',
+             'defaultValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
+             'unique' => false,
+             'showCharCount' => false,
+             'name' => 'description',
+             'title' => 'Description',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'defaultValueGenerator' => '',
+          )),
+          2 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\ReverseObjectRelation::__set_state(array(
              'fieldtype' => 'reverseObjectRelation',
              'ownerClassName' => 'Product',
@@ -139,7 +171,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
             ),
           )),
-          2 => 
+          3 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
              'fieldtype' => 'image',
              'name' => 'image',
@@ -216,116 +248,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'enableGridLocking' => false,
    'deletedDataComponents' => 
   array (
-    0 => 
-    Pimcore\Model\DataObject\ClassDefinition\Data\Localizedfields::__set_state(array(
-       'fieldtype' => 'localizedfields',
-       'children' => 
-      array (
-        0 => 
-        Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-           'fieldtype' => 'input',
-           'width' => '',
-           'defaultValue' => NULL,
-           'queryColumnType' => 'varchar',
-           'columnType' => 'varchar',
-           'columnLength' => 190,
-           'regex' => '',
-           'regexFlags' => 
-          array (
-          ),
-           'unique' => false,
-           'showCharCount' => false,
-           'name' => 'name',
-           'title' => 'Name',
-           'tooltip' => '',
-           'mandatory' => false,
-           'noteditable' => false,
-           'index' => false,
-           'locked' => false,
-           'style' => '',
-           'permissions' => NULL,
-           'datatype' => 'data',
-           'relationType' => false,
-           'invisible' => false,
-           'visibleGridView' => false,
-           'visibleSearch' => false,
-           'blockedVarsForExport' => 
-          array (
-          ),
-           'defaultValueGenerator' => '',
-        )),
-      ),
-       'name' => 'localizedfields',
-       'region' => NULL,
-       'layout' => NULL,
-       'title' => NULL,
-       'width' => 0,
-       'height' => 0,
-       'maxTabs' => NULL,
-       'border' => false,
-       'provideSplitView' => NULL,
-       'tabPosition' => 'top',
-       'hideLabelsWhenTabsReached' => NULL,
-       'referencedFields' => 
-      array (
-      ),
-       'fieldDefinitionsCache' => NULL,
-       'permissionView' => NULL,
-       'permissionEdit' => NULL,
-       'tooltip' => '',
-       'mandatory' => false,
-       'noteditable' => false,
-       'index' => NULL,
-       'locked' => false,
-       'style' => '',
-       'permissions' => NULL,
-       'datatype' => 'data',
-       'relationType' => false,
-       'invisible' => false,
-       'visibleGridView' => true,
-       'visibleSearch' => true,
-       'blockedVarsForExport' => 
-      array (
-      ),
-       'labelWidth' => 100,
-       'labelAlign' => 'left',
-       'childs' => 
-      array (
-        0 => 
-        Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-           'fieldtype' => 'input',
-           'width' => '',
-           'defaultValue' => NULL,
-           'queryColumnType' => 'varchar',
-           'columnType' => 'varchar',
-           'columnLength' => 190,
-           'regex' => '',
-           'regexFlags' => 
-          array (
-          ),
-           'unique' => false,
-           'showCharCount' => false,
-           'name' => 'name',
-           'title' => 'Name',
-           'tooltip' => '',
-           'mandatory' => false,
-           'noteditable' => false,
-           'index' => false,
-           'locked' => false,
-           'style' => '',
-           'permissions' => NULL,
-           'datatype' => 'data',
-           'relationType' => false,
-           'invisible' => false,
-           'visibleGridView' => false,
-           'visibleSearch' => false,
-           'blockedVarsForExport' => 
-          array (
-          ),
-           'defaultValueGenerator' => '',
-        )),
-      ),
-    )),
   ),
    'dao' => NULL,
    'blockedVarsForExport' => 

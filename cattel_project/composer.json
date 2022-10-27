@@ -9,7 +9,8 @@
   },
   "require": {
     "pimcore/data-hub": "^1.4",
-    "pimcore/pimcore": "^10.0"
+    "pimcore/pimcore": "^10.0",
+    "ext-json": "*"
   },
   "require-dev": {
     "codeception/codeception": "^4.1.12"
