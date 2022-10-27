@@ -5,7 +5,7 @@
  * Variants: no
  *
  * Fields Summary:
- * - name [input]
+ * - code [input]
  * - description [input]
  * - inverseRelation [reverseObjectRelation]
  * - image [image]
@@ -16,7 +16,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Sector',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1666874043,
+   'modificationDate' => 1666881379,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -82,8 +82,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
-             'name' => 'name',
-             'title' => 'Name',
+             'name' => 'code',
+             'title' => 'Code',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -248,6 +248,39 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'enableGridLocking' => false,
    'deletedDataComponents' => 
   array (
+    0 => 
+    Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+       'fieldtype' => 'input',
+       'width' => '',
+       'defaultValue' => NULL,
+       'queryColumnType' => 'varchar',
+       'columnType' => 'varchar',
+       'columnLength' => 190,
+       'regex' => '',
+       'regexFlags' => 
+      array (
+      ),
+       'unique' => false,
+       'showCharCount' => false,
+       'name' => 'name',
+       'title' => 'Name',
+       'tooltip' => '',
+       'mandatory' => false,
+       'noteditable' => false,
+       'index' => false,
+       'locked' => false,
+       'style' => '',
+       'permissions' => NULL,
+       'datatype' => 'data',
+       'relationType' => false,
+       'invisible' => false,
+       'visibleGridView' => false,
+       'visibleSearch' => false,
+       'blockedVarsForExport' => 
+      array (
+      ),
+       'defaultValueGenerator' => '',
+    )),
   ),
    'dao' => NULL,
    'blockedVarsForExport' => 

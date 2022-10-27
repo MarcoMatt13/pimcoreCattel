@@ -55,18 +55,52 @@ class importProducts extends AbstractCommand
 
         // upsert or delete the objects
         $o = StaticImportMethods::createOrGetObjectByCode($trimmedCode, $objectClass);
-        if (!empty($item["Delete"]) && $item["Delete"] == 'true') {
+        if (!empty($item["isDelete"]) && $item["isDelete"] == 'true') {
             $o->delete();
             return true;
         }
 
         $o->setParentId($parentFolder->getId());
-
-
         $o->setKey($trimmedCode);
-        $o->setDescription($item["Description"]);
 
-        $o->setCode($trimmedCode);
+        $o->setName($item["name"]);
+
+        // sector
+        $sector = DataObject\Sector::getByCode($item["sector"]);
+        if (!empty($sector->count())) {
+            foreach ($sector->load() as $singleSector) {
+                $o->setSector($singleSector);
+            }
+        }  else {
+            $o->setSector(null);
+        }
+
+        // family
+        $family = DataObject\Family::getByCode($item["family"]);
+        if (!empty($family->count())) {
+            foreach ($family->load() as $singleFamily) {
+                $o->setFamily($singleFamily);
+            }
+        }  else {
+            $o->setFamily(null);
+        }
+
+        // subfamily
+        $subfamily = DataObject\SubFamily::getByCode($item["subFamily"]);
+        if (!empty($subfamily->count())) {
+            foreach ($subfamily->load() as $singleSubFamily) {
+                $o->setSubFamily($singleSubFamily);
+            }
+        }  else {
+            $o->setSubFamily(null);
+        }
+
+
+
+        $o->setBrand($item["brand"]);
+        $o->setBrandCattel($item["brandCattel"]);
+
+
         $o->setPublished(true);
         if ($o->save()) {
             return true;
@@ -124,7 +158,7 @@ class importProducts extends AbstractCommand
         $inputPath = self::LOCAL_INPUT_PATH;
 
         // create folder Fabric if it does not exist
-        $fabricPimcoreFolder = StaticImportMethods::createOrGetFolderByPath("/{$divisionName}s", 1);
+        $fabricPimcoreFolder = StaticImportMethods::createOrGetFolderByPath("/{$divisionName}", 1);
         $fabricClassesArray = array("Product",
             "Sector",
             "Family",

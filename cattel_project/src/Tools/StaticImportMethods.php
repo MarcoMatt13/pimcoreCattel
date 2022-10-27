@@ -66,7 +66,7 @@ class StaticImportMethods
     public static function setManyToOneRelation($objectClass, $item, $o)
     {
         $stringClass = "Pimcore\Model\DataObject\\" . $objectClass;
-        $dataObject = $stringClass::getBySku($item["$objectClass"]);
+        $dataObject = $stringClass::getByCode($item["$objectClass"]);
         if (strpos($item["$objectClass"], "|")) {
             throw new Exception("Invalid value for this field! Many-to-One relation, only one element is allowed");
         }
@@ -82,46 +82,7 @@ class StaticImportMethods
         }
         return $o;
     }
-
-    public static function setManyToManyRelation($objectClass, $item, $o)
-    {
-
-        $stringClass = "Pimcore\Model\DataObject\\" . $objectClass;
-        $dataObjectList = explode("|", $item["{$objectClass}s"]);
-        $dataObjectArray = array();
-        foreach ($dataObjectList as $singleElement) {
-            if (!empty($stringClass::getBySku($singleElement)->count())) {
-                foreach ($stringClass::getBySku($singleElement)->load() as $singleRelation) {
-                    $dataObjectArray[] = $singleRelation;
-                }
-            }
-        }
-        $stringMethod = "set" . $objectClass . "s";
-        $o->$stringMethod($dataObjectArray);
-        return $o;
-    }
-
-    public static function insertHexColor($o, $item)
-    {
-
-        if (empty($item["HexColor"])) {
-            $o->setHexColor(null);
-            return $o;
-        }
-
-        $rgbaColor = explode("|", $item["HexColor"]);
-        $colorArr = array();
-        foreach ($rgbaColor as $color) {
-            if (!is_numeric($color)) {
-                throw new Exception("Value not valid! Numeric values are needed");
-            };
-            $colorArr[] = $color;
-        }
-        $color = new DataObject\Data\RgbaColor($colorArr[0], $colorArr[1], $colorArr[2], $colorArr[3]);
-        $o->setHexColor($color);
-        return $o;
-    }
-
+    
     private static function writeCSVerrorAndSuccessFilesFullMethod($archiveLocalPath, $pimcoreFolder, $now, $dataObjectClassName,
                                                                    $divisionName, $inputLocalPath, $output): void
     {

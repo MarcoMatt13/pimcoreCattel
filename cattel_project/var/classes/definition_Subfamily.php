@@ -5,18 +5,18 @@
  * Variants: no
  *
  * Fields Summary:
- * - name [input]
+ * - code [input]
+ * - description [input]
  * - inverseRelation [reverseObjectRelation]
  * - image [image]
- * - description [input]
  */
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
-   'id' => 'SBM',
-   'name' => 'Subfamily',
+   'id' => 'SBF',
+   'name' => 'SubFamily',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1666872492,
+   'modificationDate' => 1666882886,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -82,8 +82,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
-             'name' => 'name',
-             'title' => 'Name',
+             'name' => 'code',
+             'title' => 'Code',
              'tooltip' => '',
              'mandatory' => false,
              'noteditable' => false,
@@ -102,11 +102,42 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'defaultValueGenerator' => '',
           )),
           1 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
+             'width' => '',
+             'defaultValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
+             'unique' => false,
+             'showCharCount' => false,
+             'name' => 'description',
+             'title' => 'Description',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => false,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'defaultValueGenerator' => '',
+          )),
+          2 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\ReverseObjectRelation::__set_state(array(
              'fieldtype' => 'reverseObjectRelation',
              'ownerClassName' => 'Product',
              'ownerClassId' => NULL,
-             'ownerFieldName' => 'subfamily',
+             'ownerFieldName' => 'subFamily',
              'lazyLoading' => true,
              'width' => '',
              'height' => '',
@@ -140,7 +171,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
             ),
           )),
-          2 => 
+          3 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
              'fieldtype' => 'image',
              'name' => 'image',
@@ -163,37 +194,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'width' => '',
              'height' => '',
              'uploadPath' => '',
-          )),
-          3 => 
-          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-             'fieldtype' => 'input',
-             'width' => '',
-             'defaultValue' => NULL,
-             'columnLength' => 190,
-             'regex' => '',
-             'regexFlags' => 
-            array (
-            ),
-             'unique' => false,
-             'showCharCount' => false,
-             'name' => 'description',
-             'title' => 'Description',
-             'tooltip' => '',
-             'mandatory' => false,
-             'noteditable' => false,
-             'index' => false,
-             'locked' => NULL,
-             'style' => '',
-             'permissions' => NULL,
-             'datatype' => 'data',
-             'relationType' => false,
-             'invisible' => false,
-             'visibleGridView' => false,
-             'visibleSearch' => false,
-             'blockedVarsForExport' => 
-            array (
-            ),
-             'defaultValueGenerator' => '',
           )),
         ),
          'locked' => false,

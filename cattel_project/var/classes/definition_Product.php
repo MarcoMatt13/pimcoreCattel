@@ -21,7 +21,7 @@
  * - buyerType [multiselect]
  * - sector [manyToManyObjectRelation]
  * - family [manyToManyObjectRelation]
- * - subfamily [manyToManyObjectRelation]
+ * - subFamily [manyToManyObjectRelation]
  * - shelfLife [input]
  * - unityOfMeasure [select]
  * - localizedfields [localizedfields]
@@ -54,7 +54,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Product',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1666874072,
+   'modificationDate' => 1666881880,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -697,12 +697,12 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                     array (
                       0 => 
                       array (
-                        'classes' => 'Subfamily',
+                        'classes' => 'SubFamily',
                       ),
                     ),
                      'pathFormatterClass' => '',
-                     'name' => 'subfamily',
-                     'title' => 'Subfamily',
+                     'name' => 'subFamily',
+                     'title' => 'SubFamily',
                      'tooltip' => '',
                      'mandatory' => false,
                      'noteditable' => false,
@@ -1972,12 +1972,12 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
       array (
         0 => 
         array (
-          'classes' => 'Category',
+          'classes' => 'Subfamily',
         ),
       ),
        'pathFormatterClass' => '',
-       'name' => 'category',
-       'title' => 'Category',
+       'name' => 'subfamily',
+       'title' => 'Subfamily',
        'tooltip' => '',
        'mandatory' => false,
        'noteditable' => false,
