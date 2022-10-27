@@ -47,16 +47,15 @@ class importProducts extends AbstractCommand
      */
     protected function importProducts($item, $objectClass, $parentFolder): bool
     {
-        $trimmedCode = trim($item["Code"]);
+        $trimmedCode = trim($item["sku"]);
 
         if (empty($trimmedCode)) {
-            throw new Exception("Mandatory field Code not present!");
+            throw new Exception("Mandatory field sku not present!");
         }
 
         // upsert or delete the objects
         $o = StaticImportMethods::createOrGetObjectByCode($trimmedCode, $objectClass);
-
-        if(!empty($item["Delete"]) && $item["Delete"] == 'true') {
+        if (!empty($item["Delete"]) && $item["Delete"] == 'true') {
             $o->delete();
             return true;
         }
@@ -76,6 +75,43 @@ class importProducts extends AbstractCommand
         return false;
     }
 
+    protected function importSector($item, $objectClass, $parentFolder): bool
+    {
+        $trimmedCode = trim($item["sku"]);
+
+        dd($trimmedCode);
+
+        return false;
+    }
+
+
+    /**
+     * @throws Exception
+     */
+    public
+    function selectMethodByProductsClassName($item, $objectClass, $parentFolder): bool
+    {
+        switch ($objectClass) {
+            case "Product":
+                return $this->importProducts($item, $objectClass, $parentFolder);
+                break;
+
+            case "Sector":
+                return $this->importSector($item, $objectClass, $parentFolder);
+                break;
+            default:
+                return $this->importProducts($item, $objectClass, $parentFolder);
+                break;
+            /*
+                case "Family":
+                return $this->importProducts($item, $objectClass, $parentFolder);
+                break;
+            case "Subfamily":
+                return $this->importProducts($item, $objectClass, $parentFolder);
+                break;
+*/
+        }
+    }
 
     /**
      * @throws Exception
@@ -83,14 +119,13 @@ class importProducts extends AbstractCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
 
-
         $archivePath = self::LOCAL_ARCHIVE_PATH;
         $divisionName = self::CLASSNAME;
         $inputPath = self::LOCAL_INPUT_PATH;
 
         // create folder Fabric if it does not exist
         $fabricPimcoreFolder = StaticImportMethods::createOrGetFolderByPath("/{$divisionName}s", 1);
-        $fabricClassesArray = array("Products",
+        $fabricClassesArray = array("Product",
             "Sector",
             "Family",
             "Subfamily");

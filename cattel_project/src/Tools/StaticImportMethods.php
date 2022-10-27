@@ -19,9 +19,9 @@ class StaticImportMethods
     {
         $stringClass = "Pimcore\Model\DataObject\\" . $objectClass;
 
-        empty($stringClass::getByCode($code)->count()) ?
+        empty($stringClass::getBySku($code)->count()) ?
             $o = new $stringClass() :
-            $o = $stringClass::getByCode($code)->getData()[0];
+            $o = $stringClass::getBySku($code)->getData()[0];
 
         return $o;
     }
@@ -66,7 +66,7 @@ class StaticImportMethods
     public static function setManyToOneRelation($objectClass, $item, $o)
     {
         $stringClass = "Pimcore\Model\DataObject\\" . $objectClass;
-        $dataObject = $stringClass::getByCode($item["$objectClass"]);
+        $dataObject = $stringClass::getBySku($item["$objectClass"]);
         if (strpos($item["$objectClass"], "|")) {
             throw new Exception("Invalid value for this field! Many-to-One relation, only one element is allowed");
         }
@@ -90,8 +90,8 @@ class StaticImportMethods
         $dataObjectList = explode("|", $item["{$objectClass}s"]);
         $dataObjectArray = array();
         foreach ($dataObjectList as $singleElement) {
-            if (!empty($stringClass::getByCode($singleElement)->count())) {
-                foreach ($stringClass::getByCode($singleElement)->load() as $singleRelation) {
+            if (!empty($stringClass::getBySku($singleElement)->count())) {
+                foreach ($stringClass::getBySku($singleElement)->load() as $singleRelation) {
                     $dataObjectArray[] = $singleRelation;
                 }
             }
@@ -171,22 +171,22 @@ class StaticImportMethods
                     $responseToSingleObjectProcessing = (new $stringDivision())->$stringSelectDivisionSwitchMethod($item, $dataObjectClassName, $parentFolder);
                     if ($responseToSingleObjectProcessing) {
                         $filesystem->appendToFile("$archiveLocalPath/$year/$now/{$dataObjectClassName}_{$timestamp}_success.csv", implode(';', $item) . "\r\n");
-                        $output->writeln("<info>$dataObjectClassName {$item["Code"]} for file $fileName upserted!</info>");
+                        $output->writeln("<info>$dataObjectClassName {$item["sku"]} for file $fileName upserted!</info>");
                     } else {
                         $output->writeln("<error>Class $dataObjectClassName not found!<error>");
                     }
 
                 } // if there are an exception, write it in the _error file
                 catch (Exception $e) {
-                    $output->writeln("<error>Error found for item $index {$item["Code"]} for file $fileName</error>");
+                    $output->writeln("<error>Error found for item $index {$item["sku"]} for file $fileName</error>");
                     $item[] = "{$e->getMessage()}, line {$e->getLine()}";
                     $filesystem->appendToFile("$archiveLocalPath/$year/$now/{$dataObjectClassName}_{$timestamp}_error.csv", implode(';', $item) . "\r\n");
 
                 }
             }
             // move the origin file to the archive folder
-            $filesystem->rename("$file", "$archiveLocalPath/$year/$now/{$dataObjectClassName}_$timestamp.csv");
-            //$filesystem->copy("$file", "$archiveLocalPath/$year/$now/{$dataObjectClassName}_$timestamp.csv");
+            //$filesystem->rename("$file", "$archiveLocalPath/$year/$now/{$dataObjectClassName}_$timestamp.csv");
+            $filesystem->copy("$file", "$archiveLocalPath/$year/$now/{$dataObjectClassName}_$timestamp.csv");
         }
     }
 
@@ -200,7 +200,7 @@ class StaticImportMethods
 
         if ($input->getArgument("classNames")) {
 
-            foreach ($input->getArgument("classNames") as $index=>$singleInputClass) {
+            foreach ($input->getArgument("classNames") as $singleInputClass) {
                 if (!in_array($singleInputClass, $classesArray) ||
                     !class_exists("Pimcore\Model\DataObject\\" . $singleInputClass)) {
                     $output->writeln("<error>CLASS $singleInputClass DOES NOT EXIST! <error>");
@@ -216,7 +216,7 @@ class StaticImportMethods
                 self::writeCSVerrorAndSuccessFilesFullMethod("$archivePath", $pimcoreFolder, $now, $singleInputClass, $division, $inputPath, $output);
             }
         } else {
-            foreach ($classesArray as $index=>$class) {
+            foreach ($classesArray as $class) {
                 self::writeCSVerrorAndSuccessFilesFullMethod("$archivePath", $pimcoreFolder, $now, $class, $division, $inputPath, $output);
             }
         }
