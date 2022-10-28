@@ -45,8 +45,32 @@
  * - productDiameter [quantityValue]
  * - productCaliber [quantityValue]
  * - productThickness [quantityValue]
- * - allergens [objectbricks]
- * - nutritionalInfo [objectbricks]
+ * - allergensCereal [select]
+ * - allergensCrustaceans [select]
+ * - allergensEggs [select]
+ * - allergensFish [select]
+ * - allergensPeanuts [select]
+ * - allergensSoybeans [select]
+ * - allergensMilkDiary [select]
+ * - allergensNuts [select]
+ * - allergensCelery [select]
+ * - allergensMustard [select]
+ * - allergensSesame [select]
+ * - allergensSulphur [select]
+ * - allergensLupins [select]
+ * - allergensMolluscs [select]
+ * - nutritionalEnergeticValue [quantityValue]
+ * - nutritionalOtherEnergeticValue [quantityValue]
+ * - nutritionalFats [quantityValue]
+ * - nutritionalSaturatedFats [quantityValue]
+ * - nutritionalCarbs [quantityValue]
+ * - nutritionalSugars [quantityValue]
+ * - nutritionalProteins [quantityValue]
+ * - nutritionalSalt [quantityValue]
+ * - nutritionalFibers [quantityValue]
+ * - nutritionalCalcium [quantityValue]
+ * - nutritionalPhoshorus [quantityValue]
+ * - nutritionalOtherInfo [textarea]
  */
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
@@ -54,7 +78,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Product',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1666961945,
+   'modificationDate' => 1666966738,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -505,6 +529,41 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'fieldtype' => 'multiselect',
                      'options' => 
                     array (
+                      0 => 
+                      array (
+                        'key' => 'Bio',
+                        'value' => ' Bio ',
+                      ),
+                      1 => 
+                      array (
+                        'key' => 'Vegano',
+                        'value' => ' Vegano',
+                      ),
+                      2 => 
+                      array (
+                        'key' => 'Vegetariano',
+                        'value' => ' Vegetariano',
+                      ),
+                      3 => 
+                      array (
+                        'key' => 'Kosher',
+                        'value' => ' Kosher',
+                      ),
+                      4 => 
+                      array (
+                        'key' => 'No glutine',
+                        'value' => ' No glutine',
+                      ),
+                      5 => 
+                      array (
+                        'key' => 'No lattosio',
+                        'value' => ' No lattosio  ',
+                      ),
+                      6 => 
+                      array (
+                        'key' => 'Halal',
+                        'value' => ' Halal',
+                      ),
                     ),
                      'width' => '',
                      'height' => '',
@@ -729,7 +788,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                     ),
                      'pathFormatterClass' => '',
                      'name' => 'subFamily',
-                     'title' => 'SuttoFamiglia',
+                     'title' => 'SottoFamiglia',
                      'tooltip' => '',
                      'mandatory' => false,
                      'noteditable' => false,
@@ -1827,7 +1886,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'fieldtype' => 'panel',
              'layout' => NULL,
              'border' => false,
-             'name' => 'Allergens',
+             'name' => 'Allergeni',
              'type' => NULL,
              'region' => NULL,
              'title' => 'Allergeni',
@@ -1841,16 +1900,34 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'children' => 
             array (
               0 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
-                 'fieldtype' => 'objectbricks',
-                 'allowedTypes' => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'fieldtype' => 'select',
+                 'options' => 
                 array (
-                  0 => 'allergens',
+                  0 => 
+                  array (
+                    'key' => 'Yes',
+                    'value' => 'Yes',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'No',
+                    'value' => 'No',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Partially',
+                    'value' => 'Partially',
+                  ),
                 ),
-                 'maxItems' => 1,
-                 'border' => false,
-                 'name' => 'allergens',
-                 'title' => 'Allergens',
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'name' => 'allergensCereal',
+                 'title' => 'Cereal and Glutens',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -1866,6 +1943,605 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'defaultValueGenerator' => '',
+              )),
+              1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'fieldtype' => 'select',
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'Yes',
+                    'value' => 'Yes',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'No',
+                    'value' => 'No',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Partially',
+                    'value' => 'Partially',
+                  ),
+                ),
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'name' => 'allergensCrustaceans',
+                 'title' => 'Crustaceans',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              2 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'fieldtype' => 'select',
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'Yes',
+                    'value' => 'Yes',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'No',
+                    'value' => 'No',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Partially',
+                    'value' => 'Partially',
+                  ),
+                ),
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'name' => 'allergensEggs',
+                 'title' => 'Eggs',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              3 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'fieldtype' => 'select',
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'Yes',
+                    'value' => 'Yes',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'No',
+                    'value' => 'No',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Partially',
+                    'value' => 'Partially',
+                  ),
+                ),
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'name' => 'allergensFish',
+                 'title' => 'Fish',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              4 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'fieldtype' => 'select',
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'Yes',
+                    'value' => 'Yes',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'No',
+                    'value' => 'No',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Partially',
+                    'value' => 'Partially',
+                  ),
+                ),
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'name' => 'allergensPeanuts',
+                 'title' => 'Peanuts',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              5 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'fieldtype' => 'select',
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'Yes',
+                    'value' => 'Yes',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'No',
+                    'value' => 'No',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Partially',
+                    'value' => 'Partially',
+                  ),
+                ),
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'name' => 'allergensSoybeans',
+                 'title' => 'Soybeans',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              6 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'fieldtype' => 'select',
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'Yes',
+                    'value' => 'Yes',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'No',
+                    'value' => 'No',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Partially',
+                    'value' => 'Partially',
+                  ),
+                ),
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'name' => 'allergensMilkDiary',
+                 'title' => 'Milk and Diary',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              7 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'fieldtype' => 'select',
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'Yes',
+                    'value' => 'Yes',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'No',
+                    'value' => 'No',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Partially',
+                    'value' => 'Partially',
+                  ),
+                ),
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'name' => 'allergensNuts',
+                 'title' => 'Nuts',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              8 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'fieldtype' => 'select',
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'Yes',
+                    'value' => 'Yes',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'No',
+                    'value' => 'No',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Partially',
+                    'value' => 'Partially',
+                  ),
+                ),
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'name' => 'allergensCelery',
+                 'title' => 'Celery',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              9 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'fieldtype' => 'select',
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'Yes',
+                    'value' => 'Yes',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'No',
+                    'value' => 'No',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Partially',
+                    'value' => 'Partially',
+                  ),
+                ),
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'name' => 'allergensMustard',
+                 'title' => 'Mustard',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              10 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'fieldtype' => 'select',
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'Yes',
+                    'value' => 'Yes',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'No',
+                    'value' => 'No',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Partially',
+                    'value' => 'Partially',
+                  ),
+                ),
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'name' => 'allergensSesame',
+                 'title' => 'Sesame',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              11 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'fieldtype' => 'select',
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'Yes',
+                    'value' => 'Yes',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'No',
+                    'value' => 'No',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Partially',
+                    'value' => 'Partially',
+                  ),
+                ),
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'name' => 'allergensSulphur',
+                 'title' => 'Sulphur',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              12 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'fieldtype' => 'select',
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'Yes',
+                    'value' => 'Yes',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'No',
+                    'value' => 'No',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Partially',
+                    'value' => 'Partially',
+                  ),
+                ),
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'name' => 'allergensLupins',
+                 'title' => 'Lupins',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              13 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
+                 'fieldtype' => 'select',
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'Yes',
+                    'value' => 'Yes',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'No',
+                    'value' => 'No',
+                  ),
+                  2 => 
+                  array (
+                    'key' => 'Partially',
+                    'value' => 'Partially',
+                  ),
+                ),
+                 'width' => '',
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
+                 'name' => 'allergensMolluscs',
+                 'title' => 'Molluscs',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
               )),
             ),
              'locked' => false,
@@ -1881,10 +2557,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'fieldtype' => 'panel',
              'layout' => NULL,
              'border' => false,
-             'name' => 'Nutritional Info',
+             'name' => 'Info nutrizionali',
              'type' => NULL,
              'region' => NULL,
-             'title' => 'Informazioni Nutrizionali',
+             'title' => 'Info nutrizionali',
              'width' => '',
              'height' => '',
              'collapsible' => false,
@@ -1895,16 +2571,367 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'children' => 
             array (
               0 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
-                 'fieldtype' => 'objectbricks',
-                 'allowedTypes' => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
+                 'width' => '',
+                 'unitWidth' => '',
+                 'defaultValue' => NULL,
+                 'defaultUnit' => 'KiloJoule',
+                 'validUnits' => 
                 array (
-                  0 => 'nutritionalInfo',
+                  0 => 'KiloJoule',
                 ),
-                 'maxItems' => 1,
-                 'border' => false,
-                 'name' => 'nutritionalInfo',
-                 'title' => 'Nutritional Info',
+                 'decimalPrecision' => NULL,
+                 'autoConvert' => false,
+                 'name' => 'nutritionalEnergeticValue',
+                 'title' => 'Energy KJ',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              1 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
+                 'width' => '',
+                 'unitWidth' => '',
+                 'defaultValue' => NULL,
+                 'defaultUnit' => 'Kilocalories',
+                 'validUnits' => 
+                array (
+                  0 => 'Kilocalories',
+                ),
+                 'decimalPrecision' => NULL,
+                 'autoConvert' => false,
+                 'name' => 'nutritionalOtherEnergeticValue',
+                 'title' => 'Energy Kcal',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              2 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
+                 'width' => '',
+                 'unitWidth' => '',
+                 'defaultValue' => NULL,
+                 'defaultUnit' => 'g100g',
+                 'validUnits' => 
+                array (
+                  0 => 'g100g',
+                ),
+                 'decimalPrecision' => NULL,
+                 'autoConvert' => false,
+                 'name' => 'nutritionalFats',
+                 'title' => 'Fats',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              3 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
+                 'width' => '',
+                 'unitWidth' => '',
+                 'defaultValue' => NULL,
+                 'defaultUnit' => 'g100g',
+                 'validUnits' => 
+                array (
+                  0 => 'g100g',
+                ),
+                 'decimalPrecision' => NULL,
+                 'autoConvert' => false,
+                 'name' => 'nutritionalSaturatedFats',
+                 'title' => 'Saturated Fats',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              4 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
+                 'width' => '',
+                 'unitWidth' => '',
+                 'defaultValue' => NULL,
+                 'defaultUnit' => 'g100g',
+                 'validUnits' => 
+                array (
+                  0 => 'g100g',
+                ),
+                 'decimalPrecision' => NULL,
+                 'autoConvert' => false,
+                 'name' => 'nutritionalCarbs',
+                 'title' => 'Carbs',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              5 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
+                 'width' => '',
+                 'unitWidth' => '',
+                 'defaultValue' => NULL,
+                 'defaultUnit' => 'g100g',
+                 'validUnits' => 
+                array (
+                  0 => 'g100g',
+                ),
+                 'decimalPrecision' => NULL,
+                 'autoConvert' => false,
+                 'name' => 'nutritionalSugars',
+                 'title' => 'Sugars',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              6 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
+                 'width' => '',
+                 'unitWidth' => '',
+                 'defaultValue' => NULL,
+                 'defaultUnit' => 'g100g',
+                 'validUnits' => 
+                array (
+                  0 => 'g100g',
+                ),
+                 'decimalPrecision' => NULL,
+                 'autoConvert' => false,
+                 'name' => 'nutritionalProteins',
+                 'title' => 'Proteins',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              7 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
+                 'width' => '',
+                 'unitWidth' => '',
+                 'defaultValue' => NULL,
+                 'defaultUnit' => 'g100g',
+                 'validUnits' => 
+                array (
+                  0 => 'g100g',
+                ),
+                 'decimalPrecision' => NULL,
+                 'autoConvert' => false,
+                 'name' => 'nutritionalSalt',
+                 'title' => 'Salt',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              8 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
+                 'width' => '',
+                 'unitWidth' => '',
+                 'defaultValue' => NULL,
+                 'defaultUnit' => 'g100g',
+                 'validUnits' => 
+                array (
+                  0 => 'g100g',
+                ),
+                 'decimalPrecision' => NULL,
+                 'autoConvert' => false,
+                 'name' => 'nutritionalFibers',
+                 'title' => 'Fibers',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              9 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
+                 'width' => '',
+                 'unitWidth' => '',
+                 'defaultValue' => NULL,
+                 'defaultUnit' => 'g100g',
+                 'validUnits' => 
+                array (
+                  0 => 'g100g',
+                ),
+                 'decimalPrecision' => NULL,
+                 'autoConvert' => false,
+                 'name' => 'nutritionalCalcium',
+                 'title' => 'Calcium',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              10 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\QuantityValue::__set_state(array(
+                 'fieldtype' => 'quantityValue',
+                 'width' => '',
+                 'unitWidth' => '',
+                 'defaultValue' => NULL,
+                 'defaultUnit' => 'g100g',
+                 'validUnits' => 
+                array (
+                  0 => 'g100g',
+                ),
+                 'decimalPrecision' => NULL,
+                 'autoConvert' => false,
+                 'name' => 'nutritionalPhoshorus',
+                 'title' => 'Phoshorus',
+                 'tooltip' => '',
+                 'mandatory' => false,
+                 'noteditable' => false,
+                 'index' => false,
+                 'locked' => false,
+                 'style' => '',
+                 'permissions' => NULL,
+                 'datatype' => 'data',
+                 'relationType' => false,
+                 'invisible' => false,
+                 'visibleGridView' => false,
+                 'visibleSearch' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'defaultValueGenerator' => '',
+              )),
+              11 => 
+              Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+                 'fieldtype' => 'textarea',
+                 'width' => '',
+                 'height' => '',
+                 'maxLength' => NULL,
+                 'showCharCount' => false,
+                 'excludeFromSearchIndex' => false,
+                 'name' => 'nutritionalOtherInfo',
+                 'title' => 'Other Info',
                  'tooltip' => '',
                  'mandatory' => false,
                  'noteditable' => false,
@@ -1980,6 +3007,59 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'enableGridLocking' => false,
    'deletedDataComponents' => 
   array (
+    0 => 
+    Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
+       'fieldtype' => 'objectbricks',
+       'allowedTypes' => 
+      array (
+        0 => 'allergens',
+      ),
+       'maxItems' => 1,
+       'border' => false,
+       'name' => 'allergens',
+       'title' => 'Allergens',
+       'tooltip' => '',
+       'mandatory' => false,
+       'noteditable' => false,
+       'index' => false,
+       'locked' => false,
+       'style' => '',
+       'permissions' => NULL,
+       'datatype' => 'data',
+       'relationType' => false,
+       'invisible' => false,
+       'visibleGridView' => false,
+       'visibleSearch' => false,
+       'blockedVarsForExport' => 
+      array (
+      ),
+    )),
+    1 => 
+    Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
+       'fieldtype' => 'objectbricks',
+       'allowedTypes' => 
+      array (
+      ),
+       'maxItems' => 1,
+       'border' => false,
+       'name' => 'nutritionalInfo',
+       'title' => 'Nutritional Info',
+       'tooltip' => '',
+       'mandatory' => false,
+       'noteditable' => false,
+       'index' => false,
+       'locked' => false,
+       'style' => '',
+       'permissions' => NULL,
+       'datatype' => 'data',
+       'relationType' => false,
+       'invisible' => false,
+       'visibleGridView' => false,
+       'visibleSearch' => false,
+       'blockedVarsForExport' => 
+      array (
+      ),
+    )),
   ),
    'dao' => NULL,
    'blockedVarsForExport' => 
