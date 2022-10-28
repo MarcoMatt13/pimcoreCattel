@@ -70,14 +70,22 @@ class ProductsAPIController
     public function upsertProducts(Request $request): Response
     {
 
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
         $arrayProducts = json_decode($request->getContent());
 
+        $responseArray = array();
         foreach ($arrayProducts as $singleProduct) {
             $product = StaticImportMethods::createOrGetProductBySku($singleProduct->sku);
             if (empty($product->getId()) && $singleProduct->isDeleted === true) {
-                continue;
+                $responseArray[] = "Impossibile eliminare un prodotto non esistente!";
+
                 //throw new \Exception("Non è possibile eliminare un prodotto non esistente");
             } elseif (!empty($product->getId()) && $singleProduct->isDeleted === true) {
+                $responseArray[] = "Prodotto eliminato!";
+
                 $product->delete();
             } elseif ($singleProduct->isDeleted === false) {
 
@@ -90,15 +98,15 @@ class ProductsAPIController
                 $product->setBrand($singleProduct->brand);
                 $product->setBrandCattel($singleProduct->brandCattel);
                 $product->setParentId(Folder::getByPath("/Data/Products")->getId());
+                $product->setPublished(true);
                 $product->save();
+
+                $responseArray[] = "Created product";
+
             }
         }
 
-        $response = new Response();
-        $response->headers->set('Content-Type', 'application/json');
-        $response->headers->set('Access-Control-Allow-Origin', '*');
-
-        $response->setContent("ciao");
+        $response->setContent(json_encode($responseArray));
         return $response;
     }
 
