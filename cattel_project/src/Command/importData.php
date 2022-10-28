@@ -55,7 +55,7 @@ class importData extends AbstractCommand
 
 
         // upsert or delete the objects
-        $o = StaticImportMethods::createOrGetObjectByCode($trimmedCode, $objectClass);
+        $o = StaticImportMethods::createOrGetProductBySku($trimmedCode);
         if (!empty($item["isDelete"]) && $item["isDelete"] == 'true') {
             $o->delete();
             return true;
@@ -125,9 +125,16 @@ class importData extends AbstractCommand
 
         $o->setKey($trimmedCode);
         $o->setCode($trimmedCode);
+        $o->setTitle($item["title"]);
         $o->setDescription($item["description"]);
 
         $o->setParentId($parentFolder->getId());
+
+        $o->setPublished(true);
+        if ($o->save()) {
+            return true;
+        };
+
         return false;
     }
 
@@ -138,16 +145,10 @@ class importData extends AbstractCommand
     public
     function selectMethodByDataClassName($item, $objectClass, $parentFolder): bool
     {
-        switch ($objectClass) {
-            case "Product":
-                return $this->importProducts($item, $objectClass, $parentFolder);
-                break;
-
-            default:
-                return $this->importClassifications($item, $objectClass, $parentFolder);
-                break;
-
-        }
+        return match ($objectClass) {
+            "Product" => $this->importProducts($item, $objectClass, $parentFolder),
+            default => $this->importClassifications($item, $objectClass, $parentFolder),
+        };
     }
 
     /**
@@ -162,12 +163,14 @@ class importData extends AbstractCommand
 
         // create folder Fabric if it does not exist
         $pimcoreFolder = StaticImportMethods::createOrGetFolderByPath("/$divisionName", 1);
-        $fabricClassesArray = array("Product",
+        $classesArray = array(
             "Sector",
             "Family",
-            "Subfamily");
+            "SubFamily",
+            "Product"
+        );
 
-        StaticImportMethods::consoleInputValuesManagement($input, $fabricClassesArray, $inputPath, $archivePath, $pimcoreFolder, $output, $divisionName);
+        StaticImportMethods::consoleInputValuesManagement($input, $classesArray, $inputPath, $archivePath, $pimcoreFolder, $output, $divisionName);
 
         return Command::SUCCESS;
     }

@@ -15,12 +15,23 @@ use Carbon\Carbon;
 class StaticImportMethods
 {
     // create or get the dataObject given by the code
-    public static function createOrGetObjectByCode(string $code, string $objectClass)
+    public static function createOrGetProductBySku(string $code): DataObject\Product
     {
-        $stringClass = "Pimcore\Model\DataObject\\" . $objectClass;
+        $stringClass = "Pimcore\Model\DataObject\Product";
         empty($stringClass::getBySku($code)->count()) ?
             $o = new $stringClass() :
             $o = $stringClass::getBySku($code)->getData()[0];
+
+        return $o;
+    }
+
+    // create or get the dataObject given by the code
+    public static function createOrGetObjectByCode(string $code, string $objectClass)
+    {
+        $stringClass = "Pimcore\Model\DataObject\\" . $objectClass;
+        empty($stringClass::getByCode($code)->count()) ?
+            $o = new $stringClass() :
+            $o = $stringClass::getByCode($code)->getData()[0];
 
         return $o;
     }
@@ -38,12 +49,10 @@ class StaticImportMethods
     // create or get the asset given by the path
     public static function createOrGetAssetByPath(string $path): Asset|Asset\Image|null
     {
-
         Asset\Image::getByPath($path) ?
             $o = Asset\Image::getByPath($path) :
             $o = new Asset\Image();
         return $o;
-
     }
 
     // check if in the given $inputPath there are files with $objectClass in the name
@@ -98,10 +107,6 @@ class StaticImportMethods
                 $filesystem->mkdir("$archiveLocalPath/$year/$now");
         }
 
-        // define useful variables
-        $stringDivision = "App\Command\\importData";
-        $stringSelectDivisionSwitchMethod = "selectMethodBy" . $divisionName . "ClassName";
-
         // create the objectFolder folder in Pimcore if it does not exist
         $folderPath = "/$divisionName/{$dataObjectClassName}s";
         $parentFolder = StaticImportMethods::createOrGetFolderByPath($folderPath, $pimcoreFolder->getId());
@@ -127,18 +132,23 @@ class StaticImportMethods
             // process the record one-by-one using the method for the corresponding class
             foreach ($csvRecords as $index => $item) {
                 try {
+
+                    $codeOrSku = $item["sku"] ?? $item["code"];
+
                     // search the correct method for the selected Division; then starts with the processing
-                    $responseToSingleObjectProcessing = (new $stringDivision())->$stringSelectDivisionSwitchMethod($item, $dataObjectClassName, $parentFolder);
+                    $responseToSingleObjectProcessing = (new importData())
+                        ->selectMethodByDataClassName($item, $dataObjectClassName, $parentFolder);
+
                     if ($responseToSingleObjectProcessing) {
                         $filesystem->appendToFile("$archiveLocalPath/$year/$now/{$dataObjectClassName}_{$timestamp}_success.csv", implode(';', $item) . "\r\n");
-                        $output->writeln("<info>$dataObjectClassName {$item["sku"]} for file $fileName upserted!</info>");
+                        $output->writeln("<info>$dataObjectClassName $codeOrSku for file $fileName upserted!</info>");
                     } else {
                         $output->writeln("<error>Class $dataObjectClassName not found!<error>");
                     }
 
                 } // if there are an exception, write it in the _error file
                 catch (Exception $e) {
-                    $output->writeln("<error>Error found for item $index {$item["sku"]} for file $fileName</error>");
+                    $output->writeln("<error>Error found for item $index {$codeOrSku} for file $fileName</error>");
                     $item[] = "{$e->getMessage()}, line {$e->getLine()}";
                     $filesystem->appendToFile("$archiveLocalPath/$year/$now/{$dataObjectClassName}_{$timestamp}_error.csv", implode(';', $item) . "\r\n");
 

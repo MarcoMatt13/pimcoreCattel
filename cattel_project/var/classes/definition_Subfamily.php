@@ -6,6 +6,7 @@
  *
  * Fields Summary:
  * - code [input]
+ * - title [input]
  * - description [input]
  * - inverseRelation [reverseObjectRelation]
  * - image [image]
@@ -16,7 +17,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'SubFamily',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1666882886,
+   'modificationDate' => 1666885962,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -113,6 +114,37 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             ),
              'unique' => false,
              'showCharCount' => false,
+             'name' => 'title',
+             'title' => 'Title',
+             'tooltip' => '',
+             'mandatory' => false,
+             'noteditable' => false,
+             'index' => false,
+             'locked' => NULL,
+             'style' => '',
+             'permissions' => NULL,
+             'datatype' => 'data',
+             'relationType' => false,
+             'invisible' => false,
+             'visibleGridView' => false,
+             'visibleSearch' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'defaultValueGenerator' => '',
+          )),
+          2 => 
+          Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+             'fieldtype' => 'input',
+             'width' => '',
+             'defaultValue' => NULL,
+             'columnLength' => 190,
+             'regex' => '',
+             'regexFlags' => 
+            array (
+            ),
+             'unique' => false,
+             'showCharCount' => false,
              'name' => 'description',
              'title' => 'Description',
              'tooltip' => '',
@@ -132,7 +164,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             ),
              'defaultValueGenerator' => '',
           )),
-          2 => 
+          3 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\ReverseObjectRelation::__set_state(array(
              'fieldtype' => 'reverseObjectRelation',
              'ownerClassName' => 'Product',
@@ -171,7 +203,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
             array (
             ),
           )),
-          3 => 
+          4 => 
           Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
              'fieldtype' => 'image',
              'name' => 'image',

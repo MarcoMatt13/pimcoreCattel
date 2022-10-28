@@ -54,7 +54,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Product',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1666881880,
+   'modificationDate' => 1666961945,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -585,7 +585,34 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'labelWidth' => 0,
                  'labelAlign' => 'left',
               )),
-              1 => 
+            ),
+             'locked' => false,
+             'blockedVarsForExport' => 
+            array (
+            ),
+             'icon' => '',
+             'labelWidth' => 0,
+             'labelAlign' => 'left',
+          )),
+          1 => 
+          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+             'fieldtype' => 'panel',
+             'layout' => NULL,
+             'border' => false,
+             'name' => 'Relations',
+             'type' => NULL,
+             'region' => NULL,
+             'title' => 'Relazioni',
+             'width' => '',
+             'height' => '',
+             'collapsible' => false,
+             'collapsed' => false,
+             'bodyStyle' => '',
+             'datatype' => 'layout',
+             'permissions' => NULL,
+             'children' => 
+            array (
+              0 => 
               Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
                  'fieldtype' => 'fieldset',
                  'name' => 'Relations',
@@ -624,7 +651,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                     ),
                      'pathFormatterClass' => '',
                      'name' => 'sector',
-                     'title' => 'Sector',
+                     'title' => 'Settore',
                      'tooltip' => '',
                      'mandatory' => false,
                      'noteditable' => false,
@@ -663,7 +690,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                     ),
                      'pathFormatterClass' => '',
                      'name' => 'family',
-                     'title' => 'Family',
+                     'title' => 'Famiglia',
                      'tooltip' => '',
                      'mandatory' => false,
                      'noteditable' => false,
@@ -702,7 +729,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                     ),
                      'pathFormatterClass' => '',
                      'name' => 'subFamily',
-                     'title' => 'SubFamily',
+                     'title' => 'SuttoFamiglia',
                      'tooltip' => '',
                      'mandatory' => false,
                      'noteditable' => false,
@@ -735,7 +762,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
-          1 => 
+          2 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'fieldtype' => 'panel',
              'layout' => NULL,
@@ -1260,7 +1287,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
-          2 => 
+          3 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'fieldtype' => 'panel',
              'layout' => NULL,
@@ -1795,7 +1822,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
-          3 => 
+          4 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'fieldtype' => 'panel',
              'layout' => NULL,
@@ -1849,7 +1876,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
              'labelWidth' => 0,
              'labelAlign' => 'left',
           )),
-          4 => 
+          5 => 
           Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
              'fieldtype' => 'panel',
              'layout' => NULL,
@@ -1953,46 +1980,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'enableGridLocking' => false,
    'deletedDataComponents' => 
   array (
-    0 => 
-    Pimcore\Model\DataObject\ClassDefinition\Data\ManyToManyObjectRelation::__set_state(array(
-       'fieldtype' => 'manyToManyObjectRelation',
-       'width' => '',
-       'height' => '',
-       'maxItems' => 1,
-       'queryColumnType' => 'text',
-       'relationType' => true,
-       'visibleFields' => 'id,name,fullpath',
-       'allowToCreateNewObject' => true,
-       'optimizedAdminLoading' => false,
-       'enableTextSelection' => false,
-       'visibleFieldDefinitions' => 
-      array (
-      ),
-       'classes' => 
-      array (
-        0 => 
-        array (
-          'classes' => 'Subfamily',
-        ),
-      ),
-       'pathFormatterClass' => '',
-       'name' => 'subfamily',
-       'title' => 'Subfamily',
-       'tooltip' => '',
-       'mandatory' => false,
-       'noteditable' => false,
-       'index' => false,
-       'locked' => false,
-       'style' => '',
-       'permissions' => NULL,
-       'datatype' => 'data',
-       'invisible' => false,
-       'visibleGridView' => false,
-       'visibleSearch' => false,
-       'blockedVarsForExport' => 
-      array (
-      ),
-    )),
   ),
    'dao' => NULL,
    'blockedVarsForExport' => 
