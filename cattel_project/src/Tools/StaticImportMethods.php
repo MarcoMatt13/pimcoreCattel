@@ -108,7 +108,12 @@ class StaticImportMethods
         }
 
         // create the objectFolder folder in Pimcore if it does not exist
-        $folderPath = "/$divisionName/{$dataObjectClassName}s";
+        if (in_array($dataObjectClassName, ['Sector', 'Family', 'SubFamily'])) {
+            $folderPath = "/$divisionName/Categories";
+        } else {
+            $folderPath = "/$divisionName/Products";
+        }
+
         $parentFolder = StaticImportMethods::createOrGetFolderByPath($folderPath, $pimcoreFolder->getId());
 
         // start the processing of the files found in the local folder

@@ -108,7 +108,7 @@ class importData extends AbstractCommand
         return false;
     }
 
-    protected function importClassifications($item, $objectClass, $parentFolder): bool
+    protected function importSector($item, $objectClass, $parentFolder): bool
     {
         $trimmedCode = trim($item["code"]);
 
@@ -138,6 +138,76 @@ class importData extends AbstractCommand
         return false;
     }
 
+    protected function importFamily($item, $objectClass): bool
+    {
+        $trimmedCode = trim($item["code"]);
+
+        if (empty($trimmedCode)) {
+            throw new Exception("Mandatory field sku not present!");
+        }
+
+        $parentSector = DataObject\Sector::getByCode($item["sector"])->getData();
+        if (empty($parentSector)) {
+            throw new Exception("Sector non trovato!");
+        }
+
+        // upsert or delete the objects
+        $o = StaticImportMethods::createOrGetObjectByCode($trimmedCode, $objectClass);
+        if (!empty($item["isDelete"]) && $item["isDelete"] == 'true') {
+            $o->delete();
+            return true;
+        }
+
+        $o->setKey($trimmedCode);
+        $o->setCode($trimmedCode);
+        $o->setTitle($item["title"]);
+        $o->setDescription($item["description"]);
+
+        $o->setParentId($parentSector[0]->getId());
+
+        $o->setPublished(true);
+        if ($o->save()) {
+            return true;
+        };
+
+        return false;
+    }
+
+    protected function importSubFamily($item, $objectClass): bool
+    {
+        $trimmedCode = trim($item["code"]);
+
+        if (empty($trimmedCode)) {
+            throw new Exception("Mandatory field sku not present!");
+        }
+
+        $parentFamily = DataObject\Family::getByCode($item["family"])->getData();
+        if (empty($parentFamily)) {
+            throw new Exception("Family non trovata!");
+        }
+
+        // upsert or delete the objects
+        $o = StaticImportMethods::createOrGetObjectByCode($trimmedCode, $objectClass);
+        if (!empty($item["isDelete"]) && $item["isDelete"] == 'true') {
+            $o->delete();
+            return true;
+        }
+
+        $o->setKey($trimmedCode);
+        $o->setCode($trimmedCode);
+        $o->setTitle($item["title"]);
+        $o->setDescription($item["description"]);
+
+        $o->setParentId($parentFamily[0]->getId());
+
+        $o->setPublished(true);
+        if ($o->save()) {
+            return true;
+        };
+
+        return false;
+    }
+
 
     /**
      * @throws Exception
@@ -147,7 +217,10 @@ class importData extends AbstractCommand
     {
         return match ($objectClass) {
             "Product" => $this->importProducts($item, $objectClass, $parentFolder),
-            default => $this->importClassifications($item, $objectClass, $parentFolder),
+            "Sector" => $this->importSector($item, $objectClass, $parentFolder),
+            "Family" => $this->importFamily($item, $objectClass),
+            "SubFamily" => $this->importSubFamily($item, $objectClass),
+
         };
     }
 

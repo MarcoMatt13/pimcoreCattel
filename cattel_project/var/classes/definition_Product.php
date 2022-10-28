@@ -78,7 +78,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Product',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1666966738,
+   'modificationDate' => 1666970954,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -694,7 +694,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'height' => '',
                      'maxItems' => 1,
                      'relationType' => true,
-                     'visibleFields' => 'id,name,fullpath',
+                     'visibleFields' => 'title,id,code',
                      'allowToCreateNewObject' => true,
                      'optimizedAdminLoading' => false,
                      'enableTextSelection' => false,
@@ -733,7 +733,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'height' => '',
                      'maxItems' => 1,
                      'relationType' => true,
-                     'visibleFields' => 'id,name,fullpath',
+                     'visibleFields' => 'id,title,code',
                      'allowToCreateNewObject' => true,
                      'optimizedAdminLoading' => false,
                      'enableTextSelection' => false,
@@ -772,7 +772,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'height' => '',
                      'maxItems' => 1,
                      'relationType' => true,
-                     'visibleFields' => 'id,name,fullpath',
+                     'visibleFields' => 'id,title,code',
                      'allowToCreateNewObject' => true,
                      'optimizedAdminLoading' => false,
                      'enableTextSelection' => false,
@@ -3007,59 +3007,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'enableGridLocking' => false,
    'deletedDataComponents' => 
   array (
-    0 => 
-    Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
-       'fieldtype' => 'objectbricks',
-       'allowedTypes' => 
-      array (
-        0 => 'allergens',
-      ),
-       'maxItems' => 1,
-       'border' => false,
-       'name' => 'allergens',
-       'title' => 'Allergens',
-       'tooltip' => '',
-       'mandatory' => false,
-       'noteditable' => false,
-       'index' => false,
-       'locked' => false,
-       'style' => '',
-       'permissions' => NULL,
-       'datatype' => 'data',
-       'relationType' => false,
-       'invisible' => false,
-       'visibleGridView' => false,
-       'visibleSearch' => false,
-       'blockedVarsForExport' => 
-      array (
-      ),
-    )),
-    1 => 
-    Pimcore\Model\DataObject\ClassDefinition\Data\Objectbricks::__set_state(array(
-       'fieldtype' => 'objectbricks',
-       'allowedTypes' => 
-      array (
-      ),
-       'maxItems' => 1,
-       'border' => false,
-       'name' => 'nutritionalInfo',
-       'title' => 'Nutritional Info',
-       'tooltip' => '',
-       'mandatory' => false,
-       'noteditable' => false,
-       'index' => false,
-       'locked' => false,
-       'style' => '',
-       'permissions' => NULL,
-       'datatype' => 'data',
-       'relationType' => false,
-       'invisible' => false,
-       'visibleGridView' => false,
-       'visibleSearch' => false,
-       'blockedVarsForExport' => 
-      array (
-      ),
-    )),
   ),
    'dao' => NULL,
    'blockedVarsForExport' => 
