@@ -71,25 +71,6 @@ class StaticImportMethods
         return $arrayFiles;
     }
 
-    public static function setManyToOneRelation($objectClass, $item, $o)
-    {
-        $stringClass = "Pimcore\Model\DataObject\\" . $objectClass;
-        $dataObject = $stringClass::getByCode($item["$objectClass"]);
-        if (strpos($item["$objectClass"], "|")) {
-            throw new Exception("Invalid value for this field! Many-to-One relation, only one element is allowed");
-        }
-
-        $stringMethod = "set" . $objectClass;
-        if (!empty($dataObject->count())) {
-            foreach ($dataObject->load() as $dataObject) {
-                $o->$stringMethod($dataObject);
-            }
-        } else {
-            $o->$stringMethod(null);
-
-        }
-        return $o;
-    }
 
     private static function writeCSVerrorAndSuccessFilesFullMethod($archiveLocalPath, $pimcoreFolder, $now, $dataObjectClassName,
                                                                    $divisionName, $inputLocalPath, $output): void

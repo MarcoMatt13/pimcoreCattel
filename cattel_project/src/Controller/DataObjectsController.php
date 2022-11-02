@@ -12,6 +12,7 @@ use Pimcore\Model\DataObject\Product;
 use Pimcore\Model\DataObject\Product\Listing;
 use Pimcore\Model\DataObject\Sector;
 use Pimcore\Model\DataObject\SubFamily;
+use Pimcore\Model\Element\ValidationException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -148,8 +149,12 @@ class DataObjectsController
                 $product->setItemsInPackage($singleProduct->itemsInPackage);
                 $product->setPackageType($singleProduct->packageType);
                 $product->setSellingUnit($singleProduct->sellingUnit);
-                $product->setUnitWeight($singleProduct->unitWeight);
-                $product->setProductDrainedWeight($singleProduct->productDrainedWeight);
+                preg_match_all('!\d+\.*\d*!', $singleProduct->unitWeight, $unitWeightMatches);
+                $product->setUnitWeight(new DataObject\Data\QuantityValue($unitWeightMatches[0][0] ?? null, "Kg"));
+
+                preg_match_all('!\d+\.*\d*!', $singleProduct->productDrainedWeight, $drainedWeightMatches);
+                $product->setProductDrainedWeight(new DataObject\Data\QuantityValue($drainedWeightMatches[0][0] ?? null, "Kg"));
+
                 $product->setProductSizesJGalileo($singleProduct->productSizesJGalileo);
                 $product->setProductSizes($singleProduct->productSizes);
                 $product->setParentId(Folder::getByPath("/Data/Products")->getId());
@@ -176,7 +181,7 @@ class DataObjectsController
                 };
                 $product->save();
 
-            } catch (\TypeError $e) {
+            } catch (\TypeError | Exception | ValidationException $e) {
                 $responseArray["records"][$index]["sku"] = $singleProduct->sku;
                 $responseArray["records"][$index]["success"] = false;
                 $responseArray["records"][$index]["message"] = "ERRORE - Messaggio: {$e->getMessage()}";
