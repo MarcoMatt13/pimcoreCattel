@@ -131,8 +131,7 @@ class DataObjectsController
             $product = StaticImportMethods::createOrGetProductBySku($singleProduct->sku);
             Product::setHideUnpublished($backup);
 
-            if (empty($product->getId()) && $singleProduct->isDeleted === true) {
-
+            try {
                 $product->setName($singleProduct->name);
                 $product->setKey($singleProduct->sku);
                 $product->setSku($singleProduct->sku);
@@ -153,63 +152,36 @@ class DataObjectsController
                 $product->setProductDrainedWeight($singleProduct->productDrainedWeight);
                 $product->setProductSizesJGalileo($singleProduct->productSizesJGalileo);
                 $product->setProductSizes($singleProduct->productSizes);
-
                 $product->setParentId(Folder::getByPath("/Data/Products")->getId());
-                $product->setPublished(false);
-                $product->save();
+                $product->setPublished(true);
 
-                $responseArray["records"][$index]["sku"] = $singleProduct->sku;
-                $responseArray["records"][$index]["success"] = true;
-                $responseArray["records"][$index]["message"] = "Prodotto creato come non pubblico";
+                if (empty($product->getId()) && $singleProduct->isDeleted === true) {
+                    $product->setPublished(false);
 
+                    $responseArray["records"][$index]["sku"] = $singleProduct->sku;
+                    $responseArray["records"][$index]["success"] = true;
+                    $responseArray["records"][$index]["message"] = "Prodotto creato come non pubblico";
 
-            } elseif (!empty($product->getId()) && $singleProduct->isDeleted === true) {
+                } elseif (!empty($product->getId()) && $singleProduct->isDeleted === true) {
+                    $product->setPublished(false);
 
-                $product->setPublished(false);
-                $product->save();
-                $responseArray["records"][$index]["sku"] = $singleProduct->sku;
-                $responseArray["records"][$index]["success"] = true;
-                $responseArray["records"][$index]["message"] = "Prodotto de-listato";
-
-            } else {
-
-                try {
-                    $product->setName($singleProduct->name);
-                    $product->setKey($singleProduct->sku);
-                    $product->setSku($singleProduct->sku);
-                    $product->setSector(Sector::getByCode($singleProduct->sector)->getData());
-                    $product->setFamily(Family::getByCode($singleProduct->family)->getData());
-                    $product->setSubFamily(SubFamily::getByCode($singleProduct->subFamily)->getData());
-                    $product->setBrand($singleProduct->brand);
-                    $product->setBrandCattel($singleProduct->brandCattel);
-                    $product->setAttributesJGalileo($singleProduct->attributesJGalileo);
-                    $product->setShelfLife($singleProduct->shelfLife);
-                    $product->setUnityOfMeasure($singleProduct->unityOfMeasure);
-                    $product->setAlcoholContent($singleProduct->alcoholContent);
-                    $product->setPreservationMode($singleProduct->preservationMode);
-                    $product->setItemsInPackage($singleProduct->itemsInPackage);
-                    $product->setPackageType($singleProduct->packageType);
-                    $product->setSellingUnit($singleProduct->sellingUnit);
-                    $product->setUnitWeight($singleProduct->unitWeight);
-                    $product->setProductDrainedWeight($singleProduct->productDrainedWeight);
-                    $product->setProductSizesJGalileo($singleProduct->productSizesJGalileo);
-                    $product->setProductSizes($singleProduct->productSizes);
-
-                    $product->setParentId(Folder::getByPath("/Data/Products")->getId());
-                    $product->setPublished(true);
-                    $product->save();
+                    $responseArray["records"][$index]["sku"] = $singleProduct->sku;
+                    $responseArray["records"][$index]["success"] = true;
+                    $responseArray["records"][$index]["message"] = "Prodotto de-listato";
+                } else {
 
                     $responseArray["records"][$index]["sku"] = $singleProduct->sku;
                     $responseArray["records"][$index]["success"] = true;
                     $responseArray["records"][$index]["message"] = "Prodotto inserito o aggiornato";
+                };
+                $product->save();
 
-                } catch (\TypeError $e) {
-                    $responseArray["records"][$index]["sku"] = $singleProduct->sku;
-                    $responseArray["records"][$index]["success"] = false;
-                    $responseArray["records"][$index]["message"] = "ERRORE - Messaggio: {$e->getMessage()}";
-                }
-
+            } catch (\TypeError $e) {
+                $responseArray["records"][$index]["sku"] = $singleProduct->sku;
+                $responseArray["records"][$index]["success"] = false;
+                $responseArray["records"][$index]["message"] = "ERRORE - Messaggio: {$e->getMessage()}";
             }
+
         }
 
         $response->setContent(json_encode($responseArray));
@@ -244,40 +216,35 @@ class DataObjectsController
             $sector = StaticImportMethods::createOrGetObjectByCode($singleSector->code, 'Sector');
             Sector::setHideUnpublished($backup);
 
-            if (empty($sector->getId()) && ($singleSector->isDeleted === true)) {
-
+            try {
                 $sector->setCode($singleSector->code);
                 $sector->setKey($singleSector->code);
                 $sector->setTitle($singleSector->title);
                 $sector->setDescription($singleSector->description);
                 $sector->setParentId(Folder::getByPath("/Data/Categories")->getId());
                 $sector->setPublished(true);
+
+                if (empty($sector->getId()) && ($singleSector->isDeleted === true)) {
+                    $sector->setPublished(false);
+                    $responseArray["records"][$index]["code"] = $singleSector->code;
+                    $responseArray["records"][$index]["success"] = true;
+                    $responseArray["records"][$index]["message"] = "Settore creato come non pubblicato";
+
+                } elseif (!empty($sector->getId()) && ($singleSector->isDeleted === true)) {
+                    $responseArray["records"][$index]["code"] = $singleSector->code;
+                    $responseArray["records"][$index]["success"] = true;
+                    $responseArray["records"][$index]["message"] = "Settore de-listato";
+                } else {
+                    $responseArray["records"][$index]["code"] = $singleSector->code;
+                    $responseArray["records"][$index]["success"] = true;
+                    $responseArray["records"][$index]["message"] = "Settore inserito o aggiornato";
+                }
                 $sector->save();
 
+            } catch (\TypeError $e) {
                 $responseArray["records"][$index]["code"] = $singleSector->code;
-                $responseArray["records"][$index]["success"] = true;
-                $responseArray["records"][$index]["message"] = "Settore creato come non pubblicato";
-
-            } elseif (!empty($sector->getId()) && ($singleSector->isDeleted === true)) {
-
-                $sector->setPublished(false);
-                $sector->save();
-                $responseArray["records"][$index]["code"] = $singleSector->code;
-                $responseArray["records"][$index]["success"] = true;
-                $responseArray["records"][$index]["message"] = "Settore de-listato";
-
-            } elseif ($singleSector->isDeleted === false || $sector->getPublished() === false) {
-                $sector->setCode($singleSector->code);
-                $sector->setKey($singleSector->code);
-                $sector->setTitle($singleSector->title);
-                $sector->setDescription($singleSector->description);
-                $sector->setParentId(Folder::getByPath("/Data/Categories")->getId());
-                $sector->setPublished(true);
-                $sector->save();
-
-                $responseArray["records"][$index]["code"] = $singleSector->code;
-                $responseArray["records"][$index]["success"] = true;
-                $responseArray["records"][$index]["message"] = "Settore inserito o aggiornato";
+                $responseArray["records"][$index]["success"] = false;
+                $responseArray["records"][$index]["message"] = "ERRORE - Messaggio: {$e->getMessage()}";
             }
         }
 
@@ -311,21 +278,35 @@ class DataObjectsController
                 }
             }
 
+            $backup = Family::doHideUnpublished();
+            Family::setHideUnpublished(false);
             $family = StaticImportMethods::createOrGetObjectByCode($singleFamily->code, 'Family');
+            Family::setHideUnpublished($backup);
+
             $parentSector = Sector::getByCode($singleFamily->sector)->getData();
 
             if (empty($family->getId()) && $singleFamily->isDeleted === true) {
-                $singleFamily = (object)array_merge(array('message' => 'Non è possibile eliminare una famiglia non esistente!'), (array)$singleFamily);
-                $responseArray[] = $singleFamily;
+
+                $responseArray["records"][$index]["code"] = $singleFamily->code;
+                $responseArray["records"][$index]["success"] = true;
+                $responseArray["records"][$index]["message"] = "Non è possibile eliminare una famiglia non esistente!";
 
             } elseif (!empty($family->getId()) && $singleFamily->isDeleted === true) {
-                $singleFamily = (object)array_merge(array('message' => 'Famiglia eliminata!'), (array)$singleFamily);
-                $responseArray[] = $singleFamily;
-                $family->delete();
+
+                $family->setCode($singleFamily->code);
+                $family->setKey($singleFamily->code);
+                $family->setTitle($singleFamily->title);
+                $family->setDescription($singleFamily->description);
+                $family->setParentId($parentSector[0]->getId());
+
+                $responseArray["records"][$index]["code"] = $singleFamily->code;
+                $responseArray["records"][$index]["success"] = true;
+                $responseArray["records"][$index]["message"] = "Famiglia de-listata!";
 
             } elseif (empty($parentSector)) {
-                $singleFamily = (object)array_merge(array('message' => 'Settore non esistente! Impossibile aggiungere la famiglia!'), (array)$singleFamily);
-                $responseArray[] = $singleFamily;
+                $responseArray["records"][$index]["code"] = $singleFamily->code;
+                $responseArray["records"][$index]["success"] = false;
+                $responseArray["records"][$index]["message"] = "Settore non esistente! Impossibile aggiungere la famiglia!!";
 
             } elseif ($singleFamily->isDeleted === false) {
 
@@ -339,8 +320,10 @@ class DataObjectsController
 
                 $family->save();
 
-                $singleFamily = (object)array_merge(array('message' => 'Famiglia inserita o aggiornata!'), (array)$singleFamily);
-                $responseArray[] = $singleFamily;
+                $responseArray["records"][$index]["code"] = $singleFamily->code;
+                $responseArray["records"][$index]["success"] = true;
+                $responseArray["records"][$index]["message"] = "Famiglia inserita o aggiornata!";
+
             }
         }
 
@@ -375,21 +358,39 @@ class DataObjectsController
                 }
             }
 
+            $backup = SubFamily::doHideUnpublished();
+            SubFamily::setHideUnpublished(false);
             $subFamily = StaticImportMethods::createOrGetObjectByCode($singleSubFamily->code, 'SubFamily');
+            SubFamily::setHideUnpublished($backup);
+
             $parentFamily = Family::getByCode($singleSubFamily->family)->getData();
 
             if (empty($subFamily->getId()) && $singleSubFamily->isDeleted === true) {
-                $singleSubFamily = (object)array_merge(array('message' => 'Non è possibile eliminare una sottofamiglia non esistente!'), (array)$singleSubFamily);
-                $responseArray[] = $singleSubFamily;
+
+                $responseArray["records"][$index]["code"] = $singleSubFamily->code;
+                $responseArray["records"][$index]["success"] = false;
+                $responseArray["records"][$index]["message"] = "Non è possibile eliminare una sottofamiglia non esistente!";
 
             } elseif (!empty($subFamily->getId()) && $singleSubFamily->isDeleted === true) {
-                $singleSubFamily = (object)array_merge(array('message' => 'Sottofamiglia eliminata!'), (array)$singleSubFamily);
-                $responseArray[] = $singleSubFamily;
-                $subFamily->delete();
+
+                $responseArray["records"][$index]["code"] = $singleSubFamily->code;
+                $responseArray["records"][$index]["success"] = true;
+                $responseArray["records"][$index]["message"] = "Sottofamiglia de-listata!";
+
+                $subFamily->setCode($singleSubFamily->code);
+                $subFamily->setKey($singleSubFamily->code);
+                $subFamily->setTitle($singleSubFamily->title);
+                $subFamily->setDescription($singleSubFamily->description);
+
+                $subFamily->setParentId($parentFamily->getId());
+                $subFamily->setPublished(false);
 
             } elseif (empty($parentFamily)) {
-                $singleSubFamily = (object)array_merge(array('message' => 'Famiglia non esistente! Impossibile aggiungere la sottofamiglia!'), (array)$singleSubFamily);
-                $responseArray[] = $singleSubFamily;
+
+                $responseArray["records"][$index]["code"] = $singleSubFamily->code;
+                $responseArray["records"][$index]["success"] = false;
+                $responseArray["records"][$index]["message"] = "Famiglia non esistente! Impossibile aggiungere la sottofamiglia!";
+
 
             } elseif ($singleSubFamily->isDeleted === false) {
 
@@ -403,6 +404,10 @@ class DataObjectsController
                 $subFamily->setPublished(true);
 
                 $subFamily->save();
+
+                $responseArray["records"][$index]["code"] = $singleSubFamily->code;
+                $responseArray["records"][$index]["success"] = true;
+                $responseArray["records"][$index]["message"] = "Famiglia inserita o aggiornata!";
             }
         }
 
@@ -410,7 +415,7 @@ class DataObjectsController
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
-        $response->setContent("ciao");
+        $response->setContent(json_encode($responseArray));
         return $response;
     }
 
