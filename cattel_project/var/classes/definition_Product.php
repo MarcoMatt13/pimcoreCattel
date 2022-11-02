@@ -38,7 +38,7 @@
  * - preservationMode [select]
  * - itemsInPackage [numeric]
  * - packageType [select]
- * - sellingUnit [numeric]
+ * - sellingUnit [select]
  * - unitWeight [numeric]
  * - productDrainedWeight [numeric]
  * - productSizesJGalileo [textarea]
@@ -79,7 +79,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Product',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1667382195,
+   'modificationDate' => 1667386378,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -1522,7 +1522,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                 ),
                  'width' => '',
                  'defaultValue' => NULL,
-                 'integer' => false,
+                 'integer' => true,
                  'unsigned' => false,
                  'minValue' => NULL,
                  'maxValue' => NULL,
@@ -1583,18 +1583,18 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'defaultValueGenerator' => '',
               )),
               5 => 
-              Pimcore\Model\DataObject\ClassDefinition\Data\Numeric::__set_state(array(
+              Pimcore\Model\DataObject\ClassDefinition\Data\Select::__set_state(array(
                  'name' => 'sellingUnit',
                  'title' => 'Unità di vendita',
                  'tooltip' => 'JGalileo',
                  'mandatory' => false,
                  'noteditable' => true,
                  'index' => false,
-                 'locked' => false,
+                 'locked' => NULL,
                  'style' => '',
                  'permissions' => NULL,
                  'datatype' => 'data',
-                 'fieldtype' => 'numeric',
+                 'fieldtype' => 'select',
                  'relationType' => false,
                  'invisible' => false,
                  'visibleGridView' => false,
@@ -1602,15 +1602,25 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'blockedVarsForExport' => 
                 array (
                 ),
+                 'options' => 
+                array (
+                  0 => 
+                  array (
+                    'key' => 'C',
+                    'value' => 'solo cartone',
+                  ),
+                  1 => 
+                  array (
+                    'key' => 'P',
+                    'value' => 'pezzo o cartone',
+                  ),
+                ),
                  'width' => '',
-                 'defaultValue' => NULL,
-                 'integer' => false,
-                 'unsigned' => false,
-                 'minValue' => NULL,
-                 'maxValue' => NULL,
-                 'unique' => false,
-                 'decimalSize' => NULL,
-                 'decimalPrecision' => NULL,
+                 'defaultValue' => '',
+                 'optionsProviderClass' => '',
+                 'optionsProviderData' => '',
+                 'columnLength' => 190,
+                 'dynamicOptions' => false,
                  'defaultValueGenerator' => '',
               )),
               6 => 

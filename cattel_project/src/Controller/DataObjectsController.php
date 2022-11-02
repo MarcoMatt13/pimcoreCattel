@@ -4,8 +4,11 @@
 namespace App\Controller;
 
 use App\Tools\StaticImportMethods;
+use Exception;
+use Pimcore\Model\DataObject;
 use Pimcore\Model\DataObject\Family;
 use Pimcore\Model\DataObject\Folder;
+use Pimcore\Model\DataObject\Product;
 use Pimcore\Model\DataObject\Product\Listing;
 use Pimcore\Model\DataObject\Sector;
 use Pimcore\Model\DataObject\SubFamily;
@@ -105,6 +108,7 @@ class DataObjectsController
         $arrayProducts = json_decode($request->getContent());
 
         $responseArray = array();
+
         foreach ($arrayProducts as $index => $singleProduct) {
 
             $arrayFields = ["sku", "name", "sector", "family", "subFamily", "brand", "brandCattel", "attributesJGalileo", "shelfLife", "unityOfMeasure",
@@ -116,20 +120,18 @@ class DataObjectsController
                     $response->setStatusCode(500);
                     throw new \Exception("Campo $field mancante nel prodotto in posizione $index!");
                 }
+                if (empty($singleProduct->sku)) {
+                    $response->setStatusCode(500);
+                    throw new \Exception("Campo obbligatorio SKU vuoto nel prodotto in posizione $index!");
+                }
             }
 
+            $backup = Product::doHideUnpublished();
+            Product::setHideUnpublished(false);
             $product = StaticImportMethods::createOrGetProductBySku($singleProduct->sku);
+            Product::setHideUnpublished($backup);
+
             if (empty($product->getId()) && $singleProduct->isDeleted === true) {
-
-                $singleProduct = (object)array_merge(array('message' => 'Non è possibile eliminare un prodotto non esistente!'), (array)$singleProduct);
-                $responseArray[] = $singleProduct;
-
-            } elseif (!empty($product->getId()) && $singleProduct->isDeleted === true) {
-                $product->delete();
-                $singleProduct = (object)array_merge(array('message' => 'Prodotto eliminato'), (array)$singleProduct);
-                $responseArray[] = $singleProduct;
-
-            } elseif ($singleProduct->isDeleted === false) {
 
                 $product->setName($singleProduct->name);
                 $product->setKey($singleProduct->sku);
@@ -139,12 +141,74 @@ class DataObjectsController
                 $product->setSubFamily(SubFamily::getByCode($singleProduct->subFamily)->getData());
                 $product->setBrand($singleProduct->brand);
                 $product->setBrandCattel($singleProduct->brandCattel);
+                $product->setAttributesJGalileo($singleProduct->attributesJGalileo);
+                $product->setShelfLife($singleProduct->shelfLife);
+                $product->setUnityOfMeasure($singleProduct->unityOfMeasure);
+                $product->setAlcoholContent($singleProduct->alcoholContent);
+                $product->setPreservationMode($singleProduct->preservationMode);
+                $product->setItemsInPackage($singleProduct->itemsInPackage);
+                $product->setPackageType($singleProduct->packageType);
+                $product->setSellingUnit($singleProduct->sellingUnit);
+                $product->setUnitWeight($singleProduct->unitWeight);
+                $product->setProductDrainedWeight($singleProduct->productDrainedWeight);
+                $product->setProductSizesJGalileo($singleProduct->productSizesJGalileo);
+                $product->setProductSizes($singleProduct->productSizes);
+
                 $product->setParentId(Folder::getByPath("/Data/Products")->getId());
-                $product->setPublished(true);
+                $product->setPublished(false);
                 $product->save();
 
-                $singleProduct = (object)array_merge(array('message' => 'Prodotto inserito o aggiornato!'), (array)$singleProduct);
-                $responseArray[] = $singleProduct;
+                $responseArray["records"][$index]["sku"] = $singleProduct->sku;
+                $responseArray["records"][$index]["success"] = true;
+                $responseArray["records"][$index]["message"] = "Prodotto creato come non pubblico";
+
+
+            } elseif (!empty($product->getId()) && $singleProduct->isDeleted === true) {
+
+                $product->setPublished(false);
+                $product->save();
+                $responseArray["records"][$index]["sku"] = $singleProduct->sku;
+                $responseArray["records"][$index]["success"] = true;
+                $responseArray["records"][$index]["message"] = "Prodotto de-listato";
+
+            } else {
+
+                try {
+                    $product->setName($singleProduct->name);
+                    $product->setKey($singleProduct->sku);
+                    $product->setSku($singleProduct->sku);
+                    $product->setSector(Sector::getByCode($singleProduct->sector)->getData());
+                    $product->setFamily(Family::getByCode($singleProduct->family)->getData());
+                    $product->setSubFamily(SubFamily::getByCode($singleProduct->subFamily)->getData());
+                    $product->setBrand($singleProduct->brand);
+                    $product->setBrandCattel($singleProduct->brandCattel);
+                    $product->setAttributesJGalileo($singleProduct->attributesJGalileo);
+                    $product->setShelfLife($singleProduct->shelfLife);
+                    $product->setUnityOfMeasure($singleProduct->unityOfMeasure);
+                    $product->setAlcoholContent($singleProduct->alcoholContent);
+                    $product->setPreservationMode($singleProduct->preservationMode);
+                    $product->setItemsInPackage($singleProduct->itemsInPackage);
+                    $product->setPackageType($singleProduct->packageType);
+                    $product->setSellingUnit($singleProduct->sellingUnit);
+                    $product->setUnitWeight($singleProduct->unitWeight);
+                    $product->setProductDrainedWeight($singleProduct->productDrainedWeight);
+                    $product->setProductSizesJGalileo($singleProduct->productSizesJGalileo);
+                    $product->setProductSizes($singleProduct->productSizes);
+
+                    $product->setParentId(Folder::getByPath("/Data/Products")->getId());
+                    $product->setPublished(true);
+                    $product->save();
+
+                    $responseArray["records"][$index]["sku"] = $singleProduct->sku;
+                    $responseArray["records"][$index]["success"] = true;
+                    $responseArray["records"][$index]["message"] = "Prodotto inserito o aggiornato";
+
+                } catch (\TypeError $e) {
+                    $responseArray["records"][$index]["sku"] = $singleProduct->sku;
+                    $responseArray["records"][$index]["success"] = false;
+                    $responseArray["records"][$index]["message"] = "ERRORE - Messaggio: {$e->getMessage()}";
+                }
+
             }
         }
 
@@ -175,18 +239,13 @@ class DataObjectsController
                 }
             }
 
-
+            $backup = Sector::doHideUnpublished();
+            Sector::setHideUnpublished(false);
             $sector = StaticImportMethods::createOrGetObjectByCode($singleSector->code, 'Sector');
-            if (empty($sector->getId()) && $singleSector->isDeleted === true) {
-                $singleSector = (object)array_merge(array('message' => 'Non è possibile eliminare un settore non esistente!'), (array)$singleSector);
-                $responseArray[] = $singleSector;
+            Sector::setHideUnpublished($backup);
 
-            } elseif (!empty($sector->getId()) && $singleSector->isDeleted === true) {
-                $singleSector = (object)array_merge(array('message' => 'Settore inserito o aggiornato!'), (array)$singleSector);
-                $responseArray[] = $singleSector;
-                $sector->delete();
+            if (empty($sector->getId()) && ($singleSector->isDeleted === true)) {
 
-            } elseif ($singleSector->isDeleted === false) {
                 $sector->setCode($singleSector->code);
                 $sector->setKey($singleSector->code);
                 $sector->setTitle($singleSector->title);
@@ -195,8 +254,30 @@ class DataObjectsController
                 $sector->setPublished(true);
                 $sector->save();
 
-                $singleSector = (object)array_merge(array('message' => 'Settore inserito o aggiornato!'), (array)$singleSector);
-                $responseArray[] = $singleSector;
+                $responseArray["records"][$index]["code"] = $singleSector->code;
+                $responseArray["records"][$index]["success"] = true;
+                $responseArray["records"][$index]["message"] = "Settore creato come non pubblicato";
+
+            } elseif (!empty($sector->getId()) && ($singleSector->isDeleted === true)) {
+
+                $sector->setPublished(false);
+                $sector->save();
+                $responseArray["records"][$index]["code"] = $singleSector->code;
+                $responseArray["records"][$index]["success"] = true;
+                $responseArray["records"][$index]["message"] = "Settore de-listato";
+
+            } elseif ($singleSector->isDeleted === false || $sector->getPublished() === false) {
+                $sector->setCode($singleSector->code);
+                $sector->setKey($singleSector->code);
+                $sector->setTitle($singleSector->title);
+                $sector->setDescription($singleSector->description);
+                $sector->setParentId(Folder::getByPath("/Data/Categories")->getId());
+                $sector->setPublished(true);
+                $sector->save();
+
+                $responseArray["records"][$index]["code"] = $singleSector->code;
+                $responseArray["records"][$index]["success"] = true;
+                $responseArray["records"][$index]["message"] = "Settore inserito o aggiornato";
             }
         }
 
