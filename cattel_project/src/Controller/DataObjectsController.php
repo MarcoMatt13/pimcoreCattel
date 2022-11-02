@@ -16,8 +16,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Pimcore\Config;
 use Pimcore\Db;
 use function Sabre\Event\Promise\all;
+use function Symfony\Component\String\s;
 
-class ProductsAPIController
+class DataObjectsController
 {
     /**
      * @Route("/get/product", name="getProducts", methods={"GET"});
@@ -63,6 +64,33 @@ class ProductsAPIController
     }
 
     /**
+     * @Route("/get/family", name="getFamilies", methods={"GET"});
+     * @return Response
+     */
+    public function getFamilies(): Response
+    {
+
+        $allFamilies = new Family\Listing();
+        $jsonResponseProducts = array();
+
+        foreach ($allFamilies as $singleFamily) {
+            $jsonResponseProducts[] = [
+                "code" => $singleFamily->getCode(),
+                "name" => $singleFamily->getTitle(),
+                "sector" => $singleFamily->getChildren() ? $singleFamily->getChildren()[0]->getPath() : "",
+
+            ];
+        }
+
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent(json_encode($jsonResponseProducts));
+        return $response;
+    }
+
+    /**
      * @Route("/upsert/product", name="upsertProducts", methods={"POST"});
      * @return Response
      * @throws \Exception
@@ -80,13 +108,15 @@ class ProductsAPIController
         foreach ($arrayProducts as $singleProduct) {
             $product = StaticImportMethods::createOrGetProductBySku($singleProduct->sku);
             if (empty($product->getId()) && $singleProduct->isDeleted === true) {
-                $responseArray[] = "Impossibile eliminare un prodotto non esistente!";
 
-                //throw new \Exception("Non è possibile eliminare un prodotto non esistente");
+                $singleProduct = (object)array_merge(array('message' => 'Non è possibile eliminare un prodotto non esistente'), (array)$singleProduct);
+                $responseArray[] = $singleProduct;
+
             } elseif (!empty($product->getId()) && $singleProduct->isDeleted === true) {
-                $responseArray[] = "Prodotto eliminato!";
-
                 $product->delete();
+                $singleProduct = (object)array_merge(array('message' => 'Prodotto eliminato'), (array)$singleProduct);
+                $responseArray[] = $singleProduct;
+
             } elseif ($singleProduct->isDeleted === false) {
 
                 $product->setName($singleProduct->name);
@@ -101,8 +131,8 @@ class ProductsAPIController
                 $product->setPublished(true);
                 $product->save();
 
-                $responseArray[] = "Created product";
-
+                $singleProduct = (object)array_merge(array('message' => 'Prodotto inserito o aggiornato!'), (array)$singleProduct);
+                $responseArray[] = $singleProduct;
             }
         }
 
@@ -120,22 +150,29 @@ class ProductsAPIController
 
         $arraySectors = json_decode($request->getContent());
 
+        $responseArray = array();
         foreach ($arraySectors as $singleSector) {
-            $product = StaticImportMethods::createOrGetObjectByCode($singleSector->code, 'Sector');
-            if (empty($product->getId()) && $singleSector->isDeleted === true) {
-                continue;
-                //throw new \Exception("Non è possibile eliminare un prodotto non esistente");
-            } elseif (!empty($product->getId()) && $singleSector->isDeleted === true) {
-                $product->delete();
-            } elseif ($singleSector->isDeleted === false) {
+            $sector = StaticImportMethods::createOrGetObjectByCode($singleSector->code, 'Sector');
+            if (empty($sector->getId()) && $singleSector->isDeleted === true) {
+                $singleSector->message = "Settore inserito!";
+                $responseArray[] = $singleSector;
 
-                $product->setCode($singleSector->code);
-                $product->setKey($singleSector->code);
-                $product->setTitle($singleSector->title);
-                $product->setDescription($singleSector->description);
-                $product->setParentId(Folder::getByPath("/Data/Categories")->getId());
-                $product->setPublished(true);
-                $product->save();
+            } elseif (!empty($sector->getId()) && $singleSector->isDeleted === true) {
+                $singleSector->message = "Settore eliminato!";
+                $responseArray[] = $singleSector;
+                $sector->delete();
+
+            } elseif ($singleSector->isDeleted === false) {
+                $sector->setCode($singleSector->code);
+                $sector->setKey($singleSector->code);
+                $sector->setTitle($singleSector->title);
+                $sector->setDescription($singleSector->description);
+                $sector->setParentId(Folder::getByPath("/Data/Categories")->getId());
+                $sector->setPublished(true);
+                $sector->save();
+
+                $singleSector->message = "Settore inserito!";
+                $responseArray[] = $singleSector;
             }
         }
 
@@ -143,7 +180,7 @@ class ProductsAPIController
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
-        $response->setContent("ciao");
+        $response->setContent(json_encode($responseArray));
         return $response;
     }
 
@@ -157,26 +194,33 @@ class ProductsAPIController
 
         $arrayFamilies = json_decode($request->getContent());
 
+        $responseArray = array();
         foreach ($arrayFamilies as $singleFamily) {
-            $product = StaticImportMethods::createOrGetObjectByCode($singleFamily->code, 'Family');
-            if (empty($product->getId()) && $singleFamily->isDeleted === true) {
-                continue;
-                //throw new \Exception("Non è possibile eliminare un prodotto non esistente");
-            } elseif (!empty($product->getId()) && $singleFamily->isDeleted === true) {
-                $product->delete();
+            $family = StaticImportMethods::createOrGetObjectByCode($singleFamily->code, 'Family');
+            $parentSector = Sector::getByCode($singleFamily->sector)->getData();
+
+            if (empty($family->getId()) && $singleFamily->isDeleted === true) {
+                $singleFamily->message = "Prodotto inserito!";
+                $responseArray[] = $singleFamily;
+
+            } elseif (!empty($family->getId()) && $singleFamily->isDeleted === true) {
+                $family->delete();
+
+            } elseif (empty($parentSector)) {
+                $responseArray["message"] = "Settore non esistente! Impossibile aggiungere la famiglia!";
+                $responseArray[] = $singleFamily;
+
             } elseif ($singleFamily->isDeleted === false) {
 
-                $product->setCode($singleFamily->code);
-                $product->setKey($singleFamily->code);
-                $product->setTitle($singleFamily->title);
-                $product->setDescription($singleFamily->description);
+                $family->setCode($singleFamily->code);
+                $family->setKey($singleFamily->code);
+                $family->setTitle($singleFamily->title);
+                $family->setDescription($singleFamily->description);
 
-                $parentSector = Sector::getByCode($singleFamily->sector)->getData()[0];
+                $family->setParentId($parentSector[0]->getId());
+                $family->setPublished(true);
 
-                $product->setParentId($parentSector->getId());
-                $product->setPublished(true);
-
-                $product->save();
+                $family->save();
             }
         }
 
@@ -184,7 +228,7 @@ class ProductsAPIController
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
-        $response->setContent("ciao");
+        $response->setContent(json_encode($responseArray));
         return $response;
     }
 
