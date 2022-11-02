@@ -285,45 +285,48 @@ class DataObjectsController
 
             $parentSector = Sector::getByCode($singleFamily->sector)->getData();
 
-            if (empty($family->getId()) && $singleFamily->isDeleted === true) {
-
-                $responseArray["records"][$index]["code"] = $singleFamily->code;
-                $responseArray["records"][$index]["success"] = true;
-                $responseArray["records"][$index]["message"] = "Non è possibile eliminare una famiglia non esistente!";
-
-            } elseif (!empty($family->getId()) && $singleFamily->isDeleted === true) {
-
+            try {
                 $family->setCode($singleFamily->code);
                 $family->setKey($singleFamily->code);
                 $family->setTitle($singleFamily->title);
                 $family->setDescription($singleFamily->description);
-                $family->setParentId($parentSector[0]->getId());
-
-                $responseArray["records"][$index]["code"] = $singleFamily->code;
-                $responseArray["records"][$index]["success"] = true;
-                $responseArray["records"][$index]["message"] = "Famiglia de-listata!";
-
-            } elseif (empty($parentSector)) {
-                $responseArray["records"][$index]["code"] = $singleFamily->code;
-                $responseArray["records"][$index]["success"] = false;
-                $responseArray["records"][$index]["message"] = "Settore non esistente! Impossibile aggiungere la famiglia!!";
-
-            } elseif ($singleFamily->isDeleted === false) {
-
-                $family->setCode($singleFamily->code);
-                $family->setKey($singleFamily->code);
-                $family->setTitle($singleFamily->title);
-                $family->setDescription($singleFamily->description);
-
-                $family->setParentId($parentSector[0]->getId());
                 $family->setPublished(true);
+                if (empty($family->getId()) && $singleFamily->isDeleted === true) {
+                    $family->setPublished(false);
+                    $family->setParentId($parentSector[0]->getId());
+
+                    $responseArray["records"][$index]["code"] = $singleFamily->code;
+                    $responseArray["records"][$index]["success"] = true;
+                    $responseArray["records"][$index]["message"] = "Famiglia creata come non pubblicato!";
+
+                } elseif (!empty($family->getId()) && $singleFamily->isDeleted === true) {
+                    $family->setPublished(false);
+                    $family->setParentId($parentSector[0]->getId());
+
+                    $responseArray["records"][$index]["code"] = $singleFamily->code;
+                    $responseArray["records"][$index]["success"] = true;
+                    $responseArray["records"][$index]["message"] = "Famiglia de-listata!";
+
+                } elseif (empty($parentSector)) {
+
+                    $responseArray["records"][$index]["code"] = $singleFamily->code;
+                    $responseArray["records"][$index]["success"] = false;
+                    $responseArray["records"][$index]["message"] = throw new Exception("Settore non esistente! Impossibile aggiungere la famiglia!!");
+
+                } elseif ($singleFamily->isDeleted === false) {
+                    $family->setParentId($parentSector[0]->getId());
+
+                    $responseArray["records"][$index]["code"] = $singleFamily->code;
+                    $responseArray["records"][$index]["success"] = true;
+                    $responseArray["records"][$index]["message"] = "Famiglia inserita o aggiornata!";
+                }
 
                 $family->save();
 
+            } catch (\TypeError|Exception $e) {
                 $responseArray["records"][$index]["code"] = $singleFamily->code;
-                $responseArray["records"][$index]["success"] = true;
-                $responseArray["records"][$index]["message"] = "Famiglia inserita o aggiornata!";
-
+                $responseArray["records"][$index]["success"] = false;
+                $responseArray["records"][$index]["message"] = "ERRORE - Messaggio: {$e->getMessage()}";
             }
         }
 
@@ -365,49 +368,49 @@ class DataObjectsController
 
             $parentFamily = Family::getByCode($singleSubFamily->family)->getData();
 
-            if (empty($subFamily->getId()) && $singleSubFamily->isDeleted === true) {
-
-                $responseArray["records"][$index]["code"] = $singleSubFamily->code;
-                $responseArray["records"][$index]["success"] = false;
-                $responseArray["records"][$index]["message"] = "Non è possibile eliminare una sottofamiglia non esistente!";
-
-            } elseif (!empty($subFamily->getId()) && $singleSubFamily->isDeleted === true) {
-
-                $responseArray["records"][$index]["code"] = $singleSubFamily->code;
-                $responseArray["records"][$index]["success"] = true;
-                $responseArray["records"][$index]["message"] = "Sottofamiglia de-listata!";
-
+            try {
                 $subFamily->setCode($singleSubFamily->code);
                 $subFamily->setKey($singleSubFamily->code);
                 $subFamily->setTitle($singleSubFamily->title);
                 $subFamily->setDescription($singleSubFamily->description);
-
-                $subFamily->setParentId($parentFamily->getId());
-                $subFamily->setPublished(false);
-
-            } elseif (empty($parentFamily)) {
-
-                $responseArray["records"][$index]["code"] = $singleSubFamily->code;
-                $responseArray["records"][$index]["success"] = false;
-                $responseArray["records"][$index]["message"] = "Famiglia non esistente! Impossibile aggiungere la sottofamiglia!";
-
-
-            } elseif ($singleSubFamily->isDeleted === false) {
-
-                $subFamily->setCode($singleSubFamily->code);
-                $subFamily->setKey($singleSubFamily->code);
-                $subFamily->setTitle($singleSubFamily->title);
-                $subFamily->setDescription($singleSubFamily->description);
-
-
-                $subFamily->setParentId($parentFamily->getId());
                 $subFamily->setPublished(true);
+
+                if (empty($subFamily->getId()) && $singleSubFamily->isDeleted === true) {
+                    $subFamily->setPublished(false);
+                    $subFamily->setParentId($parentFamily[0]->getId());
+
+                    $responseArray["records"][$index]["code"] = $singleSubFamily->code;
+                    $responseArray["records"][$index]["success"] = true;
+                    $responseArray["records"][$index]["message"] = "Famiglia creata come non pubblicato!";
+
+                } elseif (!empty($subFamily->getId()) && $singleSubFamily->isDeleted === true) {
+                    $subFamily->setPublished(false);
+                    $subFamily->setParentId($parentFamily[0]->getId());
+
+                    $responseArray["records"][$index]["code"] = $singleSubFamily->code;
+                    $responseArray["records"][$index]["success"] = true;
+                    $responseArray["records"][$index]["message"] = "Sottofamiglia de-listata!";
+
+                } elseif (empty($parentFamily)) {
+                    $responseArray["records"][$index]["code"] = $singleSubFamily->code;
+                    $responseArray["records"][$index]["success"] = false;
+                    $responseArray["records"][$index]["message"] = throw new Exception("Famiglia non esistente! Impossibile aggiungere la sottofamiglia!!");
+
+                } elseif ($singleSubFamily->isDeleted === false) {
+                    $subFamily->setParentId($parentFamily[0]->getId());
+
+                    $responseArray["records"][$index]["code"] = $singleSubFamily->code;
+                    $responseArray["records"][$index]["success"] = true;
+                    $responseArray["records"][$index]["message"] = "Sottofamiglia inserita o aggiornata!";
+                }
 
                 $subFamily->save();
 
+            } catch (\TypeError|Exception $e) {
+
                 $responseArray["records"][$index]["code"] = $singleSubFamily->code;
-                $responseArray["records"][$index]["success"] = true;
-                $responseArray["records"][$index]["message"] = "Famiglia inserita o aggiornata!";
+                $responseArray["records"][$index]["success"] = false;
+                $responseArray["records"][$index]["message"] = "ERRORE - Messaggio: {$e->getMessage()}";
             }
         }
 
