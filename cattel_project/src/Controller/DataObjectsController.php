@@ -105,11 +105,23 @@ class DataObjectsController
         $arrayProducts = json_decode($request->getContent());
 
         $responseArray = array();
-        foreach ($arrayProducts as $singleProduct) {
+        foreach ($arrayProducts as $index => $singleProduct) {
+
+            $arrayFields = ["sku", "name", "sector", "family", "subFamily", "brand", "brandCattel", "attributesJGalileo", "shelfLife", "unityOfMeasure",
+                "alcoholContent", "preservationMode", "itemsInPackage", "packageType", "sellingUnit", "unitWeight", "productDrainedWeight",
+                "productSizesJGalileo", "productSizes", "isDeleted"];
+
+            foreach ($arrayFields as $field) {
+                if (!property_exists($singleProduct, $field)) {
+                    $response->setStatusCode(500);
+                    throw new \Exception("Campo $field mancante nel prodotto in posizione $index!");
+                }
+            }
+
             $product = StaticImportMethods::createOrGetProductBySku($singleProduct->sku);
             if (empty($product->getId()) && $singleProduct->isDeleted === true) {
 
-                $singleProduct = (object)array_merge(array('message' => 'Non è possibile eliminare un prodotto non esistente'), (array)$singleProduct);
+                $singleProduct = (object)array_merge(array('message' => 'Non è possibile eliminare un prodotto non esistente!'), (array)$singleProduct);
                 $responseArray[] = $singleProduct;
 
             } elseif (!empty($product->getId()) && $singleProduct->isDeleted === true) {
@@ -149,16 +161,28 @@ class DataObjectsController
     {
 
         $arraySectors = json_decode($request->getContent());
+        $response = new Response();
 
         $responseArray = array();
-        foreach ($arraySectors as $singleSector) {
+        foreach ($arraySectors as $index => $singleSector) {
+
+            $arrayFields = ["code", "title", "description", "isDeleted"];
+
+            foreach ($arrayFields as $field) {
+                if (!property_exists($singleSector, $field)) {
+                    $response->setStatusCode(500);
+                    throw new \Exception("Campo $field mancante nel settore in posizione $index!");
+                }
+            }
+
+
             $sector = StaticImportMethods::createOrGetObjectByCode($singleSector->code, 'Sector');
             if (empty($sector->getId()) && $singleSector->isDeleted === true) {
-                $singleSector->message = "Settore inserito!";
+                $singleSector = (object)array_merge(array('message' => 'Non è possibile eliminare un settore non esistente!'), (array)$singleSector);
                 $responseArray[] = $singleSector;
 
             } elseif (!empty($sector->getId()) && $singleSector->isDeleted === true) {
-                $singleSector->message = "Settore eliminato!";
+                $singleSector = (object)array_merge(array('message' => 'Settore inserito o aggiornato!'), (array)$singleSector);
                 $responseArray[] = $singleSector;
                 $sector->delete();
 
@@ -171,12 +195,11 @@ class DataObjectsController
                 $sector->setPublished(true);
                 $sector->save();
 
-                $singleSector->message = "Settore inserito!";
+                $singleSector = (object)array_merge(array('message' => 'Settore inserito o aggiornato!'), (array)$singleSector);
                 $responseArray[] = $singleSector;
             }
         }
 
-        $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
@@ -193,21 +216,34 @@ class DataObjectsController
     {
 
         $arrayFamilies = json_decode($request->getContent());
+        $response = new  Response();
 
         $responseArray = array();
-        foreach ($arrayFamilies as $singleFamily) {
+        foreach ($arrayFamilies as $index => $singleFamily) {
+
+            $arrayFields = ["code", "title", "description", "isDeleted"];
+
+            foreach ($arrayFields as $field) {
+                if (!property_exists($singleFamily, $field)) {
+                    $response->setStatusCode(500);
+                    throw new \Exception("Campo $field mancante nella famiglia in posizione $index!");
+                }
+            }
+
             $family = StaticImportMethods::createOrGetObjectByCode($singleFamily->code, 'Family');
             $parentSector = Sector::getByCode($singleFamily->sector)->getData();
 
             if (empty($family->getId()) && $singleFamily->isDeleted === true) {
-                $singleFamily->message = "Prodotto inserito!";
+                $singleFamily = (object)array_merge(array('message' => 'Non è possibile eliminare una famiglia non esistente!'), (array)$singleFamily);
                 $responseArray[] = $singleFamily;
 
             } elseif (!empty($family->getId()) && $singleFamily->isDeleted === true) {
+                $singleFamily = (object)array_merge(array('message' => 'Famiglia eliminata!'), (array)$singleFamily);
+                $responseArray[] = $singleFamily;
                 $family->delete();
 
             } elseif (empty($parentSector)) {
-                $responseArray["message"] = "Settore non esistente! Impossibile aggiungere la famiglia!";
+                $singleFamily = (object)array_merge(array('message' => 'Settore non esistente! Impossibile aggiungere la famiglia!'), (array)$singleFamily);
                 $responseArray[] = $singleFamily;
 
             } elseif ($singleFamily->isDeleted === false) {
@@ -221,10 +257,12 @@ class DataObjectsController
                 $family->setPublished(true);
 
                 $family->save();
+
+                $singleFamily = (object)array_merge(array('message' => 'Famiglia inserita o aggiornata!'), (array)$singleFamily);
+                $responseArray[] = $singleFamily;
             }
         }
 
-        $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
 
@@ -242,26 +280,48 @@ class DataObjectsController
 
         $arraySubFamilies = json_decode($request->getContent());
 
-        foreach ($arraySubFamilies as $singleSubFamily) {
-            $product = StaticImportMethods::createOrGetObjectByCode($singleSubFamily->code, 'SubFamily');
-            if (empty($product->getId()) && $singleSubFamily->isDeleted === true) {
-                continue;
-                //throw new \Exception("Non è possibile eliminare un prodotto non esistente");
-            } elseif (!empty($product->getId()) && $singleSubFamily->isDeleted === true) {
-                $product->delete();
+        $responseArray = array();
+        $response = new Response();
+
+        foreach ($arraySubFamilies as $index => $singleSubFamily) {
+
+            $arrayFields = ["code", "title", "description", "isDeleted"];
+
+            foreach ($arrayFields as $field) {
+                if (!property_exists($singleSubFamily, $field)) {
+                    $response->setStatusCode(500);
+                    throw new \Exception("Campo $field mancante nella sottofamiglia in posizione $index!");
+                }
+            }
+
+            $subFamily = StaticImportMethods::createOrGetObjectByCode($singleSubFamily->code, 'SubFamily');
+            $parentFamily = Family::getByCode($singleSubFamily->family)->getData();
+
+            if (empty($subFamily->getId()) && $singleSubFamily->isDeleted === true) {
+                $singleSubFamily = (object)array_merge(array('message' => 'Non è possibile eliminare una sottofamiglia non esistente!'), (array)$singleSubFamily);
+                $responseArray[] = $singleSubFamily;
+
+            } elseif (!empty($subFamily->getId()) && $singleSubFamily->isDeleted === true) {
+                $singleSubFamily = (object)array_merge(array('message' => 'Sottofamiglia eliminata!'), (array)$singleSubFamily);
+                $responseArray[] = $singleSubFamily;
+                $subFamily->delete();
+
+            } elseif (empty($parentFamily)) {
+                $singleSubFamily = (object)array_merge(array('message' => 'Famiglia non esistente! Impossibile aggiungere la sottofamiglia!'), (array)$singleSubFamily);
+                $responseArray[] = $singleSubFamily;
+
             } elseif ($singleSubFamily->isDeleted === false) {
 
-                $product->setCode($singleSubFamily->code);
-                $product->setKey($singleSubFamily->code);
-                $product->setTitle($singleSubFamily->title);
-                $product->setDescription($singleSubFamily->description);
+                $subFamily->setCode($singleSubFamily->code);
+                $subFamily->setKey($singleSubFamily->code);
+                $subFamily->setTitle($singleSubFamily->title);
+                $subFamily->setDescription($singleSubFamily->description);
 
-                $parentFamily = Family::getByCode($singleSubFamily->family)->getData()[0];
 
-                $product->setParentId($parentFamily->getId());
-                $product->setPublished(true);
+                $subFamily->setParentId($parentFamily->getId());
+                $subFamily->setPublished(true);
 
-                $product->save();
+                $subFamily->save();
             }
         }
 
