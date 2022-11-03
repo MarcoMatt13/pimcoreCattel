@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Tools\StaticImportMethods;
 use Exception;
+use Pimcore\Model\Asset;
 use Pimcore\Model\DataObject;
 use Pimcore\Model\DataObject\Family;
 use Pimcore\Model\DataObject\Folder;
@@ -101,6 +102,13 @@ class DataObjectsController
      */
     public function upsertProducts(Request $request): Response
     {
+        $token = $request->headers->get("authorization");
+        $token = base64_decode(trim(str_replace("Basic", "", $token)));
+        $token = explode(":", $token);
+
+        if (!isset($token[0]) || !isset($token[1])) {
+            throw new \Exception("No token found", 401);
+        }
 
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
@@ -181,7 +189,7 @@ class DataObjectsController
                 };
                 $product->save();
 
-            } catch (\TypeError | Exception | ValidationException $e) {
+            } catch (\TypeError|Exception|ValidationException $e) {
                 $responseArray["records"][$index]["sku"] = $singleProduct->sku;
                 $responseArray["records"][$index]["success"] = false;
                 $responseArray["records"][$index]["message"] = "ERRORE - Messaggio: {$e->getMessage()}";

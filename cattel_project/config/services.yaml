@@ -73,3 +73,17 @@ services:
     # App\EventListener\TestListener:
     #     tags:
     #         - { name: kernel.event_listener, event: pimcore.dataobject.preUpdate, method: onObjectPreUpdate }
+
+
+    App\Controller\AssetController:
+        tags:
+            - {
+                name: kernel.event_listener,
+                event: pimcore.asset.postUpdate,
+                method: onAssetPostUpdate,
+            }
+            - {
+                name: kernel.event_listener,
+                event: pimcore.asset.preDelete,
+                method: onAssetPreDelete,
+            }
