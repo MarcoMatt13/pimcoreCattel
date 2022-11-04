@@ -89,6 +89,6 @@ services:
             }
             - {
                 name: kernel.event_listener,
-                event: pimcore.dataobject.postUpdate,
+                event: pimcore.dataobject.preUpdate,
                 method: onDataObjectPreUpdate,
             }

@@ -75,17 +75,17 @@ class AssetController
     {
         $dataObject = $e->getElement();
         $now = Carbon::now('Europe/Rome');
-        $modificationDate = Carbon::createFromTimestamp($e->getElement()->getImage()->getModificationDate())->timezone('Europe/Rome');
+        $imageModificationDate = $e->getElement()->getImage() ? Carbon::createFromTimestamp($e->getElement()->getImage()->getModificationDate())->timezone('Europe/Rome') : $now;
+
         $versions = $e->getElement()->getVersions();
-        $previousObject = $versions[count($versions)-1]->getData();
 
-        dump($e->getElement()->getImage()->getFullPath());
-        dd($previousObject->getImage()->getFullPath());
+        $previousObjectImage = $versions[count($versions) - 1]->getData()->getImage() ? $versions[count($versions) - 1]->getData()->getImage() : "";
+        $currentObjectImage = $e->getElement()->getImage() ? $e->getElement()->getImage() : "";
 
-        if ($now->diffInMinutes($modificationDate) <= 10) {
+        if ($previousObjectImage->getFullPath() !== $currentObjectImage->getFullPath()) {
             $dataObject->setLastModifiedImage($now->isoFormat('MMMM Do YYYY, h:mm:ss a'));
         }
-        if ($now->diffInDays($modificationDate) <= 1) {
+        if ($now->diffInDays($imageModificationDate) <= 1 && $previousObjectImage->getData() !== $currentObjectImage->getData() && $previousObjectImage->getFullPath() == $currentObjectImage->getFullPath()) {
             $dataObject->setLastModifiedDataObject($now->isoFormat('MMMM Do YYYY, h:mm:ss a'));
         }
     }

@@ -208,6 +208,13 @@ class DataObjectsController
      */
     public function upsertSectors(Request $request): Response
     {
+        $token = $request->headers->get("authorization");
+        $token = base64_decode(trim(str_replace("Basic", "", $token)));
+        $token = explode(":", $token);
+
+        if (!isset($token[0]) || !isset($token[1])) {
+            throw new \Exception("No token found", 401);
+        }
 
         $arraySectors = json_decode($request->getContent());
         $response = new Response();
@@ -275,6 +282,14 @@ class DataObjectsController
      */
     public function upsertFamilies(Request $request): Response
     {
+
+        $token = $request->headers->get("authorization");
+        $token = base64_decode(trim(str_replace("Basic", "", $token)));
+        $token = explode(":", $token);
+
+        if (!isset($token[0]) || !isset($token[1])) {
+            throw new \Exception("No token found", 401);
+        }
 
         $arrayFamilies = json_decode($request->getContent());
         $response = new  Response();
@@ -357,6 +372,14 @@ class DataObjectsController
      */
     public function upsertSubFamilies(Request $request): Response
     {
+
+        $token = $request->headers->get("authorization");
+        $token = base64_decode(trim(str_replace("Basic", "", $token)));
+        $token = explode(":", $token);
+
+        if (!isset($token[0]) || !isset($token[1])) {
+            throw new \Exception("No token found", 401);
+        }
 
         $arraySubFamilies = json_decode($request->getContent());
 
