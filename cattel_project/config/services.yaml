@@ -87,3 +87,8 @@ services:
                 event: pimcore.asset.preDelete,
                 method: onAssetPreDelete,
             }
+            - {
+                name: kernel.event_listener,
+                event: pimcore.dataobject.postUpdate,
+                method: onDataObjectPreUpdate,
+            }

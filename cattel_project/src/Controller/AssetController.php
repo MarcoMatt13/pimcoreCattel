@@ -31,6 +31,7 @@ class AssetController
 
         // recover all the asset modified in the last 24 hours
         $now = time();
+        $nowCarbon = Carbon::createFromTimestamp($now)->timezone('Europe/Rome')->isoFormat('MMMM Do YYYY, h:mm:ss a');
         $totAss = new \Pimcore\Model\Asset\Listing();
         $totAss->setCondition("${now} - modificationDate <= 86400")->getData();
 
@@ -39,7 +40,7 @@ class AssetController
         foreach ($totAss as $updateImg) {
             foreach ($allDataObj as $singleObj) {
                 if ($singleObj->getImage() && $singleObj->getImage()->getFullPath() === $updateImg->getFullPath()) {
-                    $singleObj->setLastModifiedImage(Carbon::now('Europe/Rome')->isoFormat('YYYYMMDD_HHmmss'));
+                    $singleObj->setLastModifiedImage($nowCarbon);
                     $singleObj->setImage(Asset::getById($updateImg->getId()));
                     $singleObj->save();
                 }
@@ -54,17 +55,38 @@ class AssetController
     public function onAssetPreDelete(ElementEventInterface $e): void
     {
 
-        $now = time();
         $asset = $e->getElement();
         $allDataObj = new DataObject\Product\Listing();
+        $now = Carbon::now('Europe/Rome')->isoFormat('MMMM Do YYYY, h:mm:ss a');
 
         foreach ($allDataObj as $singleObj) {
             if ($singleObj->getImage() && $singleObj->getImage()->getFullPath() === $asset->getFullPath()) {
-                $singleObj->setLastModifiedImage(Carbon::now('Europe/Rome')->isoFormat('YYYYMMDD_HHmmss'));
+                $singleObj->setLastModifiedImage($now);
                 $singleObj->setImage(null);
                 $singleObj->save();
             }
         }
     }
 
+    /**
+     * @throws Exception
+     */
+    public function onDataObjectPreUpdate(ElementEventInterface $e): void
+    {
+        $dataObject = $e->getElement();
+        $now = Carbon::now('Europe/Rome');
+        $modificationDate = Carbon::createFromTimestamp($e->getElement()->getImage()->getModificationDate())->timezone('Europe/Rome');
+        $versions = $e->getElement()->getVersions();
+        $previousObject = $versions[count($versions)-1]->getData();
+
+        dump($e->getElement()->getImage()->getFullPath());
+        dd($previousObject->getImage()->getFullPath());
+
+        if ($now->diffInMinutes($modificationDate) <= 10) {
+            $dataObject->setLastModifiedImage($now->isoFormat('MMMM Do YYYY, h:mm:ss a'));
+        }
+        if ($now->diffInDays($modificationDate) <= 1) {
+            $dataObject->setLastModifiedDataObject($now->isoFormat('MMMM Do YYYY, h:mm:ss a'));
+        }
+    }
 }

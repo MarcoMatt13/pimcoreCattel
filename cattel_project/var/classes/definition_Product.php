@@ -5,6 +5,7 @@
  * Variants: no
  *
  * Fields Summary:
+ * - lastModifiedDataObject [input]
  * - lastModifiedImage [input]
  * - lastModifiedGallery [input]
  * - sku [input]
@@ -81,7 +82,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Product',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1667485854,
+   'modificationDate' => 1667492196,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -161,6 +162,37 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                 array (
                   0 => 
                   Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                     'name' => 'lastModifiedDataObject',
+                     'title' => 'Last Modified Data Object',
+                     'tooltip' => '',
+                     'mandatory' => false,
+                     'noteditable' => true,
+                     'index' => false,
+                     'locked' => NULL,
+                     'style' => '',
+                     'permissions' => NULL,
+                     'datatype' => 'data',
+                     'fieldtype' => 'input',
+                     'relationType' => false,
+                     'invisible' => false,
+                     'visibleGridView' => false,
+                     'visibleSearch' => false,
+                     'blockedVarsForExport' => 
+                    array (
+                    ),
+                     'width' => '',
+                     'defaultValue' => NULL,
+                     'columnLength' => 190,
+                     'regex' => '',
+                     'regexFlags' => 
+                    array (
+                    ),
+                     'unique' => false,
+                     'showCharCount' => false,
+                     'defaultValueGenerator' => '',
+                  )),
+                  1 => 
+                  Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                      'name' => 'lastModifiedImage',
                      'title' => 'Last Modified Image',
                      'tooltip' => '',
@@ -190,7 +222,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'showCharCount' => false,
                      'defaultValueGenerator' => '',
                   )),
-                  1 => 
+                  2 => 
                   Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                      'name' => 'lastModifiedGallery',
                      'title' => 'Last Modified Gallery',
@@ -198,7 +230,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'mandatory' => false,
                      'noteditable' => true,
                      'index' => false,
-                     'locked' => NULL,
+                     'locked' => false,
                      'style' => '',
                      'permissions' => NULL,
                      'datatype' => 'data',
@@ -221,7 +253,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'showCharCount' => false,
                      'defaultValueGenerator' => '',
                   )),
-                  2 => 
+                  3 => 
                   Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                      'name' => 'sku',
                      'title' => 'Codice',
@@ -252,7 +284,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'showCharCount' => false,
                      'defaultValueGenerator' => '',
                   )),
-                  3 => 
+                  4 => 
                   Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
                      'name' => 'name',
                      'title' => 'Nome',
@@ -278,7 +310,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'showCharCount' => false,
                      'excludeFromSearchIndex' => false,
                   )),
-                  4 => 
+                  5 => 
                   Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                      'name' => 'brand',
                      'title' => 'Marchio Fornitore',
@@ -309,7 +341,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'showCharCount' => false,
                      'defaultValueGenerator' => '',
                   )),
-                  5 => 
+                  6 => 
                   Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                      'name' => 'brandCattel',
                      'title' => 'Marchio Interno',
@@ -340,7 +372,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'showCharCount' => false,
                      'defaultValueGenerator' => '',
                   )),
-                  6 => 
+                  7 => 
                   Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
                      'name' => 'origin',
                      'title' => 'Provenienza',
@@ -371,7 +403,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'showCharCount' => false,
                      'defaultValueGenerator' => '',
                   )),
-                  7 => 
+                  8 => 
                   Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
                      'name' => 'webTitle',
                      'title' => 'Nome per il web',
@@ -397,7 +429,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'showCharCount' => false,
                      'excludeFromSearchIndex' => false,
                   )),
-                  8 => 
+                  9 => 
                   Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
                      'name' => 'webDescription',
                      'title' => 'Descrizione per il web',
@@ -423,7 +455,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'showCharCount' => false,
                      'excludeFromSearchIndex' => false,
                   )),
-                  9 => 
+                  10 => 
                   Pimcore\Model\DataObject\ClassDefinition\Data\BooleanSelect::__set_state(array(
                      'name' => 'availableInEcommerce',
                      'title' => 'Pubblicato su sito',
@@ -466,7 +498,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                     ),
                      'width' => '',
                   )),
-                  10 => 
+                  11 => 
                   Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
                      'name' => 'image',
                      'title' => 'Immagine principale',
@@ -490,7 +522,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'height' => '',
                      'uploadPath' => '',
                   )),
-                  11 => 
+                  12 => 
                   Pimcore\Model\DataObject\ClassDefinition\Data\ImageGallery::__set_state(array(
                      'name' => 'gallery',
                      'title' => 'Altre Immagini',
@@ -3037,39 +3069,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'enableGridLocking' => false,
    'deletedDataComponents' => 
   array (
-    0 => 
-    Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
-       'name' => 'lastModified',
-       'title' => 'Last Modified',
-       'tooltip' => '',
-       'mandatory' => false,
-       'noteditable' => true,
-       'index' => false,
-       'locked' => false,
-       'style' => '',
-       'permissions' => NULL,
-       'datatype' => 'data',
-       'fieldtype' => 'input',
-       'relationType' => false,
-       'invisible' => false,
-       'visibleGridView' => false,
-       'visibleSearch' => false,
-       'blockedVarsForExport' => 
-      array (
-      ),
-       'width' => '',
-       'defaultValue' => NULL,
-       'queryColumnType' => 'varchar',
-       'columnType' => 'varchar',
-       'columnLength' => 190,
-       'regex' => '',
-       'regexFlags' => 
-      array (
-      ),
-       'unique' => false,
-       'showCharCount' => false,
-       'defaultValueGenerator' => '',
-    )),
   ),
    'blockedVarsForExport' => 
   array (
