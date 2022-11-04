@@ -85,10 +85,15 @@ services:
             - {
                 name: kernel.event_listener,
                 event: pimcore.asset.preDelete,
-                method: onAssetPreDelete,
+                method: onImagePreDelete,
             }
             - {
                 name: kernel.event_listener,
-                event: pimcore.dataobject.preUpdate,
+                event: pimcore.asset.preDelete,
+                method: onGalleryPreDelete,
+            }
+            - {
+                name: kernel.event_listener,
+                event: pimcore.dataobject.postUpdate,
                 method: onDataObjectPreUpdate,
             }

@@ -52,7 +52,7 @@ class AssetController
     /**
      * @throws Exception
      */
-    public function onAssetPreDelete(ElementEventInterface $e): void
+    public function onImagePreDelete(ElementEventInterface $e): void
     {
 
         $asset = $e->getElement();
@@ -60,6 +60,28 @@ class AssetController
         $now = Carbon::now('Europe/Rome')->isoFormat('MMMM Do YYYY, h:mm:ss a');
 
         foreach ($allDataObj as $singleObj) {
+            if ( $singleObj->getImage() && $e->getElement()->getId() == $singleObj->getImage()->getId() && $singleObj->getImage()->getFullPath() === $asset->getFullPath()) {
+                $singleObj->setLastModifiedImage($now);
+                $singleObj->setImage(null);
+                $singleObj->save();
+            }
+        }
+    }
+
+    /**
+     * @throws Exception
+     */
+    public function onGalleryPreDelete(ElementEventInterface $e): void
+    {
+
+        $asset = $e->getElement();
+        $allDataObj = new DataObject\Product\Listing();
+        $now = Carbon::now('Europe/Rome')->isoFormat('MMMM Do YYYY, h:mm:ss a');
+
+        foreach ($allDataObj as $singleObj) {
+            $dataObjectGallery = $singleObj->getGallery()->getItems();
+            dd($dataObjectGallery);
+
             if ($singleObj->getImage() && $singleObj->getImage()->getFullPath() === $asset->getFullPath()) {
                 $singleObj->setLastModifiedImage($now);
                 $singleObj->setImage(null);
@@ -79,13 +101,15 @@ class AssetController
 
         $versions = $e->getElement()->getVersions();
 
-        $previousObjectImage = $versions[count($versions) - 1]->getData()->getImage() ? $versions[count($versions) - 1]->getData()->getImage() : "";
+        $previousVersionDate = Carbon::createFromTimestamp($versions[count($versions) - 2]->getData()->getModificationDate())->timezone('Europe/Rome');
+
+        $previousObjectImage = $versions[count($versions) - 2]->getData()->getImage() ? $versions[count($versions) - 1]->getData()->getImage() : "";
         $currentObjectImage = $e->getElement()->getImage() ? $e->getElement()->getImage() : "";
 
         if ($previousObjectImage->getFullPath() !== $currentObjectImage->getFullPath()) {
             $dataObject->setLastModifiedImage($now->isoFormat('MMMM Do YYYY, h:mm:ss a'));
         }
-        if ($now->diffInDays($imageModificationDate) <= 1 && $previousObjectImage->getData() !== $currentObjectImage->getData() && $previousObjectImage->getFullPath() == $currentObjectImage->getFullPath()) {
+        if ($now->diffInDays($previousVersionDate) <= 1 && $previousObjectImage->getData() !== $currentObjectImage->getData() && $previousObjectImage->getFullPath() == $currentObjectImage->getFullPath()) {
             $dataObject->setLastModifiedDataObject($now->isoFormat('MMMM Do YYYY, h:mm:ss a'));
         }
     }
