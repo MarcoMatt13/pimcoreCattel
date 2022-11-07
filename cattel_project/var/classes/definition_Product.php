@@ -5,9 +5,9 @@
  * Variants: no
  *
  * Fields Summary:
- * - lastModifiedDataObject [input]
- * - lastModifiedImage [input]
- * - lastModifiedGallery [input]
+ * - lastModifiedDataObject [datetime]
+ * - lastModifiedImage [datetime]
+ * - lastModifiedGallery [datetime]
  * - sku [input]
  * - name [textarea]
  * - brand [input]
@@ -82,7 +82,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Product',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1667492196,
+   'modificationDate' => 1667822123,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -161,7 +161,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'children' => 
                 array (
                   0 => 
-                  Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Data\Datetime::__set_state(array(
                      'name' => 'lastModifiedDataObject',
                      'title' => 'Last Modified Data Object',
                      'tooltip' => '',
@@ -172,7 +172,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'style' => '',
                      'permissions' => NULL,
                      'datatype' => 'data',
-                     'fieldtype' => 'input',
+                     'fieldtype' => 'datetime',
                      'relationType' => false,
                      'invisible' => false,
                      'visibleGridView' => false,
@@ -180,30 +180,25 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'blockedVarsForExport' => 
                     array (
                     ),
-                     'width' => '',
+                     'queryColumnType' => 'bigint(20)',
+                     'columnType' => 'bigint(20)',
                      'defaultValue' => NULL,
-                     'columnLength' => 190,
-                     'regex' => '',
-                     'regexFlags' => 
-                    array (
-                    ),
-                     'unique' => false,
-                     'showCharCount' => false,
+                     'useCurrentDate' => false,
                      'defaultValueGenerator' => '',
                   )),
                   1 => 
-                  Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Data\Datetime::__set_state(array(
                      'name' => 'lastModifiedImage',
                      'title' => 'Last Modified Image',
                      'tooltip' => '',
                      'mandatory' => false,
                      'noteditable' => true,
                      'index' => false,
-                     'locked' => false,
+                     'locked' => NULL,
                      'style' => '',
                      'permissions' => NULL,
                      'datatype' => 'data',
-                     'fieldtype' => 'input',
+                     'fieldtype' => 'datetime',
                      'relationType' => false,
                      'invisible' => false,
                      'visibleGridView' => false,
@@ -211,30 +206,25 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'blockedVarsForExport' => 
                     array (
                     ),
-                     'width' => '',
+                     'queryColumnType' => 'bigint(20)',
+                     'columnType' => 'bigint(20)',
                      'defaultValue' => NULL,
-                     'columnLength' => 190,
-                     'regex' => '',
-                     'regexFlags' => 
-                    array (
-                    ),
-                     'unique' => false,
-                     'showCharCount' => false,
+                     'useCurrentDate' => false,
                      'defaultValueGenerator' => '',
                   )),
                   2 => 
-                  Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                  Pimcore\Model\DataObject\ClassDefinition\Data\Datetime::__set_state(array(
                      'name' => 'lastModifiedGallery',
                      'title' => 'Last Modified Gallery',
                      'tooltip' => '',
                      'mandatory' => false,
                      'noteditable' => true,
                      'index' => false,
-                     'locked' => false,
+                     'locked' => NULL,
                      'style' => '',
                      'permissions' => NULL,
                      'datatype' => 'data',
-                     'fieldtype' => 'input',
+                     'fieldtype' => 'datetime',
                      'relationType' => false,
                      'invisible' => false,
                      'visibleGridView' => false,
@@ -242,15 +232,10 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'blockedVarsForExport' => 
                     array (
                     ),
-                     'width' => '',
+                     'queryColumnType' => 'bigint(20)',
+                     'columnType' => 'bigint(20)',
                      'defaultValue' => NULL,
-                     'columnLength' => 190,
-                     'regex' => '',
-                     'regexFlags' => 
-                    array (
-                    ),
-                     'unique' => false,
-                     'showCharCount' => false,
+                     'useCurrentDate' => false,
                      'defaultValueGenerator' => '',
                   )),
                   3 => 

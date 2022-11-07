@@ -88,6 +88,7 @@ class DataObjectsController
             $jsonResponseProducts[] = [
                 "code" => $singleSector->getCode(),
                 "name" => $singleSector->getTitle(),
+                "description" => $singleSector->getDescription(),
                 "family" => $singleSector->getChildren() ? $singleSector->getChildren()[0]->getPath() : "",
 
             ];
@@ -118,6 +119,7 @@ class DataObjectsController
             $jsonResponseProducts[] = [
                 "code" => $singleFamily->getCode(),
                 "name" => $singleFamily->getTitle(),
+                "description" => $singleFamily->getDescription(),
                 "subFamily" => $singleFamily->getChildren() ? $singleFamily->getChildren()[0]->getPath() : "",
 
             ];
@@ -148,6 +150,7 @@ class DataObjectsController
             $jsonResponseProducts[] = [
                 "code" => $singleSubFamily->getCode(),
                 "name" => $singleSubFamily->getTitle(),
+                "description" => $singleSubFamily->getDescription(),
 
             ];
         }

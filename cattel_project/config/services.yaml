@@ -76,7 +76,7 @@ services:
 
 
     App\Controller\AssetController:
-        #tags:
+        tags:
             - {
                 name: kernel.event_listener,
                 event: pimcore.asset.postUpdate,
@@ -94,6 +94,6 @@ services:
             }
             - {
                 name: kernel.event_listener,
-                event: pimcore.dataobject.postUpdate,
+                event: pimcore.dataobject.preUpdate,
                 method: onDataObjectPreUpdate,
             }
