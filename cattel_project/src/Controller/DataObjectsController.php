@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Helpers\AuthHelper;
 use App\Tools\StaticImportMethods;
 use Exception;
 use Pimcore\Model\Asset;
@@ -26,11 +27,13 @@ use function Symfony\Component\String\s;
 class DataObjectsController
 {
     /**
-     * @Route("/get/product", name="getProducts", methods={"GET"});
+     * @Route("/get/products", name="getProducts", methods={"GET"});
      * @return Response
+     * @throws Exception
      */
-    public function getProducts(): Response
+    public function getProducts(Request $request): Response
     {
+        AuthHelper::getUsernameAndPasswordFromRequest($request);
 
         $allProducts = new Listing();
         $jsonResponseProducts = array();
@@ -68,21 +71,24 @@ class DataObjectsController
         return $response;
     }
 
-    /**
-     * @Route("/get/family", name="getFamilies", methods={"GET"});
-     * @return Response
-     */
-    public function getFamilies(): Response
-    {
 
-        $allFamilies = new Family\Listing();
+    /**
+     * @Route("/get/sectors", name="getSectors", methods={"GET"});
+     * @return Response
+     * @throws Exception
+     */
+    public function getSectors(Request $request): Response
+    {
+        AuthHelper::getUsernameAndPasswordFromRequest($request);
+
+        $allSectors = new Sector\Listing();
         $jsonResponseProducts = array();
 
-        foreach ($allFamilies as $singleFamily) {
+        foreach ($allSectors as $singleSector) {
             $jsonResponseProducts[] = [
-                "code" => $singleFamily->getCode(),
-                "name" => $singleFamily->getTitle(),
-                "sector" => $singleFamily->getChildren() ? $singleFamily->getChildren()[0]->getPath() : "",
+                "code" => $singleSector->getCode(),
+                "name" => $singleSector->getTitle(),
+                "family" => $singleSector->getChildren() ? $singleSector->getChildren()[0]->getPath() : "",
 
             ];
         }
@@ -96,19 +102,73 @@ class DataObjectsController
     }
 
     /**
-     * @Route("/upsert/product", name="upsertProducts", methods={"POST"});
+     * @Route("/get/families", name="getFamilies", methods={"GET"});
+     * @return Response
+     * @throws Exception
+     */
+
+    public function getFamilies(Request $request): Response
+    {
+        AuthHelper::getUsernameAndPasswordFromRequest($request);
+
+        $allFamilies = new Family\Listing();
+        $jsonResponseProducts = array();
+
+        foreach ($allFamilies as $singleFamily) {
+            $jsonResponseProducts[] = [
+                "code" => $singleFamily->getCode(),
+                "name" => $singleFamily->getTitle(),
+                "subFamily" => $singleFamily->getChildren() ? $singleFamily->getChildren()[0]->getPath() : "",
+
+            ];
+        }
+
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent(json_encode($jsonResponseProducts));
+        return $response;
+    }
+
+    /**
+     * @Route("/get/subFamilies", name="getSubFamilies", methods={"GET"});
+     * @return Response
+     * @throws Exception
+     */
+
+    public function getSubFamilies(Request $request): Response
+    {
+        AuthHelper::getUsernameAndPasswordFromRequest($request);
+
+        $allSubFamilies = new SubFamily\Listing();
+        $jsonResponseProducts = array();
+
+        foreach ($allSubFamilies as $singleSubFamily) {
+            $jsonResponseProducts[] = [
+                "code" => $singleSubFamily->getCode(),
+                "name" => $singleSubFamily->getTitle(),
+
+            ];
+        }
+
+        $response = new Response();
+        $response->headers->set('Content-Type', 'application/json');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+
+        $response->setContent(json_encode($jsonResponseProducts));
+        return $response;
+    }
+
+    /**
+     * @Route("/upsert/products", name="upsertProducts", methods={"POST"});
      * @return Response
      * @throws \Exception
      */
     public function upsertProducts(Request $request): Response
     {
-        $token = $request->headers->get("authorization");
-        $token = base64_decode(trim(str_replace("Basic", "", $token)));
-        $token = explode(":", $token);
 
-        if (!isset($token[0]) || !isset($token[1])) {
-            throw new \Exception("No token found", 401);
-        }
+        AuthHelper::getUsernameAndPasswordFromRequest($request);
 
         $response = new Response();
         $response->headers->set('Content-Type', 'application/json');
@@ -202,19 +262,13 @@ class DataObjectsController
     }
 
     /**
-     * @Route("/upsert/sector", name="upsertSectors", methods={"POST"});
+     * @Route("/upsert/sectors", name="upsertSectors", methods={"POST"});
      * @return Response
      * @throws \Exception
      */
     public function upsertSectors(Request $request): Response
     {
-        $token = $request->headers->get("authorization");
-        $token = base64_decode(trim(str_replace("Basic", "", $token)));
-        $token = explode(":", $token);
-
-        if (!isset($token[0]) || !isset($token[1])) {
-            throw new \Exception("No token found", 401);
-        }
+        AuthHelper::getUsernameAndPasswordFromRequest($request);
 
         $arraySectors = json_decode($request->getContent());
         $response = new Response();
@@ -283,13 +337,7 @@ class DataObjectsController
     public function upsertFamilies(Request $request): Response
     {
 
-        $token = $request->headers->get("authorization");
-        $token = base64_decode(trim(str_replace("Basic", "", $token)));
-        $token = explode(":", $token);
-
-        if (!isset($token[0]) || !isset($token[1])) {
-            throw new \Exception("No token found", 401);
-        }
+        AuthHelper::getUsernameAndPasswordFromRequest($request);
 
         $arrayFamilies = json_decode($request->getContent());
         $response = new  Response();
@@ -373,13 +421,7 @@ class DataObjectsController
     public function upsertSubFamilies(Request $request): Response
     {
 
-        $token = $request->headers->get("authorization");
-        $token = base64_decode(trim(str_replace("Basic", "", $token)));
-        $token = explode(":", $token);
-
-        if (!isset($token[0]) || !isset($token[1])) {
-            throw new \Exception("No token found", 401);
-        }
+        AuthHelper::getUsernameAndPasswordFromRequest($request);
 
         $arraySubFamilies = json_decode($request->getContent());
 

@@ -21,6 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AssetController
+
 {
 
     /**
@@ -80,7 +81,7 @@ class AssetController
 
         foreach ($allDataObj as $singleObj) {
             $dataObjectGallery = $singleObj->getGallery()->getItems();
-            dd($dataObjectGallery);
+            dd(in_array("bau",$dataObjectGallery));
 
             if ($singleObj->getImage() && $singleObj->getImage()->getFullPath() === $asset->getFullPath()) {
                 $singleObj->setLastModifiedImage($now);

@@ -80,20 +80,20 @@ services:
             - {
                 name: kernel.event_listener,
                 event: pimcore.asset.postUpdate,
-                method: onAssetPostUpdate,
+                #method: onAssetPostUpdate,
             }
             - {
                 name: kernel.event_listener,
                 event: pimcore.asset.preDelete,
-                method: onImagePreDelete,
+                #method: onImagePreDelete,
             }
             - {
                 name: kernel.event_listener,
                 event: pimcore.asset.preDelete,
-                method: onGalleryPreDelete,
+                #method: onGalleryPreDelete,
             }
             - {
                 name: kernel.event_listener,
                 event: pimcore.dataobject.postUpdate,
-                method: onDataObjectPreUpdate,
+                #method: onDataObjectPreUpdate,
             }
