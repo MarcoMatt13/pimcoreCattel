@@ -103,13 +103,13 @@ class StaticImportMethods
 
             // prepare the success and error files writing the columns
             $csv = Reader::createFromPath("$file");
-            $csv->setDelimiter(';');
+            $csv->setDelimiter(',');
             $fileColumns = $csv->fetchOne();
-            $filesystem->appendToFile("$archiveLocalPath/$year/$now/{$dataObjectClassName}_{$timestamp}_success.csv", implode(';', $fileColumns) . "\r\n");
+            $filesystem->appendToFile("$archiveLocalPath/$year/$now/{$dataObjectClassName}_{$timestamp}_success.csv", implode(',', $fileColumns) . "\r\n");
 
             // add the error column for the _error.csv file
             $fileColumns[] = "error";
-            $filesystem->appendToFile("$archiveLocalPath/$year/$now/{$dataObjectClassName}_{$timestamp}_error.csv", implode(';', $fileColumns) . "\r\n");
+            $filesystem->appendToFile("$archiveLocalPath/$year/$now/{$dataObjectClassName}_{$timestamp}_error.csv", implode(',', $fileColumns) . "\r\n");
 
             // read the csv line-by-line to import the items
             $csv->setHeaderOffset(0); //set the CSV header offset
@@ -126,7 +126,7 @@ class StaticImportMethods
                         ->selectMethodByDataClassName($item, $dataObjectClassName, $parentFolder);
 
                     if ($responseToSingleObjectProcessing) {
-                        $filesystem->appendToFile("$archiveLocalPath/$year/$now/{$dataObjectClassName}_{$timestamp}_success.csv", implode(';', $item) . "\r\n");
+                        $filesystem->appendToFile("$archiveLocalPath/$year/$now/{$dataObjectClassName}_{$timestamp}_success.csv", implode(',', $item) . "\r\n");
                         $output->writeln("<info>$dataObjectClassName $codeOrSku for file $fileName upserted!</info>");
                     } else {
                         $output->writeln("<error>Class $dataObjectClassName not found!<error>");
@@ -136,7 +136,7 @@ class StaticImportMethods
                 catch (Exception $e) {
                     $output->writeln("<error>Error found for item $index {$codeOrSku} for file $fileName</error>");
                     $item[] = "{$e->getMessage()}, line {$e->getLine()}";
-                    $filesystem->appendToFile("$archiveLocalPath/$year/$now/{$dataObjectClassName}_{$timestamp}_error.csv", implode(';', $item) . "\r\n");
+                    $filesystem->appendToFile("$archiveLocalPath/$year/$now/{$dataObjectClassName}_{$timestamp}_error.csv", implode(',', $item) . "\r\n");
 
                 }
             }

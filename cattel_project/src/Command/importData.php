@@ -70,8 +70,8 @@ class importData extends AbstractCommand
         // sector
         $sector = DataObject\Sector::getByCode($item["sector"]);
         if (!empty($sector->count())) {
-            foreach ($sector->load() as $singleSector) {
-                $o->setSector($singleSector);
+            foreach ($sector->getData() as $singleSector) {
+                $o->setSector([$singleSector]);
             }
         } else {
             $o->setSector(null);
@@ -81,7 +81,7 @@ class importData extends AbstractCommand
         $family = DataObject\Family::getByCode($item["family"]);
         if (!empty($family->count())) {
             foreach ($family->load() as $singleFamily) {
-                $o->setFamily($singleFamily);
+                $o->setFamily([$singleFamily]);
             }
         } else {
             $o->setFamily(null);
@@ -91,7 +91,7 @@ class importData extends AbstractCommand
         $subfamily = DataObject\SubFamily::getByCode($item["subFamily"]);
         if (!empty($subfamily->count())) {
             foreach ($subfamily->load() as $singleSubFamily) {
-                $o->setSubFamily($singleSubFamily);
+                $o->setSubFamily([$singleSubFamily]);
             }
         } else {
             $o->setSubFamily(null);
